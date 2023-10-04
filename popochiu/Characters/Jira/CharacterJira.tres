@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://popochiu/Characters/Jira/CharacterJiraState.gd" type="Script" id=1]
+
+[resource]
+resource_name = "Jira"
+script = ExtResource( 1 )
+script_name = "Jira"
+scene = "res://popochiu/Characters/Jira/CharacterJira.tscn"
