@@ -60,6 +60,7 @@ cursor = 1
 texture = ExtResource( 4 )
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Background"]
+visible = false
 
 [node name="Hotspots" type="Node2D" parent="."]
 
@@ -75,7 +76,7 @@ cursor = 1
 modulate = Color( 0, 0, 1, 1 )
 polygon = PoolVector2Array( -18, -30, 14, -34, 14, 22, -18, 27 )
 
-[node name="AlleyExit" type="Area2D" parent="Hotspots" instance=ExtResource( 7 )]
+[node name="AlleyExit" parent="Hotspots" instance=ExtResource( 7 )]
 position = Vector2( -249, 123 )
 script = ExtResource( 10 )
 script_name = "AlleyExit"
@@ -86,7 +87,7 @@ cursor = 1
 modulate = Color( 0, 0, 1, 1 )
 polygon = PoolVector2Array( -18, -106, 12, -109, 11, 98, -21, 99 )
 
-[node name="PostOfficeDoor" type="Area2D" parent="Hotspots" instance=ExtResource( 7 )]
+[node name="PostOfficeDoor" parent="Hotspots" instance=ExtResource( 7 )]
 position = Vector2( 116, 110 )
 script = ExtResource( 11 )
 script_name = "PostOfficeDoor"
@@ -97,7 +98,7 @@ cursor = 1
 modulate = Color( 0, 0, 1, 1 )
 polygon = PoolVector2Array( -14, -26, 12, -26, 12, 24, -16, 24 )
 
-[node name="GrundysmartDoor" type="Area2D" parent="Hotspots" instance=ExtResource( 7 )]
+[node name="GrundysmartDoor" parent="Hotspots" instance=ExtResource( 7 )]
 position = Vector2( 315, 111 )
 script = ExtResource( 12 )
 script_name = "GrundysmartDoor"
@@ -108,7 +109,7 @@ cursor = 1
 modulate = Color( 0, 0, 1, 1 )
 polygon = PoolVector2Array( -14, -25, 14, -26, 13, 26, -15, 24 )
 
-[node name="PizzeriaDoor" type="Area2D" parent="Hotspots" instance=ExtResource( 7 )]
+[node name="PizzeriaDoor" parent="Hotspots" instance=ExtResource( 7 )]
 position = Vector2( -73, 121 )
 script = ExtResource( 13 )
 script_name = "PizzeriaDoor"
@@ -119,7 +120,7 @@ cursor = 1
 modulate = Color( 0, 0, 1, 1 )
 polygon = PoolVector2Array( -18, -20, 11, -24, 11, 20, -18, 25 )
 
-[node name="OfficeBuildingDoor" type="Area2D" parent="Hotspots" instance=ExtResource( 7 )]
+[node name="OfficeBuildingDoor" parent="Hotspots" instance=ExtResource( 7 )]
 position = Vector2( 196, 108 )
 script = ExtResource( 14 )
 script_name = "OfficeBuildingDoor"
@@ -130,7 +131,7 @@ cursor = 1
 modulate = Color( 0, 0, 1, 1 )
 polygon = PoolVector2Array( -24, -28, 24, -28, 23, 30, -24, 29 )
 
-[node name="HouseDoor" type="Area2D" parent="Hotspots" instance=ExtResource( 7 )]
+[node name="HouseDoor" parent="Hotspots" instance=ExtResource( 7 )]
 position = Vector2( 422, 124 )
 script = ExtResource( 15 )
 script_name = "HouseDoor"
@@ -141,7 +142,7 @@ cursor = 1
 modulate = Color( 0, 0, 1, 1 )
 polygon = PoolVector2Array( -15, -31, 16, -27, 16, 28, -15, 24 )
 
-[node name="AptBuildingDoor" type="Area2D" parent="Hotspots" instance=ExtResource( 7 )]
+[node name="AptBuildingDoor" parent="Hotspots" instance=ExtResource( 7 )]
 position = Vector2( 515, 155 )
 script = ExtResource( 16 )
 script_name = "AptBuildingDoor"

@@ -12,6 +12,8 @@ script_name = "Jira"
 description = "Jira"
 clickable = false
 cursor = 8
+text_color = Color( 1, 0.960784, 0.67451, 1 )
+walk_speed = 150.0
 popochiu_placeholder = null
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="."]
@@ -43,3 +45,4 @@ texture = ExtResource( 2 )
 
 [node name="DialogPos" type="Position2D" parent="."]
 visible = false
+position = Vector2( 0, -90 )

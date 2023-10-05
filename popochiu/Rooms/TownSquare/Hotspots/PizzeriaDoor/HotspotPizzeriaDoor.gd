@@ -12,12 +12,12 @@ func on_interact() -> void:
 	# the default behavior to happen.
 	# For example you can make the character walk to the Hotspot and then say
 	# something:
-#	E.run([
-#		C.walk_to_clicked(),
-#		C.face_clicked(),
-#		"Player: Can't open it"
-#	])
-	.on_interact()
+	E.run([
+		C.walk_to_clicked(),
+		C.face_clicked(),
+		"Player: It's not open for business right now.",
+		"Player: The pizza place seems to be always closed."
+	])
 
 
 # When the node is right clicked
