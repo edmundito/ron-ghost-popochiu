@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mx_reality.ogg-3ac7a73c4092156caed7f92df828a3b5.oggstr"
+
+[deps]
+
+source_file="res://popochiu/Audio/Music/mx_reality.ogg"
+dest_files=[ "res://.import/mx_reality.ogg-3ac7a73c4092156caed7f92df828a3b5.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

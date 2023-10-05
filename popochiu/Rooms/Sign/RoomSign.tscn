@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://popochiu/Rooms/Sign/RoomSign.gd" type="Script" id=1]
+[ext_resource path="res://popochiu/Rooms/Sign/Props/Background/PropBackground.gd" type="Script" id=2]
+[ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.tscn" type="PackedScene" id=3]
+[ext_resource path="res://popochiu/Rooms/Sign/Props/Background/bg_sign.png" type="Texture" id=4]
+
+[node name="RoomSign" type="YSort"]
+sort_enabled = false
+script = ExtResource( 1 )
+script_name = "Sign"
+has_player = false
+hide_gi = true
+
+[node name="WalkableAreas" type="Node2D" parent="."]
+
+[node name="Props" type="YSort" parent="."]
+sort_enabled = false
+
+[node name="Background" parent="Props" instance=ExtResource( 3 )]
+position = Vector2( 160, 120 )
+z_index = -1
+script = ExtResource( 2 )
+script_name = "Background"
+description = "Background"
+baseline = -120
+cursor = 1
+texture = ExtResource( 4 )
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Background"]
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="Regions" type="Node2D" parent="."]
+
+[node name="Points" type="Node2D" parent="."]
+
+[node name="Characters" type="YSort" parent="."]
+sort_enabled = false

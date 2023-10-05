@@ -135,7 +135,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ron-ghost-popochiu"
-run/main_scene="res://popochiu/Rooms/Eri0os/RoomEri0os.tscn"
+run/main_scene="res://popochiu/Rooms/Sign/RoomSign.tscn"
 config/icon="res://icon.png"
 
 [autoload]

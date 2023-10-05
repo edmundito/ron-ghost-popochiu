@@ -8,7 +8,7 @@ extends "res://addons/Popochiu/Engine/AudioManager/AudioCue.gd"
 # (!) This is intended to run in queued instructions: E.run([]).
 func play(fade_duration := 0.0, music_position := 0.0) -> void:
 	yield()
-	
+
 	A.play_music(resource_name, fade_duration, music_position)
 	yield(E.get_tree(), 'idle_frame')
 

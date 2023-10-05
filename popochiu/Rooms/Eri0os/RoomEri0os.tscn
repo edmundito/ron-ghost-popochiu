@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://popochiu/Rooms/Eri0os/RoomEri0os.gd" type="Script" id=1]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://addons/Popochiu/Engine/Objects/WalkableArea/PopochiuWalkableArea.tscn" type="PackedScene" id=5]
 [ext_resource path="res://popochiu/Characters/Jira/CharacterJira.tscn" type="PackedScene" id=6]
 [ext_resource path="res://popochiu/Rooms/Eri0os/Props/Background/eri0os.png" type="Texture" id=7]
-[ext_resource path="res://popochiu/Characters/Jira/CharacterJira.gd" type="Script" id=8]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( -81, 17, 100, 17, 156, 65, 157, 94, -157, 96, -156, 70 )
@@ -21,7 +20,7 @@ script_name = "Eri0os"
 
 [node name="WalkableAreas" type="Node2D" parent="."]
 
-[node name="Floor" type="Node2D" parent="WalkableAreas" instance=ExtResource( 5 )]
+[node name="Floor" parent="WalkableAreas" instance=ExtResource( 5 )]
 position = Vector2( 160, 120 )
 script = ExtResource( 4 )
 script_name = "Floor"
@@ -34,13 +33,10 @@ navpoly = SubResource( 1 )
 [node name="Props" type="YSort" parent="."]
 sort_enabled = false
 
-[node name="Background" type="Area2D" parent="Props" instance=ExtResource( 2 )]
+[node name="Background" parent="Props" instance=ExtResource( 2 )]
 position = Vector2( 160, 120 )
 z_index = -1
 script = ExtResource( 3 )
-__meta__ = {
-"_editor_description_": ""
-}
 script_name = "Background"
 description = "Background"
 baseline = -120
@@ -58,13 +54,5 @@ texture = ExtResource( 7 )
 [node name="Characters" type="YSort" parent="."]
 sort_enabled = false
 
-[node name="CharacterJira *" type="Area2D" parent="Characters" instance=ExtResource( 6 )]
+[node name="CharacterJira *" parent="Characters" instance=ExtResource( 6 )]
 position = Vector2( 80, 205 )
-script = ExtResource( 8 )
-__meta__ = {
-"_edit_group_": true
-}
-script_name = "Jira"
-description = "Jira"
-cursor = 8
-popochiu_placeholder = null
