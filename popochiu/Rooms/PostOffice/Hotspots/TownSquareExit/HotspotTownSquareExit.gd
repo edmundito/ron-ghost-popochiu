@@ -14,10 +14,10 @@ func on_interact() -> void:
 	# something:
 	yield(E.run([
 		C.walk_to_clicked(),
-		C.face_clicked(),
+		C.face_clicked()
 	]), 'completed')
 
-	E.goto_room('PostOffice')
+	E.goto_room('TownSquare')
 
 
 # When the node is right clicked

@@ -17,7 +17,7 @@ func on_interact() -> void:
 		C.face_clicked(),
 	]), 'completed')
 
-	E.goto_room('PostOffice')
+	E.goto_room('TownSquare')
 
 
 # When the node is right clicked
