@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://popochiu/Rooms/TownSquare/RoomTownSquare.gd" type="Script" id=1]
+[ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.tscn" type="PackedScene" id=2]
+[ext_resource path="res://popochiu/Rooms/TownSquare/Props/Background/PropBackground.gd" type="Script" id=3]
+[ext_resource path="res://popochiu/Rooms/TownSquare/Props/Background/town_square.png" type="Texture" id=4]
+[ext_resource path="res://popochiu/Rooms/TownSquare/WalkableAreas/Ground/WalkableAreaGround.gd" type="Script" id=5]
+[ext_resource path="res://addons/Popochiu/Engine/Objects/WalkableArea/PopochiuWalkableArea.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/Popochiu/Engine/Objects/Hotspot/PopochiuHotspot.tscn" type="PackedScene" id=7]
+[ext_resource path="res://popochiu/Rooms/TownSquare/Hotspots/Eri0osDoor/HotspotEri0osDoor.gd" type="Script" id=8]
+[ext_resource path="res://popochiu/Characters/Jira/CharacterJira.tscn" type="PackedScene" id=9]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 353, 75, 424, 96, -420, 98, 273, 75, 152, 23, 261, 34, 35, 23, -235, 32, -157, 19, -47, 21, -357, 58, -421, 66 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 3, 2, 6 ), PoolIntArray( 7, 8, 9, 6, 2, 10 ), PoolIntArray( 11, 10, 2 ) ]
+outlines = [ PoolVector2Array( -357, 58, -235, 32, -157, 19, -47, 21, 35, 23, 152, 23, 261, 34, 273, 75, 353, 75, 424, 96, -420, 98, -421, 66 ) ]
+
+[node name="RoomTownSquare" type="YSort"]
+sort_enabled = false
+script = ExtResource( 1 )
+script_name = "TownSquare"
+limit_left = -266.0
+limit_right = 585.0
+
+[node name="WalkableAreas" type="Node2D" parent="."]
+
+[node name="Ground" parent="WalkableAreas" instance=ExtResource( 6 )]
+position = Vector2( 160, 120 )
+script = ExtResource( 5 )
+script_name = "Ground"
+description = "Ground"
+
+[node name="Perimeter" type="NavigationPolygonInstance" parent="WalkableAreas/Ground"]
+modulate = Color( 0, 1, 0, 1 )
+navpoly = SubResource( 1 )
+
+[node name="Props" type="YSort" parent="."]
+sort_enabled = false
+
+[node name="Background" parent="Props" instance=ExtResource( 2 )]
+position = Vector2( 160, 120 )
+z_index = -1
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": ""
+}
+script_name = "Background"
+description = "Background"
+baseline = -120
+cursor = 1
+texture = ExtResource( 4 )
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Background"]
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="Eri0osDoor" type="Area2D" parent="Hotspots" instance=ExtResource( 7 )]
+position = Vector2( -197, 148 )
+script = ExtResource( 8 )
+script_name = "Eri0osDoor"
+description = "Eri0osDoor"
+walk_to_point = Vector2( 2, 31 )
+cursor = 1
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Eri0osDoor"]
+modulate = Color( 0, 0, 1, 1 )
+polygon = PoolVector2Array( -18, -30, 14, -34, 14, 22, -18, 27 )
+
+[node name="Regions" type="Node2D" parent="."]
+
+[node name="Points" type="Node2D" parent="."]
+
+[node name="Characters" type="YSort" parent="."]
+sort_enabled = false
+
+[node name="CharacterJira *" parent="Characters" instance=ExtResource( 9 )]
+position = Vector2( -195, 182 )
