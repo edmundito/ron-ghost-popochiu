@@ -1,14 +1,16 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://popochiu/Rooms/Eri0os/RoomEri0os.gd" type="Script" id=1]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.tscn" type="PackedScene" id=2]
-[ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.gd" type="Script" id=3]
+[ext_resource path="res://popochiu/Characters/Hooky/CharacterHooky.tscn" type="PackedScene" id=3]
 [ext_resource path="res://popochiu/Rooms/Eri0os/WalkableAreas/Floor/WalkableAreaFloor.gd" type="Script" id=4]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/WalkableArea/PopochiuWalkableArea.tscn" type="PackedScene" id=5]
 [ext_resource path="res://popochiu/Characters/Jira/CharacterJira.tscn" type="PackedScene" id=6]
 [ext_resource path="res://popochiu/Rooms/Eri0os/Props/_NoInteraction/eri0os.png" type="Texture" id=7]
 [ext_resource path="res://popochiu/Rooms/Eri0os/Hotspots/TownSquareExit/HotspotTownSquareExit.gd" type="Script" id=8]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/Hotspot/PopochiuHotspot.tscn" type="PackedScene" id=9]
+[ext_resource path="res://popochiu/Characters/Elandra/CharacterElandra.tscn" type="PackedScene" id=11]
+[ext_resource path="res://popochiu/Characters/Sheriff/CharacterSheriff.tscn" type="PackedScene" id=13]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( -81, 17, 100, 17, 156, 65, 157, 94, -157, 96, -156, 70 )
@@ -35,13 +37,9 @@ navpoly = SubResource( 1 )
 [node name="Props" type="YSort" parent="."]
 sort_enabled = false
 
-[node name="Background" type="Area2D" parent="Props" instance=ExtResource( 2 )]
+[node name="Background" parent="Props" instance=ExtResource( 2 )]
 position = Vector2( 160, 120 )
 z_index = -1
-script = ExtResource( 3 )
-__meta__ = {
-"_editor_description_": ""
-}
 script_name = "Background"
 description = "Background"
 clickable = false
@@ -71,3 +69,12 @@ sort_enabled = false
 
 [node name="CharacterJira *" parent="Characters" instance=ExtResource( 6 )]
 position = Vector2( 79, 201 )
+
+[node name="CharacterHooky *" parent="Characters" instance=ExtResource( 3 )]
+position = Vector2( 244, 161 )
+
+[node name="CharacterElandra *" parent="Characters" instance=ExtResource( 11 )]
+position = Vector2( 111, 172 )
+
+[node name="CharacterSheriff *" parent="Characters" instance=ExtResource( 13 )]
+position = Vector2( 170, 145 )
