@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://popochiu/Rooms/Eri0os/RoomEri0os.gd" type="Script" id=1]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://addons/Popochiu/Engine/Objects/WalkableArea/PopochiuWalkableArea.tscn" type="PackedScene" id=5]
 [ext_resource path="res://popochiu/Characters/Jira/CharacterJira.tscn" type="PackedScene" id=6]
 [ext_resource path="res://popochiu/Rooms/Eri0os/Props/Background/eri0os.png" type="Texture" id=7]
+[ext_resource path="res://popochiu/Rooms/Eri0os/Hotspots/TownSquareExit/HotspotTownSquareExit.gd" type="Script" id=8]
+[ext_resource path="res://addons/Popochiu/Engine/Objects/Hotspot/PopochiuHotspot.tscn" type="PackedScene" id=9]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( -81, 17, 100, 17, 156, 65, 157, 94, -157, 96, -156, 70 )
@@ -46,6 +48,17 @@ texture = ExtResource( 7 )
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Background"]
 
 [node name="Hotspots" type="Node2D" parent="."]
+
+[node name="TownSquareExit" type="Area2D" parent="Hotspots" instance=ExtResource( 9 )]
+position = Vector2( 78, 213 )
+script = ExtResource( 8 )
+script_name = "TownSquareExit"
+description = "TownSquareExit"
+cursor = 1
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/TownSquareExit"]
+modulate = Color( 0, 0, 1, 1 )
+polygon = PoolVector2Array( -27, -16, 32, -17, 29, 16, -27, 15 )
 
 [node name="Regions" type="Node2D" parent="."]
 

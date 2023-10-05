@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://popochiu/Rooms/Alley/RoomAlley.gd" type="Script" id=1]
+[ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.tscn" type="PackedScene" id=2]
+[ext_resource path="res://popochiu/Rooms/Alley/Props/_NoInteraction/alley.png" type="Texture" id=4]
+[ext_resource path="res://popochiu/Rooms/Alley/WalkableAreas/Ground/WalkableAreaGround.gd" type="Script" id=5]
+[ext_resource path="res://addons/Popochiu/Engine/Objects/WalkableArea/PopochiuWalkableArea.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/Popochiu/Engine/Objects/Hotspot/PopochiuHotspot.tscn" type="PackedScene" id=7]
+[ext_resource path="res://popochiu/Rooms/Alley/Hotspots/TownSquareExit/HotspotTownSquareExit.gd" type="Script" id=8]
+[ext_resource path="res://popochiu/Characters/Jira/CharacterJira.tscn" type="PackedScene" id=9]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 157, 97, -134, 94, -98, 67, 25, 74, 154, 72, 4, 66 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 3, 4, 0 ), PoolIntArray( 3, 2, 5 ) ]
+outlines = [ PoolVector2Array( -98, 67, 4, 66, 25, 74, 154, 72, 157, 97, -134, 94 ) ]
+
+[node name="RoomAlley" type="YSort"]
+sort_enabled = false
+script = ExtResource( 1 )
+script_name = "Alley"
+
+[node name="WalkableAreas" type="Node2D" parent="."]
+
+[node name="Ground" parent="WalkableAreas" instance=ExtResource( 6 )]
+position = Vector2( 160, 120 )
+script = ExtResource( 5 )
+script_name = "Ground"
+description = "Ground"
+
+[node name="Perimeter" type="NavigationPolygonInstance" parent="WalkableAreas/Ground"]
+modulate = Color( 0, 1, 0, 1 )
+navpoly = SubResource( 1 )
+
+[node name="Props" type="YSort" parent="."]
+sort_enabled = false
+
+[node name="Background" parent="Props" instance=ExtResource( 2 )]
+position = Vector2( 160, 120 )
+z_index = -1
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": ""
+}
+script_name = "Background"
+description = "Background"
+clickable = false
+baseline = -120
+cursor = 1
+texture = ExtResource( 4 )
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="TownSquareExit" parent="Hotspots" instance=ExtResource( 7 )]
+position = Vector2( 306, 130 )
+script = ExtResource( 8 )
+script_name = "TownSquareExit"
+description = "TownSquareExit"
+cursor = 1
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/TownSquareExit"]
+modulate = Color( 0, 0, 1, 1 )
+polygon = PoolVector2Array( -15, -132, 17, -133, 13, 115, -17, 114 )
+
+[node name="Regions" type="Node2D" parent="."]
+
+[node name="Points" type="Node2D" parent="."]
+
+[node name="Characters" type="YSort" parent="."]
+sort_enabled = false
+
+[node name="CharacterJira *" parent="Characters" instance=ExtResource( 9 )]
+position = Vector2( 275, 204 )

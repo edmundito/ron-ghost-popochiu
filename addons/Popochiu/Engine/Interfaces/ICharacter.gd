@@ -24,7 +24,7 @@ func character_say_no_block(
 	chr_name: String, dialog: String, call_done := true
 ) -> void:
 	yield(_character_say(chr_name, dialog), 'completed')
-	
+
 	if call_done:
 		G.done()
 
@@ -38,7 +38,7 @@ func player_say(dialog: String) -> void:
 # Makes the PC (player character) say something outside an E.run([])
 func player_say_no_block(dialog: String, call_done := true) -> void:
 	yield(player.say(dialog, false), 'completed')
-	
+
 	if call_done:
 		G.done()
 
@@ -48,7 +48,7 @@ func character_walk_to(
 	chr_name: String, position: Vector2, is_in_queue := true
 ) -> void:
 	if is_in_queue: yield()
-	
+
 	var walking_character: PopochiuCharacter = get_character(chr_name)
 	if walking_character:
 		yield(
@@ -66,7 +66,7 @@ func character_walk_to(
 # Makes the PC (player character) walk to a position in the current room.
 func player_walk_to(position: Vector2, is_in_queue := true) -> void:
 	if is_in_queue: yield()
-	
+
 	yield(player.walk(position, false), 'completed')
 
 
@@ -75,7 +75,7 @@ func player_walk_to(position: Vector2, is_in_queue := true) -> void:
 # PopochiuCharacter, etc.) in the room.
 func walk_to_clicked(is_in_queue := true) -> void:
 	if is_in_queue: yield()
-	
+
 	yield(player_walk_to(E.clicked.walk_to_point, false), 'completed')
 
 
@@ -83,18 +83,18 @@ func walk_to_clicked(is_in_queue := true) -> void:
 # E.g. a PopochiuProp, another PopochiuCharacter, etc.
 func face_clicked(is_in_queue := true) -> void:
 	if is_in_queue: yield()
-	
+
 	yield(player.face_clicked(false), 'completed')
 
 
 # Checks if the character exists in the array of PopochiuCharacter instances.
 func is_valid_character(script_name: String) -> bool:
 	if script_name.to_lower() == 'player': return true
-	
+
 	for c in characters:
 		if (c as PopochiuCharacter).script_name.to_lower() == script_name.to_lower():
 			return true
-	
+
 	return false
 
 
@@ -103,18 +103,18 @@ func get_character(script_name: String) -> PopochiuCharacter:
 	if script_name.to_lower() == 'player'\
 	or player.script_name.to_lower() == script_name:
 		return player
-	
+
 	for c in characters:
 		if (c as PopochiuCharacter).script_name.to_lower() == script_name.to_lower():
 			return c
-	
+
 	# If the character doesn't existis, try to instantiate from the list of
 	# characters (Resource) in Popochiu
 	var new_character: PopochiuCharacter = E.get_character_instance(script_name)
 	if new_character:
 		characters.append(new_character)
 		C.set(new_character.script_name, new_character)
-		
+
 		return new_character
 
 	return null
@@ -122,12 +122,12 @@ func get_character(script_name: String) -> PopochiuCharacter:
 
 func change_camera_owner(c: PopochiuCharacter, is_in_queue := true) -> void:
 	if is_in_queue: yield()
-	
+
 	if E.cutscene_skipped:
 		camera_owner = c
 		yield(get_tree(), 'idle_frame')
 		return
-	
+
 	camera_owner = c
 	yield(get_tree(), 'idle_frame')
 
@@ -136,10 +136,10 @@ func set_character_emotion(
 	chr_name: String, emotion: String, is_in_queue := true
 ) -> void:
 	if is_in_queue: yield()
-	
+
 	if get_character(chr_name):
 		get_character(chr_name).emotion = emotion
-	
+
 	yield(get_tree(), 'idle_frame')
 
 
@@ -154,15 +154,15 @@ func get_character_ignore_walkable_areas(chr_name: String) -> bool:
 
 func get_runtime_character(script_name: String) -> PopochiuCharacter:
 	var character: PopochiuCharacter = null
-	
+
 	for c in characters:
 		if (c as PopochiuCharacter).script_name.to_lower() == script_name.to_lower():
 			character = c
 			break
-	
+
 	if not character:
 		printerr('[Popochiu] Character %s is not in the room' % script_name)
-	
+
 	return character
 
 
@@ -175,7 +175,7 @@ func set_player(value: PopochiuCharacter) -> void:
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ PRIVATE ░░░░
 func _character_say(chr_name: String, dialog: String) -> void:
 	var talking_character: PopochiuCharacter = get_character(chr_name)
-	
+
 	if talking_character:
 		yield(talking_character.say(dialog, false), 'completed')
 	else:

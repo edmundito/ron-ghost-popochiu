@@ -28,7 +28,7 @@ func _enter_tree() -> void:
 		sort_enabled = false
 		$Props.sort_enabled = false
 		$Characters.sort_enabled = false
-		
+
 		return
 	else:
 		sort_enabled = true
@@ -38,36 +38,36 @@ func _enter_tree() -> void:
 
 func _ready():
 	if Engine.editor_hint: return
-	
+
 	if not get_tree().get_nodes_in_group('walkable_areas').empty():
 		_nav_path = get_tree().get_nodes_in_group('walkable_areas')[0]
 		Navigation2DServer.map_set_active(_nav_path.map_rid, true)
-	
+
 	set_process_unhandled_input(false)
 	set_physics_process(false)
-	
+
 	E.room_readied(self)
 
 
 func _physics_process(delta: float) -> void:
 	if _path.empty(): return
-	
+
 	var walk_distance = _moving_character.walk_speed * delta
 	_move_along_path(walk_distance)
 
 
 func _unhandled_input(event):
 	if not has_player: return
-	
+
 	if I.active:
 		if event.is_action_released('popochiu-look')\
 		or event.is_action_pressed('popochiu-interact'):
 			I.set_active_item()
 		return
-	
+
 	if not event.is_action_pressed('popochiu-interact'):
 		return
-	
+
 	if is_instance_valid(C.player) and C.player.can_move:
 		C.player.walk(get_local_mouse_position(), false)
 
@@ -103,13 +103,13 @@ func on_entered_from_editor() -> void:
 # of characters in ICharacter.gd.
 func exit_room() -> void:
 	set_physics_process(false)
-	
+
 	for c in $Characters.get_children():
 		$Characters.remove_child(c)
-	
+
 	for p in get_hotspots():
 		(p as PopochiuHotspot).disable_input()
-	
+
 	on_room_exited()
 
 
@@ -118,7 +118,7 @@ func add_character(chr: PopochiuCharacter) -> void:
 	#warning-ignore:return_value_discarded
 	chr.connect('started_walk_to', self, '_update_navigation_path')
 	chr.connect('stoped_walk', self, '_clear_navigation_path')
-	
+
 	chr.idle(false)
 
 
@@ -133,12 +133,12 @@ func hide_props() -> void:
 
 func has_character(character_name: String) -> bool:
 	var result := false
-	
+
 	for c in $Characters.get_children():
 		if (c as PopochiuCharacter).script_name == character_name:
 			result = true
 			break
-	
+
 	return result
 
 
@@ -246,11 +246,11 @@ func set_active_walkable_area(walkable_area_name: String) -> void:
 
 func get_characters() -> Array:
 	var characters := []
-	
+
 	for c in $Characters.get_children():
 		if c is PopochiuCharacter:
 			characters.append(c)
-	
+
 	return characters
 
 
@@ -263,7 +263,7 @@ func clean_characters() -> void:
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ PRIVATE ░░░░
 func _move_along_path(distance):
 	var last_point = _moving_character.position
-	
+
 	while _path.size():
 		var distance_between_points = last_point.distance_to(_path[0])
 		if distance <= distance_between_points:
@@ -280,7 +280,7 @@ func _move_along_path(distance):
 		distance -= distance_between_points
 		last_point = _path[0]
 		_path.remove(0)
-	
+
 	_moving_character.position = last_point
 	_clear_navigation_path()
 
@@ -291,7 +291,7 @@ func _update_navigation_path(
 	if not _nav_path:
 		prints('[Popochiu] No walkable areas in this room')
 		return
-	
+
 	# TODO: Use a Dictionary so more than one character can move around at the
 	# same time. Or maybe each character should handle its own movement? (;￢＿￢)
 	if character.ignore_walkable_areas:
@@ -302,13 +302,13 @@ func _update_navigation_path(
 		_path = Navigation2DServer.map_get_path(
 			_nav_path.map_rid, start_position, end_position, true
 		)
-	
+
 	if _path.empty():
 		return
-	
+
 	_path.remove(0)
 	_moving_character = character
-	
+
 	set_physics_process(true)
 
 
@@ -317,7 +317,7 @@ func _clear_navigation_path() -> void:
 	# an empty Array.
 	if not _path.empty():
 		_path.clear()
-	
+
 	_moving_character.idle(false)
 	C.emit_signal('character_move_ended', _moving_character)
 	_moving_character = null

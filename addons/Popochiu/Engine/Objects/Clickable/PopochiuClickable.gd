@@ -25,37 +25,37 @@ onready var _description_code := description
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ GODOT ░░░░
 func _ready():
 	add_to_group('PopochiuClickable')
-	
+
 	if Engine.editor_hint:
 		hide_helpers()
 		return
 	else:
 		$BaselineHelper.free()
 		$WalkToHelper.free()
-	
+
 	connect('visibility_changed', self, '_toggle_input')
 
 	if clickable:
 		# Connect to own signals
 		connect('mouse_entered', self, '_toggle_description', [true])
 		connect('mouse_exited', self, '_toggle_description', [false])
-		
+
 		# Connect to singleton signals
 		E.connect('language_changed', self, '_translate')
-	
+
 	set_process_unhandled_input(false)
 	_translate()
 
 
 func _unhandled_input(event):
-	var mouse_event: = event as InputEventMouseButton 
+	var mouse_event: = event as InputEventMouseButton
 	if mouse_event and mouse_event.pressed:
 		if not E.hovered or E.hovered != self: return
-		
+
 		E.clicked = self
 		if event.is_action_pressed('popochiu-interact'):
 			get_tree().set_input_as_handled()
-			
+
 			if I.active:
 				on_item_used(I.active)
 			else:
@@ -63,7 +63,7 @@ func _unhandled_input(event):
 					action = 'Interacted with: %s' % description
 				})
 				on_interact()
-				
+
 				times_clicked += 1
 		elif event.is_action_pressed('popochiu-look'):
 			if not I.active:
@@ -71,7 +71,7 @@ func _unhandled_input(event):
 					action = 'Looked at: %s' % description
 				})
 				on_look()
-				
+
 				times_right_clicked += 1
 
 
@@ -126,7 +126,7 @@ func show_helpers() -> void:
 # Hides the Node and disables its interaction
 func disable(is_in_queue := true) -> void:
 	if is_in_queue: yield()
-	
+
 	self.visible = false
 	yield(get_tree(), 'idle_frame')
 
@@ -134,7 +134,7 @@ func disable(is_in_queue := true) -> void:
 # Makes the Node visible and enables its interaction
 func enable(is_in_queue := true) -> void:
 	if is_in_queue: yield()
-	
+
 	self.visible = true
 	yield(get_tree(), 'idle_frame')
 
@@ -160,17 +160,17 @@ func enable_input() -> void:
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ PRIVATE ░░░░
 func _toggle_description(display: bool) -> void:
 	set_process_unhandled_input(display)
-	
+
 	if display:
 		if E.hovered and is_instance_valid(E.hovered) and (
 			E.hovered.get_parent() == self or get_index() < E.hovered.get_index()
 		):
 			E.add_hovered(self, true)
 			return
-		
+
 		E.add_hovered(self)
 		Cursor.set_cursor(cursor)
-		
+
 		if not I.active:
 			G.show_info(description)
 		else:
@@ -190,7 +190,7 @@ func _toggle_input() -> void:
 func _translate() -> void:
 	if Engine.editor_hint or not is_inside_tree()\
 	or not E.settings.use_translations: return
-	
+
 	description = E.get_text(
 		'%s-%s' % [get_tree().current_scene.name, _description_code]
 	)
@@ -199,14 +199,14 @@ func _translate() -> void:
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ SET & GET ░░░░
 func set_baseline(value: int) -> void:
 	baseline = value
-	
+
 	if Engine.editor_hint and get_node_or_null('BaselineHelper'):
 		get_node('BaselineHelper').position = Vector2.DOWN * value
 
 
 func set_walk_to_point(value: Vector2) -> void:
 	walk_to_point = value
-	
+
 	if Engine.editor_hint and get_node_or_null('WalkToHelper'):
 		get_node('WalkToHelper').position = value
 
@@ -221,5 +221,5 @@ func get_walk_to_point() -> Vector2:
 
 func set_room(value: Node2D) -> void:
 	room = value
-	
+
 	on_room_set()

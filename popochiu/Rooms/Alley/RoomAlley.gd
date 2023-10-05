@@ -1,9 +1,9 @@
 tool
 extends PopochiuRoom
 
-const Data := preload('RoomTownSquareState.gd')
+const Data := preload('RoomAlleyState.gd')
 
-var state: Data = preload('RoomTownSquare.tres')
+var state: Data = preload('RoomAlley.tres')
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ GODOT ░░░░
