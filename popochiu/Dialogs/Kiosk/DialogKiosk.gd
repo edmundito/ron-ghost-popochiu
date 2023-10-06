@@ -9,7 +9,7 @@ func on_start() -> void:
 	# it, and say something (or make the character say something)
 	# (!) It MUST always use a yield
 	yield(E.run([
-		'Kiosk: Welcome to Grundysmart Xpress, the Universe\'s most customer-centric store.',
+		'Kiosk: Welcome to Grundysmart Xpress, the Universe\'s most customer-centric convenience store!',
 		'Kiosk: Did you know that Grundysmart hourly employees are eligible for fully paid tuition after three months on the job?',
 	]), 'completed')
 
