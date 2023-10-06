@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://popochiu/Rooms/Pizzeria/RoomPizzeria.gd" type="Script" id=1]
+[ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.gd" type="Script" id=2]
+[ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.tscn" type="PackedScene" id=3]
+[ext_resource path="res://popochiu/Rooms/Pizzeria/Props/_NoInteraction/pizzeria.png" type="Texture" id=4]
+[ext_resource path="res://addons/Popochiu/Engine/Objects/WalkableArea/PopochiuWalkableArea.tscn" type="PackedScene" id=5]
+[ext_resource path="res://popochiu/Rooms/Pizzeria/WalkableAreas/Floor/WalkableAreaFloor.gd" type="Script" id=6]
+[ext_resource path="res://popochiu/Rooms/Pizzeria/Hotspots/Door/HotspotDoor.gd" type="Script" id=7]
+[ext_resource path="res://addons/Popochiu/Engine/Objects/Hotspot/PopochiuHotspot.tscn" type="PackedScene" id=8]
+[ext_resource path="res://popochiu/Characters/Jira/CharacterJira.tscn" type="PackedScene" id=9]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 142, 99, -142, 98, -127, 73, 9, 61, 108, 66, 153, 84, 7, 30 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5 ), PoolIntArray( 6, 3, 2 ) ]
+outlines = [ PoolVector2Array( 7, 30, -127, 73, -142, 98, 142, 99, 153, 84, 108, 66, 9, 61 ) ]
+
+[node name="RoomPizzeria" type="YSort"]
+sort_enabled = false
+script = ExtResource( 1 )
+script_name = "Pizzeria"
+
+[node name="WalkableAreas" type="Node2D" parent="."]
+
+[node name="Floor" type="Node2D" parent="WalkableAreas" instance=ExtResource( 5 )]
+position = Vector2( 160, 120 )
+script = ExtResource( 6 )
+script_name = "Floor"
+description = "Floor"
+
+[node name="Perimeter" type="NavigationPolygonInstance" parent="WalkableAreas/Floor"]
+modulate = Color( 0, 1, 0, 1 )
+navpoly = SubResource( 1 )
+
+[node name="Props" type="YSort" parent="."]
+sort_enabled = false
+
+[node name="Background" type="Area2D" parent="Props" instance=ExtResource( 3 )]
+position = Vector2( 160, 120 )
+z_index = -1
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": ""
+}
+script_name = "Background"
+description = "Background"
+clickable = false
+baseline = -120
+cursor = 1
+texture = ExtResource( 4 )
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="Door" type="Area2D" parent="Hotspots" instance=ExtResource( 8 )]
+position = Vector2( 97, 108 )
+script = ExtResource( 7 )
+script_name = "Door"
+description = "Door"
+walk_to_point = Vector2( 1, 67 )
+cursor = 1
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Door"]
+modulate = Color( 0, 0, 1, 1 )
+polygon = PoolVector2Array( -48, -61, 36, -61, 35, 44, -48, 70 )
+
+[node name="Regions" type="Node2D" parent="."]
+
+[node name="Points" type="Node2D" parent="."]
+
+[node name="Characters" type="YSort" parent="."]
+sort_enabled = false
+
+[node name="CharacterJira *" parent="Characters" instance=ExtResource( 9 )]
+position = Vector2( 112, 176 )

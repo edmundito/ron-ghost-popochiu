@@ -12,17 +12,8 @@ func on_interact() -> void:
 	# the default behavior to happen.
 	# For example you can make the character walk to the Hotspot and then say
 	# something:
-	yield(	E.run([
-		C.walk_to_clicked(),
-		C.face_clicked(),
-	]), 'completed')
-	E.goto_room('Pizzeria')
-#	E.run([
-#		C.walk_to_clicked(),
-#		C.face_clicked(),
-#		"Player: It's not open for business right now.",
-#		"Player: The pizza place seems to be always closed."
-#	])
+	H.walk_to_clicked()
+	E.goto_room('TownSquare')
 
 
 # When the node is right clicked

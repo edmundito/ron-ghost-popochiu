@@ -19,7 +19,7 @@ var used_times := 0
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ PUBLIC ░░░░
 func turn_on() -> void:
 	if disabled: return
-	
+
 	visible = true
 	used = false
 
@@ -37,7 +37,7 @@ func set_id(value: String) -> void:
 	id = value
 	script_name = id
 	resource_name = id
-	
+
 	property_list_changed_notify()
 
 
