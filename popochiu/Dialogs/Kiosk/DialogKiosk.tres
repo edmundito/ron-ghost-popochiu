@@ -1,0 +1,28 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://popochiu/Dialogs/Kiosk/DialogKiosk.gd" type="Script" id=1]
+[ext_resource path="res://addons/Popochiu/Engine/Objects/Dialog/PopochiuDialogOption.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=1]
+resource_name = "College"
+script = ExtResource( 2 )
+id = "College"
+text = "College tuition? Apply for job"
+visible = true
+disabled = false
+always_on = true
+
+[sub_resource type="Resource" id=2]
+resource_name = "Bye"
+script = ExtResource( 2 )
+id = "Bye"
+text = "Bye"
+visible = true
+disabled = false
+always_on = true
+
+[resource]
+resource_name = "Kiosk"
+script = ExtResource( 1 )
+options = [ SubResource( 1 ), SubResource( 2 ) ]
+script_name = "Kiosk"

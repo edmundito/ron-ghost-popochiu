@@ -140,6 +140,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
+H="*res://popochiu/Helpers.gd"
 Globals="*res://popochiu/PopochiuGlobals.gd"
 Cursor="*res://addons/Popochiu/Engine/Cursor/Cursor.tscn"
 E="*res://addons/Popochiu/Engine/Popochiu.tscn"

@@ -57,35 +57,35 @@ func turn_off_forever_options(ids: Array) -> void:
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ SET & GET ░░░░
 func set_options(value: Array) -> void:
 	options = value
-	
+
 	for v in value.size():
 		if not value[v]:
 			var new_opt: PopochiuDialogOption = PopochiuDialogOption.new()
 			var id := 'Opt%d' % options.size()
-			
+
 			new_opt.id = id
 			new_opt.text = 'Option %d' % options.size()
 			options[v] = new_opt
-			
+
 			property_list_changed_notify()
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ PRIVATE ░░░░
 func _start() -> void:
 	yield(on_start(), 'completed')
-	
+
 	_show_options()
-	
+
 	yield(D, 'dialog_finished')
-	
+
 	D.disconnect('option_selected', self, '_on_option_selected')
 
 
 func _show_options() -> void:
 	if not D.active: return
-	
+
 	D.emit_signal('dialog_options_requested', options)
-	
+
 	if not D.is_connected('option_selected', self, '_on_option_selected'):
 		D.connect('option_selected', self, '_on_option_selected')
 
@@ -94,5 +94,5 @@ func _on_option_selected(opt: PopochiuDialogOption) -> void:
 	opt.used = true
 	opt.used_times += 1
 	D.selected_option = opt
-	
+
 	option_selected(opt)
