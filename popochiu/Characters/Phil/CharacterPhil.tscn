@@ -15,7 +15,7 @@ text_color = Color( 0.321569, 1, 1, 1 )
 popochiu_placeholder = null
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -9, -85, 9, -85, 10, 0, -10, 0 )
+polygon = PoolVector2Array( -7, -84, 6, -84, 5, -69, 8.50891, -60.4455, 8, -35, 6, -6, 10, 0, -10, 0, -6, -6, -8, -36, -9, -60, -5, -68 )
 
 [node name="BaselineHelper" type="Line2D" parent="."]
 visible = false
@@ -42,4 +42,5 @@ position = Vector2( 0, -42 )
 texture = ExtResource( 2 )
 
 [node name="DialogPos" type="Position2D" parent="."]
+visible = false
 position = Vector2( 0, -100 )

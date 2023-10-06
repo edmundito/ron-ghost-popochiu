@@ -15,7 +15,8 @@ text_color = Color( 0.521569, 0.917647, 1, 1 )
 popochiu_placeholder = null
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
+position = Vector2( -1, -48 )
+polygon = PoolVector2Array( -7, -20, -6, -36, 0, -40, 7, -35, 6, -24, 17, -9, 10, 9, 9, 49, -2, 44, -14, 48, -10, 9, -16, -2 )
 
 [node name="BaselineHelper" type="Line2D" parent="."]
 visible = false

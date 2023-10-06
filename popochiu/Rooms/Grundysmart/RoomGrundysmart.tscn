@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://popochiu/Rooms/Grundysmart/RoomGrundysmart.gd" type="Script" id=1]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.tscn" type="PackedScene" id=2]
-[ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.gd" type="Script" id=3]
 [ext_resource path="res://popochiu/Rooms/Grundysmart/Props/_NoInteraction/grundismart.png" type="Texture" id=4]
 [ext_resource path="res://popochiu/Rooms/Grundysmart/Props/_NoInteraction/grundismart_shelf.png" type="Texture" id=5]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/WalkableArea/PopochiuWalkableArea.tscn" type="PackedScene" id=6]
@@ -23,7 +22,7 @@ script_name = "Grundysmart"
 
 [node name="WalkableAreas" type="Node2D" parent="."]
 
-[node name="Floor" type="Node2D" parent="WalkableAreas" instance=ExtResource( 6 )]
+[node name="Floor" parent="WalkableAreas" instance=ExtResource( 6 )]
 position = Vector2( 160, 120 )
 script = ExtResource( 7 )
 script_name = "Floor"
@@ -46,9 +45,8 @@ baseline = -120
 cursor = 1
 texture = ExtResource( 4 )
 
-[node name="Shelf" type="Area2D" parent="Props" instance=ExtResource( 2 )]
+[node name="Shelf" parent="Props" instance=ExtResource( 2 )]
 position = Vector2( 117, 164 )
-script = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true,
 "_editor_description_": ""
@@ -61,7 +59,7 @@ texture = ExtResource( 5 )
 
 [node name="Hotspots" type="Node2D" parent="."]
 
-[node name="TownSquareExit" type="Area2D" parent="Hotspots" instance=ExtResource( 10 )]
+[node name="TownSquareExit" parent="Hotspots" instance=ExtResource( 10 )]
 position = Vector2( 55, 211 )
 script = ExtResource( 8 )
 script_name = "TownSquareExit"
