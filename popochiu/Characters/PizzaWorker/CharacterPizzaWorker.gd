@@ -5,6 +5,14 @@ const Data := preload('CharacterPizzaWorkerState.gd')
 
 var state: Data = preload('CharacterPizzaWorker.tres')
 
+var has_pizza_box := false
+var has_sauce := false
+var has_cheese := false
+var has_pepperoni := false
+
+func _can_bake_pizza() -> bool:
+	return has_pizza_box && has_sauce && has_cheese && has_pepperoni
+
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ VIRTUAL ░░░░
 # When the PopochiuRoom where this node was already loaded
@@ -14,9 +22,9 @@ func on_room_set() -> void:
 
 # When the node is clicked
 func on_interact() -> void:
-	if Globals.got_pizza_box():
+	if Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.GET_PIZZA_BOX):
 		E.run(['Player: I already have a pizza box'])
-	elif !Globals.talked_to_phil():
+	elif !Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.TALK_TO_PHIL):
 		E.run(['Player: I need to talk to phil first'])
 	else:
 		E.run([
@@ -25,7 +33,6 @@ func on_interact() -> void:
 			"PizzaWorker: Here you go!",
 	    I.PizzaBox.add()
 	  ])
-
 
 
 # When the node is right clicked
@@ -37,7 +44,32 @@ func on_look() -> void:
 
 # When the node is clicked and there is an inventory item selected
 func on_item_used(item: PopochiuInventoryItem) -> void:
-	.on_item_used(item)
+	match item.script_name:
+		'PizzaBox':
+			I.PizzaBox.remove_now()
+			self.has_pizza_box = true
+
+		'Sauce':
+			I.Sauce.remove_now()
+			self.has_sauce = true
+
+		'Cheese':
+			I.Cheese.remove_now()
+			self.has_cheese = true
+
+		'Pepperoni':
+			I.Pepperoni.remove_now()
+			self.has_pepperoni = true
+
+		_:
+			.on_item_used(item)
+			return
+
+	if _can_bake_pizza():
+		E.run([
+			"PizzaWorker: Here is your rebaked pizza!",
+			I.Pizza.add()
+		])
 
 
 # Use it to play the idle animation for the character

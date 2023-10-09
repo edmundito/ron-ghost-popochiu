@@ -8,14 +8,20 @@ extends PopochiuProp
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ VIRTUAL ░░░░
 # When the node is clicked
 func on_interact() -> void:
-	H.walk_to_clicked()
-
-	if Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.DETROYED_KIOSK):
-		E.run(['Player: The door is locked!'])
+	if !Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.GET_PIZZA_BOX):
+		E.run([
+			"Player: I don't know what to do with this yet."
+		])
 		return
 
 	E.run([
-		'Kiosk: Halt! That door is for authorized users only.'
+		C.walk_to_clicked(),
+		C.face_clicked(),
+		G.display('TODO: Amore complex puzzle to get each of the items for the pizza'),
+		I.Sauce.add(false),
+		I.Cheese.add(false),
+		I.Pepperoni.add(),
+		self.disable()
 	])
 
 

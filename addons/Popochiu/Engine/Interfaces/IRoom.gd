@@ -51,19 +51,19 @@ func get_walkable_areas() -> Array:
 func get_runtime_room(script_name: String) -> PopochiuRoom:
 	if _room_instances.has(script_name):
 		return _room_instances[script_name]
-	
+
 	var rp: String = PopochiuResources.get_data_value('rooms', script_name, null)
 	if not rp:
 		prints('[Popochiu] No PopochiuRoom with name: %s' % script_name)
 		return null
-	
+
 	_room_instances[script_name] = load(load(rp).scene).instance()
-	
+
 	return _room_instances[script_name]
 
 
 func clear_instances() -> void:
 	for r in _room_instances:
 		(_room_instances[r] as PopochiuRoom).free()
-	
+
 	_room_instances.clear()
