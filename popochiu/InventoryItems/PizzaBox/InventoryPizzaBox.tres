@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://popochiu/InventoryItems/PizzaBox/InventoryPizzaBoxState.gd" type="Script" id=1]
+
+[resource]
+resource_name = "PizzaBox"
+script = ExtResource( 1 )
+script_name = "PizzaBox"
+scene = "res://popochiu/InventoryItems/PizzaBox/InventoryPizzaBox.tscn"

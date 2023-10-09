@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://popochiu/InventoryItems/PizzaBread/InventoryPizzaBread.gd" type="Script" id=1]
+[ext_resource path="res://images/Inventory/inv_pizza_bread.png" type="Texture" id=2]
+
+[node name="InventoryPizzaBread" type="TextureRect"]
+mouse_filter = 0
+size_flags_vertical = 4
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+description = "Pizza Bread"
+script_name = "PizzaBread"
+cursor = 10

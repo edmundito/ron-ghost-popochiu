@@ -16,7 +16,10 @@ func on_room_set() -> void:
 func on_interact() -> void:
 	# Replace the call to .on_interact() to implement your code. This only makes
 	# the default behavior to happen.
-	E.run(['Phil: Hi!'])
+	if C.Phil.room.name == R.Alley.name:
+		E.run([
+			"Phil: I'm so hungry, I could eat a whole pizza!"
+		])
 
 
 # When the node is right clicked
