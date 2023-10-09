@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://popochiu/Rooms/Pizzeria/RoomPizzeria.gd" type="Script" id=1]
-[ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.gd" type="Script" id=2]
+[ext_resource path="res://popochiu/Characters/PizzaWorker/CharacterPizzaWorker.gd" type="Script" id=2]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.tscn" type="PackedScene" id=3]
 [ext_resource path="res://images/Rooms/pizzeria.png" type="Texture" id=4]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/WalkableArea/PopochiuWalkableArea.tscn" type="PackedScene" id=5]
@@ -9,6 +9,7 @@
 [ext_resource path="res://popochiu/Rooms/Pizzeria/Hotspots/Door/HotspotDoor.gd" type="Script" id=7]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/Hotspot/PopochiuHotspot.tscn" type="PackedScene" id=8]
 [ext_resource path="res://popochiu/Characters/Jira/CharacterJira.tscn" type="PackedScene" id=9]
+[ext_resource path="res://popochiu/Characters/PizzaWorker/CharacterPizzaWorker.tscn" type="PackedScene" id=10]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 142, 99, -142, 98, -127, 73, 9, 61, 108, 66, 153, 84, 7, 30 )
@@ -22,7 +23,7 @@ script_name = "Pizzeria"
 
 [node name="WalkableAreas" type="Node2D" parent="."]
 
-[node name="Floor" type="Node2D" parent="WalkableAreas" instance=ExtResource( 5 )]
+[node name="Floor" parent="WalkableAreas" instance=ExtResource( 5 )]
 position = Vector2( 160, 120 )
 script = ExtResource( 6 )
 script_name = "Floor"
@@ -35,13 +36,9 @@ navpoly = SubResource( 1 )
 [node name="Props" type="YSort" parent="."]
 sort_enabled = false
 
-[node name="Background" type="Area2D" parent="Props" instance=ExtResource( 3 )]
+[node name="Background" parent="Props" instance=ExtResource( 3 )]
 position = Vector2( 160, 120 )
 z_index = -1
-script = ExtResource( 2 )
-__meta__ = {
-"_editor_description_": ""
-}
 script_name = "Background"
 description = "Background"
 clickable = false
@@ -51,7 +48,7 @@ texture = ExtResource( 4 )
 
 [node name="Hotspots" type="Node2D" parent="."]
 
-[node name="Door" type="Area2D" parent="Hotspots" instance=ExtResource( 8 )]
+[node name="Door" parent="Hotspots" instance=ExtResource( 8 )]
 position = Vector2( 97, 108 )
 script = ExtResource( 7 )
 script_name = "Door"
@@ -72,3 +69,15 @@ sort_enabled = false
 
 [node name="CharacterJira *" parent="Characters" instance=ExtResource( 9 )]
 position = Vector2( 112, 176 )
+
+[node name="CharacterPizzaWorker *" type="Area2D" parent="Characters" instance=ExtResource( 10 )]
+position = Vector2( 261, 126 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+script_name = "PizzaWorker"
+description = "PizzaWorker"
+walk_to_point = Vector2( 0, 43 )
+cursor = 8
+popochiu_placeholder = null

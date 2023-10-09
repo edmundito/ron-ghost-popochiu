@@ -57,7 +57,7 @@ func on_discard() -> void:
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ PUBLIC ░░░░
 func add(animate := true) -> void:
 	yield()
-	
+
 	yield(I.add_item(script_name, false, animate), 'completed')
 
 
@@ -67,7 +67,7 @@ func add_now(animate := true) -> void:
 
 func add_as_active(animate := true) -> void:
 	yield()
-	
+
 	yield(I.add_item(script_name, false, animate), 'completed')
 	I.set_active_item(self, true)
 
@@ -79,7 +79,7 @@ func add_as_active_now(animate := true) -> void:
 
 func remove(animate := true) -> void:
 	yield()
-	
+
 	yield(I.remove_item(script_name, false, animate), 'completed')
 
 
@@ -94,7 +94,7 @@ func set_active(ignore_block := false) -> void:
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ SET & GET ░░░░
 func set_in_inventory(value: bool) -> void:
 	in_inventory = value
-	
+
 	if in_inventory: on_added_to_inventory()
 
 
@@ -118,8 +118,8 @@ func _toggle_description(display: bool) -> void:
 		emit_signal('description_toggled', '')
 
 
-func _on_action_pressed(event: InputEvent) -> void: 
-	var mouse_event := event as InputEventMouseButton 
+func _on_action_pressed(event: InputEvent) -> void:
+	var mouse_event := event as InputEventMouseButton
 	if mouse_event:
 		if mouse_event.is_action_pressed('popochiu-interact'):
 			if I.active:

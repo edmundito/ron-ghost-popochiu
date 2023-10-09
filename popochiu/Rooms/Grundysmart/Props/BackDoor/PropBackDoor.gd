@@ -10,7 +10,7 @@ extends PopochiuProp
 func on_interact() -> void:
 	H.walk_to_clicked()
 
-	if Globals.state.DESTROYED_KIOSK:
+	if Globals.destroyed_kiosk():
 		E.run(['Player: The door is locked!'])
 		return
 

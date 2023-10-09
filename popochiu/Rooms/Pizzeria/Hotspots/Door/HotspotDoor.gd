@@ -12,7 +12,10 @@ func on_interact() -> void:
 	# the default behavior to happen.
 	# For example you can make the character walk to the Hotspot and then say
 	# something:
-	H.walk_to_clicked()
+	yield(E.run([
+		C.walk_to_clicked(),
+		C.face_clicked(),
+	]), 'completed')
 	E.goto_room('TownSquare')
 
 
