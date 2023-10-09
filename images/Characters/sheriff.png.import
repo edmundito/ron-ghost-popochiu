@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/town_square.png-f9313eb20486fae068e2a44b5b6d100a.stex"
+path="res://.import/sheriff.png-4e63d04a5dc6c537dca6b6a7b80f024f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://popochiu/Rooms/TownSquare/Props/Background/town_square.png"
-dest_files=[ "res://.import/town_square.png-f9313eb20486fae068e2a44b5b6d100a.stex" ]
+source_file="res://images/Characters/sheriff.png"
+dest_files=[ "res://.import/sheriff.png-4e63d04a5dc6c537dca6b6a7b80f024f.stex" ]
 
 [params]
 

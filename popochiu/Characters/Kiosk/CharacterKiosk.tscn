@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://popochiu/Characters/Kiosk/CharacterKiosk.gd" type="Script" id=1]
-[ext_resource path="res://popochiu/Characters/Kiosk/phil_ai.png" type="Texture" id=2]
+[ext_resource path="res://images/Characters/phil_ai.png" type="Texture" id=2]
 
 [node name="CharacterKiosk" type="Area2D"]
 script = ExtResource( 1 )

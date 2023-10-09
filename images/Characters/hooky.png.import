@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sheriff.png-22dc7e738764732fa1ac5a635f76655c.stex"
+path="res://.import/hooky.png-b4ac81912c3e3f86764939445eb51e70.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://popochiu/Characters/Sheriff/sheriff.png"
-dest_files=[ "res://.import/sheriff.png-22dc7e738764732fa1ac5a635f76655c.stex" ]
+source_file="res://images/Characters/hooky.png"
+dest_files=[ "res://.import/hooky.png-b4ac81912c3e3f86764939445eb51e70.stex" ]
 
 [params]
 

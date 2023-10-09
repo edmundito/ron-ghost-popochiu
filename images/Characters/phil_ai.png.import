@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pizzeria.png-a32545803223854652eed519e82ef3c4.stex"
+path="res://.import/phil_ai.png-a89f1fbe3074f696ae3b9fa74a3f365c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://popochiu/Rooms/Pizzeria/Props/_NoInteraction/pizzeria.png"
-dest_files=[ "res://.import/pizzeria.png-a32545803223854652eed519e82ef3c4.stex" ]
+source_file="res://images/Characters/phil_ai.png"
+dest_files=[ "res://.import/phil_ai.png-a89f1fbe3074f696ae3b9fa74a3f365c.stex" ]
 
 [params]
 

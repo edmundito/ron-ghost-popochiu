@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/phil.png-26675c227d638fa711d32d5e8472759f.stex"
+path="res://.import/phil.png-1293dd97a6d4e9cdaf4dcdb82ffdbef1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://popochiu/Characters/Phil/phil.png"
-dest_files=[ "res://.import/phil.png-26675c227d638fa711d32d5e8472759f.stex" ]
+source_file="res://images/Characters/phil.png"
+dest_files=[ "res://.import/phil.png-1293dd97a6d4e9cdaf4dcdb82ffdbef1.stex" ]
 
 [params]
 

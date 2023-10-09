@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/post_office.png-a8392dbb16c88c93a064bc72cff7f3b8.stex"
+path="res://.import/town_square.png-38dbb8e8fca7ffa8167d3d9e6b471058.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://popochiu/Rooms/PostOffice/Props/_NoInteraction/post_office.png"
-dest_files=[ "res://.import/post_office.png-a8392dbb16c88c93a064bc72cff7f3b8.stex" ]
+source_file="res://images/Rooms/town_square.png"
+dest_files=[ "res://.import/town_square.png-38dbb8e8fca7ffa8167d3d9e6b471058.stex" ]
 
 [params]
 

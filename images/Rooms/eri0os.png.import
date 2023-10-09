@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hooky.png-516cb41ad07efbc3be79b32f97c77f8d.stex"
+path="res://.import/eri0os.png-d8a26680ec8298b1947304d76a43c691.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://popochiu/Characters/Hooky/hooky.png"
-dest_files=[ "res://.import/hooky.png-516cb41ad07efbc3be79b32f97c77f8d.stex" ]
+source_file="res://images/Rooms/eri0os.png"
+dest_files=[ "res://.import/eri0os.png-d8a26680ec8298b1947304d76a43c691.stex" ]
 
 [params]
 

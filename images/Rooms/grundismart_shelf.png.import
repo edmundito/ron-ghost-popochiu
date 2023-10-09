@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/eri0os.png-911cd67480e88d92c679d2ed14ca4a30.stex"
+path="res://.import/grundismart_shelf.png-7d4a3d849477337a807ae0e257bff32b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://popochiu/Rooms/Eri0os/Props/_NoInteraction/eri0os.png"
-dest_files=[ "res://.import/eri0os.png-911cd67480e88d92c679d2ed14ca4a30.stex" ]
+source_file="res://images/Rooms/grundismart_shelf.png"
+dest_files=[ "res://.import/grundismart_shelf.png-7d4a3d849477337a807ae0e257bff32b.stex" ]
 
 [params]
 

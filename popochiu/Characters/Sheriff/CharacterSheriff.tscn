@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://popochiu/Characters/Sheriff/CharacterSheriff.gd" type="Script" id=1]
-[ext_resource path="res://popochiu/Characters/Sheriff/sheriff.png" type="Texture" id=2]
+[ext_resource path="res://images/Characters/sheriff.png" type="Texture" id=2]
 
 [node name="CharacterSheriff" type="Area2D"]
 script = ExtResource( 1 )

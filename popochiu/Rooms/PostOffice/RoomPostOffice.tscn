@@ -2,7 +2,7 @@
 
 [ext_resource path="res://popochiu/Rooms/PostOffice/RoomPostOffice.gd" type="Script" id=1]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.tscn" type="PackedScene" id=2]
-[ext_resource path="res://popochiu/Rooms/PostOffice/Props/_NoInteraction/post_office.png" type="Texture" id=4]
+[ext_resource path="res://images/Rooms/post_office.png" type="Texture" id=4]
 [ext_resource path="res://popochiu/Rooms/PostOffice/WalkableAreas/Ground/WalkableAreaGround.gd" type="Script" id=5]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/WalkableArea/PopochiuWalkableArea.tscn" type="PackedScene" id=6]
 [ext_resource path="res://popochiu/Rooms/PostOffice/Hotspots/TownSquareExit/HotspotTownSquareExit.gd" type="Script" id=7]

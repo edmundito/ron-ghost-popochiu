@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grundismart.png-1886cb84f133c137812b63d07ee4d0a9.stex"
+path="res://.import/grundismart.png-8dc328e1df1f5762cf9b376cb2192362.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://popochiu/Rooms/Grundysmart/Props/_NoInteraction/grundismart.png"
-dest_files=[ "res://.import/grundismart.png-1886cb84f133c137812b63d07ee4d0a9.stex" ]
+source_file="res://images/Rooms/grundismart.png"
+dest_files=[ "res://.import/grundismart.png-8dc328e1df1f5762cf9b376cb2192362.stex" ]
 
 [params]
 

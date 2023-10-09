@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/phil_ai.png-ca6a09c0f96d53ad208abcbb3cf0f168.stex"
+path="res://.import/jira.png-a5d87be1683d09009087dad1c8bc4b48.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://popochiu/Characters/Kiosk/phil_ai.png"
-dest_files=[ "res://.import/phil_ai.png-ca6a09c0f96d53ad208abcbb3cf0f168.stex" ]
+source_file="res://images/Characters/jira.png"
+dest_files=[ "res://.import/jira.png-a5d87be1683d09009087dad1c8bc4b48.stex" ]
 
 [params]
 

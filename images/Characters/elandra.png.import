@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/elandra.png-25f0a2a5998d954fcc1d5a954ed5de65.stex"
+path="res://.import/elandra.png-858c4e0a537e282305c81ae8ebcf3677.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://popochiu/Characters/Elandra/elandra.png"
-dest_files=[ "res://.import/elandra.png-25f0a2a5998d954fcc1d5a954ed5de65.stex" ]
+source_file="res://images/Characters/elandra.png"
+dest_files=[ "res://.import/elandra.png-858c4e0a537e282305c81ae8ebcf3677.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bg_sign.png-0cd5ea8d20a36630da242851ebffffd2.stex"
+path="res://.import/post_office.png-69049a8783c9bcfa4e2fd766a866eb97.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://popochiu/Rooms/Sign/Props/Background/bg_sign.png"
-dest_files=[ "res://.import/bg_sign.png-0cd5ea8d20a36630da242851ebffffd2.stex" ]
+source_file="res://images/Rooms/post_office.png"
+dest_files=[ "res://.import/post_office.png-69049a8783c9bcfa4e2fd766a866eb97.stex" ]
 
 [params]
 

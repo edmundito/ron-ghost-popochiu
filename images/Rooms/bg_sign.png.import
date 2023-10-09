@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/jira.png-ada4e213a1bd358052b28c473b6e639a.stex"
+path="res://.import/bg_sign.png-40f4c921684d6be83ce60be4f9490e37.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://popochiu/Characters/Jira/jira.png"
-dest_files=[ "res://.import/jira.png-ada4e213a1bd358052b28c473b6e639a.stex" ]
+source_file="res://images/Rooms/bg_sign.png"
+dest_files=[ "res://.import/bg_sign.png-40f4c921684d6be83ce60be4f9490e37.stex" ]
 
 [params]
 
