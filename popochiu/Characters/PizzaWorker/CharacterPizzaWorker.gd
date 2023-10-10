@@ -5,13 +5,8 @@ const Data := preload('CharacterPizzaWorkerState.gd')
 
 var state: Data = preload('CharacterPizzaWorker.tres')
 
-var has_pizza_box := false
-var has_sauce := false
-var has_cheese := false
-var has_pepperoni := false
-
 func _can_bake_pizza() -> bool:
-	return has_pizza_box && has_sauce && has_cheese && has_pepperoni
+	return state.has_pizza_box && state.has_sauce && state.has_cheese && state.has_pepperoni
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ VIRTUAL ░░░░
@@ -25,7 +20,7 @@ func on_interact() -> void:
 	if Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.GET_PIZZA_BOX):
 		E.run(['Player: I already have a pizza box'])
 	elif !Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.TALK_TO_PHIL):
-		E.run(['Player: I need to talk to phil first'])
+		E.run(["Player: I... don't know what to get."])
 	else:
 		E.run([
 	    C.walk_to_clicked(),
@@ -46,20 +41,39 @@ func on_look() -> void:
 func on_item_used(item: PopochiuInventoryItem) -> void:
 	match item.script_name:
 		'PizzaBox':
-			I.PizzaBox.remove_now()
-			self.has_pizza_box = true
+			yield(E.run([
+				"PizzaWorker: Sorry, we don't take returns"
+			]), 'completed')
+
+			if !Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.GET_PIZZA_BOX):
+				return
+
+			if !Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.EMPTY_PIZZA):
+					yield(E.run([
+						"Player: This pizza is only crust!",
+						"PizzaWorker: Let me see that...",
+						I.PizzaBox.remove(),
+						"PizzaWorker: Oh no!",
+						"PizzaWorker: Looks like we're out of materials again.",
+						"Player: Materials?",
+						"PizzaWorker: Yeah, the PizzaBot can't make them.",
+						G.display("There's dialog options here... TLDR you can bring all the materials to the pizza worker and they'll bake you the pizza.")
+					]), 'completed')
+
+					Globals.set_phil_kiosk_state(Globals.PhilKioskPuzzle.BUILD_PIZZA)
+					self.state.has_pizza_box = true
 
 		'Sauce':
 			I.Sauce.remove_now()
-			self.has_sauce = true
+			self.state.has_sauce = true
 
 		'Cheese':
 			I.Cheese.remove_now()
-			self.has_cheese = true
+			self.state.has_cheese = true
 
 		'Pepperoni':
 			I.Pepperoni.remove_now()
-			self.has_pepperoni = true
+			self.state.has_pepperoni = true
 
 		_:
 			.on_item_used(item)

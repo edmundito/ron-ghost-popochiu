@@ -17,11 +17,18 @@ func on_interact() -> void:
 	# Replace the call to .on_interact() to implement your code. This only makes
 	# the default behavior to happen.
 	if C.Phil.room.script_name == R.Alley.script_name:
-		E.run([
-			"Phil: I'm so hungry, I could eat a whole pizza!"
-		])
 		if !Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.TALK_TO_PHIL):
+			yield(E.run([
+				G.display("TODO: DIALOG HERE to learn more about phil..."),
+				"Phil: I'm so hungry, I could eat a whole pizza!"
+			]), 'completed')
 			Globals.set_phil_kiosk_state(Globals.PhilKioskPuzzle.GET_PIZZA_BOX)
+		elif !Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.GET_PIZZA_BOX):
+			yield(E.run([
+				"Phil: Where's my pizza?"
+			]), 'completed')
+	else:
+		E.run([G.display("TODO: Phil Dialog")])
 
 
 # When the node is right clicked
@@ -34,26 +41,33 @@ func on_look() -> void:
 # When the node is clicked and there is an inventory item selected
 func on_item_used(item: PopochiuInventoryItem) -> void:
 	if item.script_name == I.PizzaBox.script_name:
+		if Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.EMPTY_PIZZA):
+			E.run([
+				"Phil: Get me a completed pizza"
+			])
+			return
+
 		yield(E.run_cutscene([
 			C.walk_to_clicked(),
 			C.face_clicked(),
+			I.PizzaBox.remove(),
 			"Player: Here is your pizza!",
 			"Phil: Great!",
-			I.PizzaBox.remove(),
 			"Phil: What's this?",
 			"Player: What do you mean?",
 			"Phil: This is just a pizza crust!",
-			"Phil: Where is the sauce? The cheese, and the pepperoni?",
+			"Phil: Where is the sauce? The cheese...? And the pepperoni...?",
 			"Player: Yikes! Let me see what I can do...",
 			I.PizzaBox.add()
 		]), 'completed')
 
-		Globals.set_phil_kiosk_state(Globals.PhilKioskPuzzle.BUILD_PIZZA)
-	else:
-		E.run([
-			"Player: Would you like this jawn?",
-			"Phil: I'm not interested in that jawn.",
-		])
+		Globals.set_phil_kiosk_state(Globals.PhilKioskPuzzle.EMPTY_PIZZA)
+		return
+
+	E.run([
+		"Player: Would you like this jawn?",
+		"Phil: I'm not interested in that jawn.",
+	])
 
 
 # Use it to play the idle animation for the character

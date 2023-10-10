@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://popochiu/Rooms/Pizzeria/RoomPizzeria.gd" type="Script" id=1]
-[ext_resource path="res://popochiu/Characters/PizzaWorker/CharacterPizzaWorker.gd" type="Script" id=2]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.tscn" type="PackedScene" id=3]
 [ext_resource path="res://images/Rooms/pizzeria.png" type="Texture" id=4]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/WalkableArea/PopochiuWalkableArea.tscn" type="PackedScene" id=5]
@@ -70,14 +69,5 @@ sort_enabled = false
 [node name="CharacterJira *" parent="Characters" instance=ExtResource( 9 )]
 position = Vector2( 112, 176 )
 
-[node name="CharacterPizzaWorker *" type="Area2D" parent="Characters" instance=ExtResource( 10 )]
+[node name="CharacterPizzaWorker *" parent="Characters" instance=ExtResource( 10 )]
 position = Vector2( 261, 126 )
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
-script_name = "PizzaWorker"
-description = "PizzaWorker"
-walk_to_point = Vector2( 0, 43 )
-cursor = 8
-popochiu_placeholder = null
