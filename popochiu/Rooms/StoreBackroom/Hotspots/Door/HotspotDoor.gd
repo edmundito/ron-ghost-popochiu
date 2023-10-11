@@ -1,5 +1,5 @@
 tool
-extends PopochiuProp
+extends PopochiuHotspot
 # You can use E.run([]) to trigger a sequence of events.
 # Use yield(E.run([]), 'completed') if you want to pause the excecution of
 # the function until the sequence of events finishes.
@@ -8,26 +8,23 @@ extends PopochiuProp
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ VIRTUAL ░░░░
 # When the node is clicked
 func on_interact() -> void:
-	yield(H.walk_to_clicked(), 'completed')
+	yield(E.run([
+		C.walk_to_clicked(),
+		C.face_clicked()
+	]), 'completed')
 
-	if Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.DESTROY_KIOSK):
-		E.goto_room("StoreBackroom")
-		return
-
-	E.run([
-		'Kiosk: Halt! That door is for authorized users only.'
-	])
+	E.goto_room('Grundysmart')
 
 
 # When the node is right clicked
 func on_look() -> void:
 	# Replace the call to .on_look() to implement your code. This only makes
 	# the default behavior to happen.
-	# For example you can make the character walk to the Prop and then say
+	# For example you can make the character walk to the Hotspot and then say
 	# something:
 #	E.run([
 #		C.face_clicked(),
-#		'Player: A deck of cards'
+#		'Player: A closed door'
 #	])
 	.on_look()
 
@@ -36,19 +33,7 @@ func on_look() -> void:
 func on_item_used(item: PopochiuInventoryItem) -> void:
 	# Replace the call to .on_item_used(item) to implement your code. This only
 	# makes the default behavior to happen.
-	# For example you can make the PC react on using some items in this Prop
+	# For example you can make the PC react on using some items in this Hotspot
 #	if item.script_name == 'Key':
-#		E.run(["Player: I can't do that"])
+#		E.run(['Player: No can do'])
 	.on_item_used(item)
-
-
-# When an inventory item linked to this Prop (link_to_item) is removed from
-# the inventory (i.e. when it is used in something that makes use of the object).
-func on_linked_item_removed() -> void:
-	pass
-
-
-# When an inventory item linked to this Prop (link_to_item) is discarded from
-# the inventory (i.e. when the player throws the object out of the inventory).
-func on_linked_item_discarded() -> void:
-	pass

@@ -9,6 +9,7 @@ const PRAlley := preload('res://popochiu/Rooms/Alley/RoomAlley.gd')
 const PRPostOffice := preload('res://popochiu/Rooms/PostOffice/RoomPostOffice.gd')
 const PRGrundysmart := preload('res://popochiu/Rooms/Grundysmart/RoomGrundysmart.gd')
 const PRPizzeria := preload('res://popochiu/Rooms/Pizzeria/RoomPizzeria.gd')
+const PRStoreBackroom := preload('res://popochiu/Rooms/StoreBackroom/RoomStoreBackroom.gd')
 # ---- classes
 
 # nodes ----
@@ -19,6 +20,7 @@ var Alley: PRAlley setget , get_Alley
 var PostOffice: PRPostOffice setget , get_PostOffice
 var Grundysmart: PRGrundysmart setget , get_Grundysmart
 var Pizzeria: PRPizzeria setget , get_Pizzeria
+var StoreBackroom: PRStoreBackroom setget , get_StoreBackroom
 # ---- nodes
 
 # functions ----
@@ -29,5 +31,6 @@ func get_Alley(): return .get_runtime_room('Alley')
 func get_PostOffice(): return .get_runtime_room('PostOffice')
 func get_Grundysmart(): return .get_runtime_room('Grundysmart')
 func get_Pizzeria(): return .get_runtime_room('Pizzeria')
+func get_StoreBackroom(): return .get_runtime_room('StoreBackroom')
 # ---- functions
 
