@@ -14,7 +14,10 @@ var state: Data = preload('RoomGrundysmart.tres')
 # What happens when Popochiu loads the room. At this point the room is in the
 # tree but it is not visible
 func on_room_entered() -> void:
-	pass
+	if Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.NEW_PIZZA):
+		C.Phil.enable(false)
+	else:
+		C.Phil.disable(false)
 
 
 # What happens when the room changing transition finishes. At this point the room
