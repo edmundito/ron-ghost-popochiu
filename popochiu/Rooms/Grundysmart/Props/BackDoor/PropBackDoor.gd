@@ -10,7 +10,7 @@ extends PopochiuProp
 func on_interact() -> void:
 	H.walk_to_clicked()
 
-	if Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.DETROYED_KIOSK):
+	if Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.DETROY_KIOSK):
 		E.run(['Player: The door is locked!'])
 		return
 

@@ -41,6 +41,15 @@ func on_look() -> void:
 # When the node is clicked and there is an inventory item selected
 func on_item_used(item: PopochiuInventoryItem) -> void:
 	if item.script_name == I.PizzaBox.script_name:
+		if Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.BUILD_PIZZA):
+			yield(E.run([
+				G.display("WIP cut-scene: Phil takes the pizza and eats it and then heads over to the Grundismart"),
+#				E.play_transition(TransitionLayer.PASS_DOWN_IN, 0.5)
+			]), 'completed')
+			Globals.set_phil_kiosk_state(Globals.PhilKioskPuzzle.DESTROY_KIOSK)
+			E.goto_room('Grundysmart')
+			return
+
 		if Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.EMPTY_PIZZA):
 			E.run([
 				"Phil: Get me a completed pizza"

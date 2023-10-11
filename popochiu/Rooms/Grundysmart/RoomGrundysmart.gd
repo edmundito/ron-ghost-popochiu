@@ -20,8 +20,19 @@ func on_room_entered() -> void:
 # What happens when the room changing transition finishes. At this point the room
 # is visible.
 func on_room_transition_finished() -> void:
-	# You can use yield(E.run([]), 'completed') to excecute a queue of instructions
-	pass
+	if (
+		Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.NEW_PIZZA) &&
+		!Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.DESTROY_KIOSK)
+	):
+		yield(E.run_cutscene([
+#			E.play_transition(TransitionLayer.PASS_DOWN_OUT, 0.5),
+			G.display("In this cutscene, Phil destroys the kiosk..."),
+			E.camera_shake(),
+			C.Kiosk.disable()
+		]), 'completed')
+		Globals.set_phil_kiosk_state(Globals.PhilKioskPuzzle.COMPLETE)
+		C.Phil.disable()
+		return
 
 
 # What happens before Popochiu unloads the room.

@@ -80,9 +80,10 @@ func on_item_used(item: PopochiuInventoryItem) -> void:
 			return
 
 	if _can_bake_pizza():
+		Globals.set_phil_kiosk_state(Globals.PhilKioskPuzzle.NEW_PIZZA)
 		E.run([
 			"PizzaWorker: Here is your rebaked pizza!",
-			I.Pizza.add()
+			I.PizzaBox.add()
 		])
 
 

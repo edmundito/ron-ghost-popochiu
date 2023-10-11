@@ -27,7 +27,7 @@ func display(msg: String, is_in_queue := true) -> void:
 	if E.cutscene_skipped:
 		yield(get_tree(), 'idle_frame')
 		return
-	
+
 	emit_signal('show_box_requested', E.get_text(msg))
 	yield(self, 'continue_clicked')
 
