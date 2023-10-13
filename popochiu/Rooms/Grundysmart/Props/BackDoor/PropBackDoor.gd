@@ -8,7 +8,7 @@ extends PopochiuProp
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ VIRTUAL ░░░░
 # When the node is clicked
 func on_interact() -> void:
-	yield(H.walk_to_clicked(), 'completed')
+	yield(E.run([C.walk_to_clicked(), C.face_clicked()]), 'completed')
 
 	if Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.DESTROY_KIOSK):
 		E.goto_room("StoreBackroom")
