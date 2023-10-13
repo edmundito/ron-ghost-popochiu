@@ -10,6 +10,8 @@ const PRPostOffice := preload('res://popochiu/Rooms/PostOffice/RoomPostOffice.gd
 const PRGrundysmart := preload('res://popochiu/Rooms/Grundysmart/RoomGrundysmart.gd')
 const PRPizzeria := preload('res://popochiu/Rooms/Pizzeria/RoomPizzeria.gd')
 const PRStoreBackroom := preload('res://popochiu/Rooms/StoreBackroom/RoomStoreBackroom.gd')
+const PRCemetery := preload('res://popochiu/Rooms/Cemetery/RoomCemetery.gd')
+const PRCemeteryEntrance := preload('res://popochiu/Rooms/CemeteryEntrance/RoomCemeteryEntrance.gd')
 # ---- classes
 
 # nodes ----
@@ -21,6 +23,8 @@ var PostOffice: PRPostOffice setget , get_PostOffice
 var Grundysmart: PRGrundysmart setget , get_Grundysmart
 var Pizzeria: PRPizzeria setget , get_Pizzeria
 var StoreBackroom: PRStoreBackroom setget , get_StoreBackroom
+var Cemetery: PRCemetery setget , get_Cemetery
+var CemeteryEntrance: PRCemeteryEntrance setget , get_CemeteryEntrance
 # ---- nodes
 
 # functions ----
@@ -32,5 +36,7 @@ func get_PostOffice(): return .get_runtime_room('PostOffice')
 func get_Grundysmart(): return .get_runtime_room('Grundysmart')
 func get_Pizzeria(): return .get_runtime_room('Pizzeria')
 func get_StoreBackroom(): return .get_runtime_room('StoreBackroom')
+func get_Cemetery(): return .get_runtime_room('Cemetery')
+func get_CemeteryEntrance(): return .get_runtime_room('CemeteryEntrance')
 # ---- functions
 

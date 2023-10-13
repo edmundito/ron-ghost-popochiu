@@ -1,7 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://popochiu/Rooms/StoreBackroom/RoomStoreBackroom.gd" type="Script" id=1]
-[ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.gd" type="Script" id=2]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.tscn" type="PackedScene" id=3]
 [ext_resource path="res://popochiu/Rooms/StoreBackroom/WalkableAreas/Floor/WalkableAreaFloor.gd" type="Script" id=4]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/WalkableArea/PopochiuWalkableArea.tscn" type="PackedScene" id=5]
@@ -10,6 +9,7 @@
 [ext_resource path="res://addons/Popochiu/Engine/Objects/Hotspot/PopochiuHotspot.tscn" type="PackedScene" id=8]
 [ext_resource path="res://popochiu/Rooms/StoreBackroom/Hotspots/Door/HotspotDoor.gd" type="Script" id=9]
 [ext_resource path="res://popochiu/Characters/Jira/CharacterJira.tscn" type="PackedScene" id=10]
+[ext_resource path="res://popochiu/Characters/Hooky/CharacterHooky.tscn" type="PackedScene" id=11]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( -157, 74, -127, 26, -123, 42, 100, 26, 157, 70, 158, 116, -157, 116, -83, 41, -75, 25 )
@@ -20,16 +20,10 @@ outlines = [ PoolVector2Array( -127, 26, -123, 42, -83, 41, -75, 25, 100, 26, 15
 sort_enabled = false
 script = ExtResource( 1 )
 script_name = "StoreBackroom"
-has_player = true
-hide_gi = false
-limit_left = inf
-limit_right = inf
-limit_top = inf
-limit_bottom = inf
 
 [node name="WalkableAreas" type="Node2D" parent="."]
 
-[node name="Floor" type="Node2D" parent="WalkableAreas" instance=ExtResource( 5 )]
+[node name="Floor" parent="WalkableAreas" instance=ExtResource( 5 )]
 position = Vector2( 160, 120 )
 script = ExtResource( 4 )
 script_name = "Floor"
@@ -42,10 +36,9 @@ navpoly = SubResource( 1 )
 [node name="Props" type="YSort" parent="."]
 sort_enabled = false
 
-[node name="Background" type="Area2D" parent="Props" instance=ExtResource( 3 )]
+[node name="Background" parent="Props" instance=ExtResource( 3 )]
 position = Vector2( 160, 120 )
 z_index = -1
-script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true,
 "_editor_description_": ""
@@ -54,41 +47,30 @@ script_name = "Background"
 description = "Background"
 clickable = false
 baseline = -120
-walk_to_point = Vector2( 0, 0 )
 cursor = 1
-always_on_top = false
 texture = ExtResource( 6 )
-frames = 1
-current_frame = 0
-link_to_item = ""
 
 [node name="Hotspots" type="Node2D" parent="."]
 
-[node name="Locker" type="Area2D" parent="Hotspots" instance=ExtResource( 8 )]
+[node name="Locker" parent="Hotspots" instance=ExtResource( 8 )]
 position = Vector2( 54, 113 )
 script = ExtResource( 7 )
 script_name = "Locker"
 description = "Locker"
-clickable = true
-baseline = 0
 walk_to_point = Vector2( -2, 51 )
 cursor = 1
-always_on_top = false
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Locker"]
 modulate = Color( 0, 0, 1, 1 )
 polygon = PoolVector2Array( -17, -37, -8, -47, 22, -45, 30, 27, 18, 42, -15, 43 )
 
-[node name="Door" type="Area2D" parent="Hotspots" instance=ExtResource( 8 )]
+[node name="Door" parent="Hotspots" instance=ExtResource( 8 )]
 position = Vector2( 240, 104 )
 script = ExtResource( 9 )
 script_name = "Door"
 description = "Door"
-clickable = true
-baseline = 0
 walk_to_point = Vector2( -1, 45 )
 cursor = 1
-always_on_top = false
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Door"]
 modulate = Color( 0, 0, 1, 1 )
@@ -98,11 +80,14 @@ polygon = PoolVector2Array( -17, -46, 19, -46, 17, 37, -19, 37 )
 
 [node name="Points" type="Node2D" parent="."]
 
+[node name="HookyWalkTo" type="Position2D" parent="Points"]
+position = Vector2( 116, 169 )
+
 [node name="Characters" type="YSort" parent="."]
 sort_enabled = false
 
 [node name="CharacterJira *" parent="Characters" instance=ExtResource( 10 )]
 position = Vector2( 240, 151 )
-baseline = 0
-walk_to_point = Vector2( 0, 0 )
-always_on_top = false
+
+[node name="CharacterHooky *" parent="Characters" instance=ExtResource( 11 )]
+position = Vector2( 241, 151 )
