@@ -11,10 +11,6 @@ script = ExtResource( 1 )
 script_name = "Sign"
 has_player = false
 hide_gi = true
-limit_left = inf
-limit_right = inf
-limit_top = inf
-limit_bottom = inf
 
 [node name="WalkableAreas" type="Node2D" parent="."]
 
@@ -27,15 +23,9 @@ z_index = -1
 script = ExtResource( 2 )
 script_name = "Background"
 description = "Background"
-clickable = true
 baseline = -120
-walk_to_point = Vector2( 0, 0 )
 cursor = 1
-always_on_top = false
 texture = ExtResource( 4 )
-frames = 1
-current_frame = 0
-link_to_item = ""
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Background"]
 

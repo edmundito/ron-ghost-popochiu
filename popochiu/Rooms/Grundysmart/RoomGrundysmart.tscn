@@ -24,12 +24,6 @@ outlines = [ PoolVector2Array( -114, 26, 32, 28, 36, 47, 127, 48, 157, 84, -80, 
 sort_enabled = false
 script = ExtResource( 1 )
 script_name = "Grundysmart"
-has_player = true
-hide_gi = false
-limit_left = inf
-limit_right = inf
-limit_top = inf
-limit_bottom = inf
 
 [node name="WalkableAreas" type="Node2D" parent="."]
 
@@ -53,13 +47,8 @@ script_name = "Background"
 description = "Background"
 clickable = false
 baseline = -120
-walk_to_point = Vector2( 0, 0 )
 cursor = 1
-always_on_top = false
 texture = ExtResource( 4 )
-frames = 1
-current_frame = 0
-link_to_item = ""
 
 [node name="Shelf" parent="Props" instance=ExtResource( 2 )]
 position = Vector2( 117, 164 )
@@ -71,28 +60,16 @@ script_name = "Shelf"
 description = "Shelf"
 clickable = false
 baseline = 29
-walk_to_point = Vector2( 0, 0 )
 cursor = 1
-always_on_top = false
 texture = ExtResource( 5 )
-frames = 1
-current_frame = 0
-link_to_item = ""
 
 [node name="BackDoor" parent="Props" instance=ExtResource( 2 )]
 position = Vector2( 242, 93 )
 script = ExtResource( 3 )
 script_name = "BackDoor"
 description = "BackDoor"
-clickable = true
-baseline = 0
 walk_to_point = Vector2( 1, 78 )
 cursor = 1
-always_on_top = false
-texture = null
-frames = 1
-current_frame = 0
-link_to_item = ""
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/BackDoor"]
 polygon = PoolVector2Array( -20, -35, 17, -35, 19, 32, -21, 31 )
@@ -102,15 +79,10 @@ position = Vector2( 144, 160 )
 script = ExtResource( 12 )
 script_name = "Sauce"
 description = "Sauce"
-clickable = true
 baseline = 36
 walk_to_point = Vector2( 0, 34 )
 cursor = 1
-always_on_top = false
 texture = ExtResource( 13 )
-frames = 1
-current_frame = 0
-link_to_item = ""
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Sauce"]
 polygon = PoolVector2Array( -8, -11, 9, -12, 9, 14, 0, 15, -9, 12 )
@@ -122,11 +94,7 @@ position = Vector2( 55, 211 )
 script = ExtResource( 8 )
 script_name = "TownSquareExit"
 description = "TownSquareExit"
-clickable = true
-baseline = 0
-walk_to_point = Vector2( 0, 0 )
 cursor = 1
-always_on_top = false
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/TownSquareExit"]
 modulate = Color( 0, 0, 1, 1 )
@@ -141,25 +109,9 @@ sort_enabled = false
 
 [node name="CharacterJira *" parent="Characters" instance=ExtResource( 9 )]
 position = Vector2( 55, 211 )
-baseline = 0
-walk_to_point = Vector2( 0, 0 )
-always_on_top = false
 
 [node name="CharacterKiosk *" parent="Characters" instance=ExtResource( 11 )]
 position = Vector2( 213, 113 )
-clickable = true
-baseline = 0
 walk_to_point = Vector2( 0, 52 )
-always_on_top = false
 
 [node name="CharacterPhil *" parent="Characters" instance=ExtResource( 14 )]
-clickable = true
-baseline = 0
-walk_to_point = Vector2( 0, 0 )
-always_on_top = false
-flips_when = 0
-voices = [  ]
-follow_player = false
-walk_speed = 200.0
-can_move = true
-ignore_walkable_areas = false
