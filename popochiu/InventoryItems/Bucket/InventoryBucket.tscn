@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://popochiu/InventoryItems/Bucket/InventoryBucket.gd" type="Script" id=1]
+[ext_resource path="res://images/Inventory/inv_bucket.png" type="Texture" id=2]
+
+[node name="InventoryBucket" type="TextureRect"]
+mouse_filter = 0
+size_flags_vertical = 4
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+description = "Bucket"
+script_name = "Bucket"
+cursor = 10

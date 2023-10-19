@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://popochiu/Rooms/Cemetery/RoomCemetery.gd" type="Script" id=1]
-[ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.gd" type="Script" id=2]
+[ext_resource path="res://popochiu/Rooms/Cemetery/Props/Flower/PropFlower.gd" type="Script" id=2]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.tscn" type="PackedScene" id=3]
 [ext_resource path="res://images/Rooms/cemetery.png" type="Texture" id=4]
 [ext_resource path="res://popochiu/Characters/Jira/CharacterJira.tscn" type="PackedScene" id=5]
@@ -9,6 +9,7 @@
 [ext_resource path="res://addons/Popochiu/Engine/Objects/WalkableArea/PopochiuWalkableArea.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/Hotspot/PopochiuHotspot.tscn" type="PackedScene" id=8]
 [ext_resource path="res://popochiu/Rooms/Cemetery/Hotspots/Exit/HotspotExit.gd" type="Script" id=9]
+[ext_resource path="res://images/Inventory/inv_flower.png" type="Texture" id=10]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( -247, 78, -219, 6, -206, 79, 90, -12, 130, 71, -147, 95, -110, 61, -39, 29, 317, 97, 320, 121, 252, 95, 276, 60, -140, 65, -146, 73, -143, 37, -156, -5, -89, -7, -95, 22, -114, 32, -298, 95, -301, 76, -15, 4 )
@@ -24,7 +25,7 @@ limit_right = 480.0
 
 [node name="WalkableAreas" type="Node2D" parent="."]
 
-[node name="Ground" type="Node2D" parent="WalkableAreas" instance=ExtResource( 7 )]
+[node name="Ground" parent="WalkableAreas" instance=ExtResource( 7 )]
 position = Vector2( 160, 120 )
 script = ExtResource( 6 )
 script_name = "Ground"
@@ -37,10 +38,9 @@ navpoly = SubResource( 1 )
 [node name="Props" type="YSort" parent="."]
 sort_enabled = false
 
-[node name="Background" type="Area2D" parent="Props" instance=ExtResource( 3 )]
+[node name="Background" parent="Props" instance=ExtResource( 3 )]
 position = Vector2( 160, 120 )
 z_index = -1
-script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true,
 "_editor_description_": ""
@@ -52,9 +52,24 @@ baseline = -120
 cursor = 1
 texture = ExtResource( 4 )
 
+[node name="Flower" type="Area2D" parent="Props" instance=ExtResource( 3 )]
+position = Vector2( -29, 143 )
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": ""
+}
+script_name = "Flower"
+description = "Flower"
+cursor = 1
+texture = ExtResource( 10 )
+link_to_item = "Flower"
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Flower"]
+polygon = PoolVector2Array( -5, -15, 13, -12, 11, 14, 7, 7, -8, 6, -14, -1 )
+
 [node name="Hotspots" type="Node2D" parent="."]
 
-[node name="Exit" type="Area2D" parent="Hotspots" instance=ExtResource( 8 )]
+[node name="Exit" parent="Hotspots" instance=ExtResource( 8 )]
 position = Vector2( 464, 220 )
 script = ExtResource( 9 )
 script_name = "Exit"

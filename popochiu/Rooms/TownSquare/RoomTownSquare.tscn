@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://popochiu/Rooms/TownSquare/RoomTownSquare.gd" type="Script" id=1]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.tscn" type="PackedScene" id=2]
@@ -17,6 +17,8 @@
 [ext_resource path="res://popochiu/Rooms/TownSquare/Hotspots/HouseDoor/HotspotHouseDoor.gd" type="Script" id=15]
 [ext_resource path="res://popochiu/Rooms/TownSquare/Hotspots/AptBuildingDoor/HotspotAptBuildingDoor.gd" type="Script" id=16]
 [ext_resource path="res://popochiu/Rooms/TownSquare/Hotspots/CemeteryExit/HotspotCemeteryExit.gd" type="Script" id=17]
+[ext_resource path="res://popochiu/Characters/Julia/CharacterJulia.gd" type="Script" id=18]
+[ext_resource path="res://popochiu/Characters/Julia/CharacterJulia.tscn" type="PackedScene" id=19]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 435, 76, 482, 86, 435, 96, 273, 75, -424, 99, -486, 77, -424.333, 62.848, -383, 63, -357, 58, -235, 32, -157, 19, -47, 21, 35, 23, 152, 23, 261, 34 )
@@ -155,7 +157,7 @@ cursor = 1
 modulate = Color( 0, 0, 1, 1 )
 polygon = PoolVector2Array( -16, -33, 13, -34, 14, 29, 14, 37, -21, 36, -18, 29 )
 
-[node name="CemeteryExit" type="Area2D" parent="Hotspots" instance=ExtResource( 7 )]
+[node name="CemeteryExit" parent="Hotspots" instance=ExtResource( 7 )]
 position = Vector2( 573, 130 )
 script = ExtResource( 17 )
 script_name = "CemeteryExit"
@@ -176,3 +178,15 @@ sort_enabled = false
 
 [node name="CharacterJira *" parent="Characters" instance=ExtResource( 9 )]
 position = Vector2( -195, 182 )
+
+[node name="CharacterJulia *" type="Area2D" parent="Characters" instance=ExtResource( 19 )]
+position = Vector2( -6, 96 )
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_group_": true
+}
+script_name = "Julia"
+description = "Julia"
+walk_to_point = Vector2( 0, 45 )
+cursor = 8
+popochiu_placeholder = null

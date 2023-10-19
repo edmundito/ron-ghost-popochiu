@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://popochiu/Rooms/Grundysmart/RoomGrundysmart.gd" type="Script" id=1]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.tscn" type="PackedScene" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://popochiu/Rooms/Grundysmart/Props/Sauce/PropSauce.gd" type="Script" id=12]
 [ext_resource path="res://images/Inventory/inv_sauce.png" type="Texture" id=13]
 [ext_resource path="res://popochiu/Characters/Phil/CharacterPhil.tscn" type="PackedScene" id=14]
+[ext_resource path="res://popochiu/Rooms/Grundysmart/Props/Bucket/PropBucket.gd" type="Script" id=15]
+[ext_resource path="res://images/Inventory/inv_bucket.png" type="Texture" id=16]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 31, 76, 157, 84, -80, 84, -124, 76, 36, 47, 127, 48, 28, 50, -88, 97, -129, 96, -121, 80, -157, 80, -114, 26, -110, 51, 32, 28 )
@@ -86,6 +88,22 @@ texture = ExtResource( 13 )
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Sauce"]
 polygon = PoolVector2Array( -8, -11, 9, -12, 9, 14, 0, 15, -9, 12 )
+
+[node name="Bucket" type="Area2D" parent="Props" instance=ExtResource( 2 )]
+position = Vector2( 86, 143 )
+script = ExtResource( 15 )
+__meta__ = {
+"_editor_description_": ""
+}
+script_name = "Bucket"
+description = "Bucket"
+baseline = 51
+cursor = 1
+texture = ExtResource( 16 )
+link_to_item = "Bucket"
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Bucket"]
+polygon = PoolVector2Array( -12, -12, 13, -12, 13, 14, -13, 14 )
 
 [node name="Hotspots" type="Node2D" parent="."]
 

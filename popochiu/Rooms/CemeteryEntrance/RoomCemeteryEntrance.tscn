@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://popochiu/Rooms/CemeteryEntrance/RoomCemeteryEntrance.gd" type="Script" id=1]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.tscn" type="PackedScene" id=2]
-[ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.gd" type="Script" id=3]
+[ext_resource path="res://popochiu/Rooms/CemeteryEntrance/Props/Turnip/PropTurnip.gd" type="Script" id=3]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/WalkableArea/PopochiuWalkableArea.tscn" type="PackedScene" id=4]
 [ext_resource path="res://images/Rooms/cemetery_entrance.png" type="Texture" id=5]
 [ext_resource path="res://popochiu/Rooms/CemeteryEntrance/WalkableAreas/Ground/WalkableAreaGround.gd" type="Script" id=6]
@@ -10,6 +10,7 @@
 [ext_resource path="res://popochiu/Rooms/CemeteryEntrance/Hotspots/Entrance/HotspotEntrance.gd" type="Script" id=8]
 [ext_resource path="res://popochiu/Rooms/CemeteryEntrance/Hotspots/Exit/HotspotExit.gd" type="Script" id=9]
 [ext_resource path="res://popochiu/Characters/Jira/CharacterJira.tscn" type="PackedScene" id=10]
+[ext_resource path="res://images/Inventory/inv_turnip.png" type="Texture" id=11]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( -160, 116, -199, 91, -160, 70, -40, 70, 66, 71, 160, 117, 14, 15, 160, 70 )
@@ -23,7 +24,7 @@ script_name = "CemeteryEntrance"
 
 [node name="WalkableAreas" type="Node2D" parent="."]
 
-[node name="Ground" type="Node2D" parent="WalkableAreas" instance=ExtResource( 4 )]
+[node name="Ground" parent="WalkableAreas" instance=ExtResource( 4 )]
 position = Vector2( 160, 120 )
 script = ExtResource( 6 )
 script_name = "Ground"
@@ -36,10 +37,9 @@ navpoly = SubResource( 1 )
 [node name="Props" type="YSort" parent="."]
 sort_enabled = false
 
-[node name="Background" type="Area2D" parent="Props" instance=ExtResource( 2 )]
+[node name="Background" parent="Props" instance=ExtResource( 2 )]
 position = Vector2( 160, 120 )
 z_index = -1
-script = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true,
 "_editor_description_": ""
@@ -51,9 +51,24 @@ baseline = -120
 cursor = 1
 texture = ExtResource( 5 )
 
+[node name="Turnip" type="Area2D" parent="Props" instance=ExtResource( 2 )]
+position = Vector2( 299, 195 )
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+script_name = "Turnip"
+description = "Turnip"
+cursor = 1
+texture = ExtResource( 11 )
+link_to_item = "Turnip"
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Turnip"]
+polygon = PoolVector2Array( 0, -15, 12, -15, 12, -5, 5, -3, 4, 7, -14, 15, -4, -8, 1, -6 )
+
 [node name="Hotspots" type="Node2D" parent="."]
 
-[node name="Entrance" type="Area2D" parent="Hotspots" instance=ExtResource( 7 )]
+[node name="Entrance" parent="Hotspots" instance=ExtResource( 7 )]
 position = Vector2( 176, 121 )
 script = ExtResource( 8 )
 script_name = "Entrance"
@@ -65,7 +80,7 @@ cursor = 1
 modulate = Color( 0, 0, 1, 1 )
 polygon = PoolVector2Array( -70, 64, -68, -45, -59, -74, -40, -90, -11, -95, 22, -94, 46, -85, 59, -65, 65, -43, 66, 63 )
 
-[node name="Exit" type="Area2D" parent="Hotspots" instance=ExtResource( 7 )]
+[node name="Exit" parent="Hotspots" instance=ExtResource( 7 )]
 position = Vector2( 6, 119 )
 script = ExtResource( 9 )
 script_name = "Exit"

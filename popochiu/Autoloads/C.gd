@@ -9,6 +9,7 @@ const PCSheriff := preload('res://popochiu/Characters/Sheriff/CharacterSheriff.g
 const PCPhil := preload('res://popochiu/Characters/Phil/CharacterPhil.gd')
 const PCKiosk := preload('res://popochiu/Characters/Kiosk/CharacterKiosk.gd')
 const PCPizzaWorker := preload('res://popochiu/Characters/PizzaWorker/CharacterPizzaWorker.gd')
+const PCJulia := preload('res://popochiu/Characters/Julia/CharacterJulia.gd')
 # ---- classes
 
 # nodes ----
@@ -19,6 +20,7 @@ var Sheriff: PCSheriff setget , get_Sheriff
 var Phil: PCPhil setget , get_Phil
 var Kiosk: PCKiosk setget , get_Kiosk
 var PizzaWorker: PCPizzaWorker setget , get_PizzaWorker
+var Julia: PCJulia setget , get_Julia
 # ---- nodes
 
 # functions ----
@@ -29,5 +31,6 @@ func get_Sheriff(): return .get_runtime_character('Sheriff')
 func get_Phil(): return .get_runtime_character('Phil')
 func get_Kiosk(): return .get_runtime_character('Kiosk')
 func get_PizzaWorker(): return .get_runtime_character('PizzaWorker')
+func get_Julia(): return .get_runtime_character('Julia')
 # ---- functions
 
