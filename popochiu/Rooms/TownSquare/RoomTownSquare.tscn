@@ -1,8 +1,7 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://popochiu/Rooms/TownSquare/RoomTownSquare.gd" type="Script" id=1]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.tscn" type="PackedScene" id=2]
-[ext_resource path="res://popochiu/Rooms/TownSquare/Props/Background/PropBackground.gd" type="Script" id=3]
 [ext_resource path="res://images/Rooms/town_square.png" type="Texture" id=4]
 [ext_resource path="res://popochiu/Rooms/TownSquare/WalkableAreas/Ground/WalkableAreaGround.gd" type="Script" id=5]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/WalkableArea/PopochiuWalkableArea.tscn" type="PackedScene" id=6]
@@ -17,7 +16,6 @@
 [ext_resource path="res://popochiu/Rooms/TownSquare/Hotspots/HouseDoor/HotspotHouseDoor.gd" type="Script" id=15]
 [ext_resource path="res://popochiu/Rooms/TownSquare/Hotspots/AptBuildingDoor/HotspotAptBuildingDoor.gd" type="Script" id=16]
 [ext_resource path="res://popochiu/Rooms/TownSquare/Hotspots/CemeteryExit/HotspotCemeteryExit.gd" type="Script" id=17]
-[ext_resource path="res://popochiu/Characters/Julia/CharacterJulia.gd" type="Script" id=18]
 [ext_resource path="res://popochiu/Characters/Julia/CharacterJulia.tscn" type="PackedScene" id=19]
 
 [sub_resource type="NavigationPolygon" id=1]
@@ -35,7 +33,7 @@ limit_right = 585.0
 [node name="WalkableAreas" type="Node2D" parent="."]
 
 [node name="Ground" parent="WalkableAreas" instance=ExtResource( 6 )]
-position = Vector2( 160, 120 )
+position = Vector2( 160, 100 )
 script = ExtResource( 5 )
 script_name = "Ground"
 description = "Ground"
@@ -48,27 +46,19 @@ navpoly = SubResource( 1 )
 sort_enabled = false
 
 [node name="Background" parent="Props" instance=ExtResource( 2 )]
-position = Vector2( 160, 120 )
+position = Vector2( 160, 100 )
 z_index = -1
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_lock_": true,
-"_editor_description_": ""
-}
 script_name = "Background"
 description = "Background"
 clickable = false
-baseline = -120
+baseline = -90
 cursor = 1
 texture = ExtResource( 4 )
-
-[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Background"]
-visible = false
 
 [node name="Hotspots" type="Node2D" parent="."]
 
 [node name="Eri0osDoor" parent="Hotspots" instance=ExtResource( 7 )]
-position = Vector2( -197, 148 )
+position = Vector2( -197, 128 )
 script = ExtResource( 8 )
 script_name = "Eri0osDoor"
 description = "Eri0osDoor"
@@ -80,7 +70,7 @@ modulate = Color( 0, 0, 1, 1 )
 polygon = PoolVector2Array( -18, -30, 14, -34, 14, 22, -18, 27 )
 
 [node name="AlleyExit" parent="Hotspots" instance=ExtResource( 7 )]
-position = Vector2( -249, 123 )
+position = Vector2( -249, 103 )
 script = ExtResource( 10 )
 script_name = "AlleyExit"
 description = "AlleyExit"
@@ -92,7 +82,7 @@ modulate = Color( 0, 0, 1, 1 )
 polygon = PoolVector2Array( -18, -106, 12, -109, 11, 98, -21, 99 )
 
 [node name="PostOfficeDoor" parent="Hotspots" instance=ExtResource( 7 )]
-position = Vector2( 116, 110 )
+position = Vector2( 116, 90 )
 script = ExtResource( 11 )
 script_name = "PostOfficeDoor"
 description = "PostOfficeDoor"
@@ -103,7 +93,7 @@ modulate = Color( 0, 0, 1, 1 )
 polygon = PoolVector2Array( -14, -26, 12, -26, 12, 24, -16, 24 )
 
 [node name="GrundysmartDoor" parent="Hotspots" instance=ExtResource( 7 )]
-position = Vector2( 315, 111 )
+position = Vector2( 315, 91 )
 script = ExtResource( 12 )
 script_name = "GrundysmartDoor"
 description = "GrundysmartDoor"
@@ -114,7 +104,7 @@ modulate = Color( 0, 0, 1, 1 )
 polygon = PoolVector2Array( -14, -25, 14, -26, 13, 26, -15, 24 )
 
 [node name="PizzeriaDoor" parent="Hotspots" instance=ExtResource( 7 )]
-position = Vector2( -73, 121 )
+position = Vector2( -73, 101 )
 script = ExtResource( 13 )
 script_name = "PizzeriaDoor"
 description = "PizzeriaDoor"
@@ -125,7 +115,7 @@ modulate = Color( 0, 0, 1, 1 )
 polygon = PoolVector2Array( -18, -20, 11, -24, 11, 20, -18, 25 )
 
 [node name="OfficeBuildingDoor" parent="Hotspots" instance=ExtResource( 7 )]
-position = Vector2( 196, 108 )
+position = Vector2( 196, 88 )
 script = ExtResource( 14 )
 script_name = "OfficeBuildingDoor"
 description = "OfficeBuildingDoor"
@@ -136,7 +126,7 @@ modulate = Color( 0, 0, 1, 1 )
 polygon = PoolVector2Array( -24, -28, 24, -28, 23, 30, -24, 29 )
 
 [node name="HouseDoor" parent="Hotspots" instance=ExtResource( 7 )]
-position = Vector2( 422, 124 )
+position = Vector2( 422, 104 )
 script = ExtResource( 15 )
 script_name = "HouseDoor"
 description = "HouseDoor"
@@ -147,7 +137,7 @@ modulate = Color( 0, 0, 1, 1 )
 polygon = PoolVector2Array( -15, -31, 16, -27, 16, 28, -15, 24 )
 
 [node name="AptBuildingDoor" parent="Hotspots" instance=ExtResource( 7 )]
-position = Vector2( 515, 155 )
+position = Vector2( 515, 135 )
 script = ExtResource( 16 )
 script_name = "AptBuildingDoor"
 description = "AptBuildingDoor"
@@ -158,7 +148,7 @@ modulate = Color( 0, 0, 1, 1 )
 polygon = PoolVector2Array( -16, -33, 13, -34, 14, 29, 14, 37, -21, 36, -18, 29 )
 
 [node name="CemeteryExit" parent="Hotspots" instance=ExtResource( 7 )]
-position = Vector2( 573, 130 )
+position = Vector2( 573, 100 )
 script = ExtResource( 17 )
 script_name = "CemeteryExit"
 description = "CemeteryExit"
@@ -177,16 +167,8 @@ polygon = PoolVector2Array( -16, -133, 15, -132, 15, 115, -17, 116 )
 sort_enabled = false
 
 [node name="CharacterJira *" parent="Characters" instance=ExtResource( 9 )]
-position = Vector2( -195, 182 )
+position = Vector2( -191, 164 )
 
-[node name="CharacterJulia *" type="Area2D" parent="Characters" instance=ExtResource( 19 )]
-position = Vector2( -6, 96 )
-script = ExtResource( 18 )
-__meta__ = {
-"_edit_group_": true
-}
-script_name = "Julia"
+[node name="CharacterJulia *" parent="Characters" instance=ExtResource( 19 )]
+position = Vector2( -4, 70 )
 description = "Julia"
-walk_to_point = Vector2( 0, 45 )
-cursor = 8
-popochiu_placeholder = null

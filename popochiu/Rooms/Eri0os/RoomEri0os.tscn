@@ -31,7 +31,7 @@ script_name = "Eri0os"
 [node name="WalkableAreas" type="Node2D" parent="."]
 
 [node name="Floor" parent="WalkableAreas" instance=ExtResource( 5 )]
-position = Vector2( 160, 120 )
+position = Vector2( 160, 100 )
 script = ExtResource( 4 )
 script_name = "Floor"
 description = "Floor"
@@ -44,7 +44,7 @@ navpoly = SubResource( 1 )
 sort_enabled = false
 
 [node name="Background" parent="Props" instance=ExtResource( 2 )]
-position = Vector2( 160, 120 )
+position = Vector2( 160, 100 )
 z_index = -1
 script_name = "Background"
 description = "Background"
@@ -53,12 +53,9 @@ baseline = -120
 cursor = 1
 texture = ExtResource( 7 )
 
-[node name="Bluecup" type="Area2D" parent="Props" instance=ExtResource( 2 )]
-position = Vector2( 237, 63 )
+[node name="Bluecup" parent="Props" instance=ExtResource( 2 )]
+position = Vector2( 243, 44 )
 script = ExtResource( 10 )
-__meta__ = {
-"_editor_description_": ""
-}
 script_name = "Bluecup"
 description = "Bluecup"
 cursor = 1
@@ -68,12 +65,9 @@ link_to_item = "Bluecup"
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Bluecup"]
 polygon = PoolVector2Array( -8, -10, 11, -8, 16, 1, 7, 9, 7, 15, -9, 13 )
 
-[node name="Honey" type="Area2D" parent="Props" instance=ExtResource( 2 )]
-position = Vector2( 136, 64 )
+[node name="Honey" parent="Props" instance=ExtResource( 2 )]
+position = Vector2( 133, 47 )
 script = ExtResource( 12 )
-__meta__ = {
-"_editor_description_": ""
-}
 script_name = "Honey"
 description = "Honey"
 cursor = 1
@@ -83,12 +77,9 @@ link_to_item = "Honey"
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Honey"]
 polygon = PoolVector2Array( -5, -13, 2, -15, 9, -4, 12, 7, 10, 12, -7, 13, -8, -2 )
 
-[node name="Table" type="Area2D" parent="Props" instance=ExtResource( 2 )]
-position = Vector2( 201, 172 )
+[node name="Table" parent="Props" instance=ExtResource( 2 )]
+position = Vector2( 199, 145 )
 script = ExtResource( 16 )
-__meta__ = {
-"_editor_description_": ""
-}
 script_name = "Table"
 description = "Table"
 clickable = false
@@ -97,12 +88,13 @@ cursor = 1
 texture = ExtResource( 17 )
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Table"]
+visible = false
 polygon = PoolVector2Array( -15, -28, 13, -28, 40, -18, 37, -5, 24, 0, 4, 2, -16, 1, -38, -5, -37, -17 )
 
 [node name="Hotspots" type="Node2D" parent="."]
 
 [node name="TownSquareExit" parent="Hotspots" instance=ExtResource( 9 )]
-position = Vector2( 78, 213 )
+position = Vector2( 78, 200 )
 script = ExtResource( 8 )
 script_name = "TownSquareExit"
 description = "TownSquareExit"
@@ -120,13 +112,13 @@ polygon = PoolVector2Array( -27, -16, 32, -17, 29, 16, -27, 15 )
 sort_enabled = false
 
 [node name="CharacterJira *" parent="Characters" instance=ExtResource( 6 )]
-position = Vector2( 79, 201 )
+position = Vector2( 82, 167 )
 
 [node name="CharacterHooky *" parent="Characters" instance=ExtResource( 3 )]
-position = Vector2( 244, 161 )
+position = Vector2( 227, 159 )
 
 [node name="CharacterElandra *" parent="Characters" instance=ExtResource( 11 )]
-position = Vector2( 111, 172 )
+position = Vector2( 165, 163 )
 
 [node name="CharacterSheriff *" parent="Characters" instance=ExtResource( 13 )]
-position = Vector2( 170, 145 )
+position = Vector2( 196, 157 )

@@ -30,7 +30,7 @@ script_name = "Grundysmart"
 [node name="WalkableAreas" type="Node2D" parent="."]
 
 [node name="Floor" parent="WalkableAreas" instance=ExtResource( 6 )]
-position = Vector2( 160, 120 )
+position = Vector2( 160, 100 )
 script = ExtResource( 7 )
 script_name = "Floor"
 description = "Floor"
@@ -43,7 +43,7 @@ navpoly = SubResource( 1 )
 sort_enabled = false
 
 [node name="Background" parent="Props" instance=ExtResource( 2 )]
-position = Vector2( 160, 120 )
+position = Vector2( 160, 100 )
 z_index = -1
 script_name = "Background"
 description = "Background"
@@ -53,7 +53,7 @@ cursor = 1
 texture = ExtResource( 4 )
 
 [node name="Shelf" parent="Props" instance=ExtResource( 2 )]
-position = Vector2( 117, 164 )
+position = Vector2( 117, 144 )
 __meta__ = {
 "_edit_lock_": true,
 "_editor_description_": ""
@@ -66,7 +66,7 @@ cursor = 1
 texture = ExtResource( 5 )
 
 [node name="BackDoor" parent="Props" instance=ExtResource( 2 )]
-position = Vector2( 242, 93 )
+position = Vector2( 242, 73 )
 script = ExtResource( 3 )
 script_name = "BackDoor"
 description = "BackDoor"
@@ -77,7 +77,7 @@ cursor = 1
 polygon = PoolVector2Array( -20, -35, 17, -35, 19, 32, -21, 31 )
 
 [node name="Sauce" parent="Props" instance=ExtResource( 2 )]
-position = Vector2( 144, 160 )
+position = Vector2( 144, 140 )
 script = ExtResource( 12 )
 script_name = "Sauce"
 description = "Sauce"
@@ -89,12 +89,9 @@ texture = ExtResource( 13 )
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Sauce"]
 polygon = PoolVector2Array( -8, -11, 9, -12, 9, 14, 0, 15, -9, 12 )
 
-[node name="Bucket" type="Area2D" parent="Props" instance=ExtResource( 2 )]
-position = Vector2( 86, 143 )
+[node name="Bucket" parent="Props" instance=ExtResource( 2 )]
+position = Vector2( 87, 122 )
 script = ExtResource( 15 )
-__meta__ = {
-"_editor_description_": ""
-}
 script_name = "Bucket"
 description = "Bucket"
 baseline = 51
@@ -108,7 +105,7 @@ polygon = PoolVector2Array( -12, -12, 13, -12, 13, 14, -13, 14 )
 [node name="Hotspots" type="Node2D" parent="."]
 
 [node name="TownSquareExit" parent="Hotspots" instance=ExtResource( 10 )]
-position = Vector2( 55, 211 )
+position = Vector2( 55, 191 )
 script = ExtResource( 8 )
 script_name = "TownSquareExit"
 description = "TownSquareExit"
@@ -126,10 +123,11 @@ polygon = PoolVector2Array( -25, -7, 33, -7, 24, 13, -36, 11 )
 sort_enabled = false
 
 [node name="CharacterJira *" parent="Characters" instance=ExtResource( 9 )]
-position = Vector2( 55, 211 )
+position = Vector2( 55, 183 )
 
 [node name="CharacterKiosk *" parent="Characters" instance=ExtResource( 11 )]
-position = Vector2( 213, 113 )
+position = Vector2( 228, 93 )
 walk_to_point = Vector2( 0, 52 )
 
 [node name="CharacterPhil *" parent="Characters" instance=ExtResource( 14 )]
+position = Vector2( 182, 135 )

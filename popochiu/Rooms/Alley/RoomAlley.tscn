@@ -23,7 +23,7 @@ script_name = "Alley"
 [node name="WalkableAreas" type="Node2D" parent="."]
 
 [node name="Ground" parent="WalkableAreas" instance=ExtResource( 6 )]
-position = Vector2( 160, 120 )
+position = Vector2( 160, 100 )
 script = ExtResource( 5 )
 script_name = "Ground"
 description = "Ground"
@@ -36,7 +36,7 @@ navpoly = SubResource( 1 )
 sort_enabled = false
 
 [node name="Background" parent="Props" instance=ExtResource( 2 )]
-position = Vector2( 160, 120 )
+position = Vector2( 160, 100 )
 z_index = -1
 __meta__ = {
 "_edit_lock_": true,
@@ -52,10 +52,11 @@ texture = ExtResource( 4 )
 [node name="Hotspots" type="Node2D" parent="."]
 
 [node name="TownSquareExit" parent="Hotspots" instance=ExtResource( 7 )]
-position = Vector2( 306, 130 )
+position = Vector2( 306, 100 )
 script = ExtResource( 8 )
 script_name = "TownSquareExit"
 description = "TownSquareExit"
+walk_to_point = Vector2( 6, 86 )
 cursor = 1
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/TownSquareExit"]
@@ -70,7 +71,7 @@ polygon = PoolVector2Array( -15, -132, 17, -133, 13, 115, -17, 114 )
 sort_enabled = false
 
 [node name="CharacterJira *" parent="Characters" instance=ExtResource( 9 )]
-position = Vector2( 275, 204 )
+position = Vector2( 286, 183 )
 
 [node name="CharacterPhil *" parent="Characters" instance=ExtResource( 10 )]
-position = Vector2( 134, 189 )
+position = Vector2( 134, 173 )

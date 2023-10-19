@@ -18,7 +18,7 @@ hide_gi = true
 sort_enabled = false
 
 [node name="Background" parent="Props" instance=ExtResource( 3 )]
-position = Vector2( 160, 120 )
+position = Vector2( 160, 100 )
 z_index = -1
 script = ExtResource( 2 )
 script_name = "Background"

@@ -25,7 +25,7 @@ script_name = "CemeteryEntrance"
 [node name="WalkableAreas" type="Node2D" parent="."]
 
 [node name="Ground" parent="WalkableAreas" instance=ExtResource( 4 )]
-position = Vector2( 160, 120 )
+position = Vector2( 160, 100 )
 script = ExtResource( 6 )
 script_name = "Ground"
 description = "Ground"
@@ -38,7 +38,7 @@ navpoly = SubResource( 1 )
 sort_enabled = false
 
 [node name="Background" parent="Props" instance=ExtResource( 2 )]
-position = Vector2( 160, 120 )
+position = Vector2( 160, 100 )
 z_index = -1
 __meta__ = {
 "_edit_lock_": true,
@@ -51,12 +51,9 @@ baseline = -120
 cursor = 1
 texture = ExtResource( 5 )
 
-[node name="Turnip" type="Area2D" parent="Props" instance=ExtResource( 2 )]
-position = Vector2( 299, 195 )
+[node name="Turnip" parent="Props" instance=ExtResource( 2 )]
+position = Vector2( 299, 185 )
 script = ExtResource( 3 )
-__meta__ = {
-"_editor_description_": ""
-}
 script_name = "Turnip"
 description = "Turnip"
 cursor = 1
@@ -69,7 +66,7 @@ polygon = PoolVector2Array( 0, -15, 12, -15, 12, -5, 5, -3, 4, 7, -14, 15, -4, -
 [node name="Hotspots" type="Node2D" parent="."]
 
 [node name="Entrance" parent="Hotspots" instance=ExtResource( 7 )]
-position = Vector2( 176, 121 )
+position = Vector2( 176, 101 )
 script = ExtResource( 8 )
 script_name = "Entrance"
 description = "Entrance"
@@ -81,7 +78,7 @@ modulate = Color( 0, 0, 1, 1 )
 polygon = PoolVector2Array( -70, 64, -68, -45, -59, -74, -40, -90, -11, -95, 22, -94, 46, -85, 59, -65, 65, -43, 66, 63 )
 
 [node name="Exit" parent="Hotspots" instance=ExtResource( 7 )]
-position = Vector2( 6, 119 )
+position = Vector2( 6, 109 )
 script = ExtResource( 9 )
 script_name = "Exit"
 description = "Exit"
@@ -100,4 +97,4 @@ polygon = PoolVector2Array( 22, -118, -6, -119, -6, 122, 21, 122 )
 sort_enabled = false
 
 [node name="CharacterJira *" parent="Characters" instance=ExtResource( 10 )]
-position = Vector2( 40, 210 )
+position = Vector2( 21, 191 )
