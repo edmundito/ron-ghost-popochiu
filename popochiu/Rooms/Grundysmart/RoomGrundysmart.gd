@@ -14,15 +14,8 @@ var state: Data = preload('RoomGrundysmart.tres')
 # What happens when Popochiu loads the room. At this point the room is in the
 # tree but it is not visible
 func on_room_entered() -> void:
-	if state.took_bucket:
-		get_prop("Bucket").disable(false)
-	else:
-		get_prop("Bucket").enable(false)
-
-	if Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.NEW_PIZZA):
-		C.Phil.enable(false)
-	else:
-		C.Phil.disable(false)
+	get_prop("Bucket").set_enabled(not state.took_bucket, false)
+	C.Phil.set_enabled(Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.NEW_PIZZA), false)
 
 
 # What happens when the room changing transition finishes. At this point the room

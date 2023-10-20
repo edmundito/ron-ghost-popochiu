@@ -122,6 +122,12 @@ func show_helpers() -> void:
 	$BaselineHelper.show()
 	$WalkToHelper.show()
 
+# Edmundito mod
+func set_enabled(enabled: bool, is_in_queue := true) -> void:
+	if is_in_queue: yield()
+
+	self.visible = enabled
+	yield(get_tree(), 'idle_frame')
 
 # Hides the Node and disables its interaction
 func disable(is_in_queue := true) -> void:
@@ -195,6 +201,10 @@ func _translate() -> void:
 		'%s-%s' % [get_tree().current_scene.name, _description_code]
 	)
 
+func disable_interaction() -> void:
+	self.clickable = false
+	disconnect('mouse_entered', self, '_toggle_description')
+	disconnect('mouse_exited', self, '_toggle_description')
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ SET & GET ░░░░
 func set_baseline(value: int) -> void:

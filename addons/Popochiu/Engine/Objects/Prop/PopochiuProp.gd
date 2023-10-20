@@ -104,3 +104,9 @@ func set_current_frame(value: int) -> void:
 		current_frame = $Sprite.hframes - 1
 
 	$Sprite.frame = current_frame
+
+func disable_interaction() -> void:
+	if get_node_or_null('InteractionPolygon'):
+			$InteractionPolygon.hide()
+
+	.disable_interaction()
