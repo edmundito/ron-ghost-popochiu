@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://popochiu/InventoryItems/Instructions/InventoryInstructionsState.gd" type="Script" id=1]
+
+[resource]
+resource_name = "Instructions"
+script = ExtResource( 1 )
+script_name = "Instructions"
+scene = "res://popochiu/InventoryItems/Instructions/InventoryInstructions.tscn"

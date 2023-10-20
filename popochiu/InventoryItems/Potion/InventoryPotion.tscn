@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://popochiu/InventoryItems/Potion/InventoryPotion.gd" type="Script" id=1]
+[ext_resource path="res://images/Inventory/inv_bluecup.png" type="Texture" id=2]
+
+[node name="InventoryPotion" type="TextureRect"]
+mouse_filter = 0
+size_flags_vertical = 4
+texture = ExtResource( 2 )
+flip_h = true
+flip_v = true
+script = ExtResource( 1 )
+description = "Potion"
+script_name = "Potion"
+cursor = 10

@@ -25,25 +25,25 @@ var _item_instances := []
 # property.
 func add_item(item_name: String, is_in_queue := true, animate := true) -> void:
 	if is_in_queue: yield()
-	
+
 	if E.settings.inventory_limit > 0\
 	and items.size() == E.settings.inventory_limit:
 		prints(
 			'[Popochiu] Could not add %s to the inventory because it is full.' %\
 			item_name
 		)
-		
+
 		return yield(get_tree(), 'idle_frame')
-	
+
 	var i: PopochiuInventoryItem = _get_item_instance(item_name)
 	if is_instance_valid(i) and not i.in_inventory:
 		items.append(item_name)
-		
+
 		emit_signal('item_added', i, animate)
 		i.in_inventory = true
-		
+
 		return yield(self, 'item_add_done')
-	
+
 	yield(get_tree(), 'idle_frame')
 
 
@@ -55,15 +55,15 @@ func add_item_as_active(
 	animate := true
 ) -> void:
 	if is_in_queue: yield()
-	
+
 	var item: PopochiuInventoryItem = yield(
 		add_item(item_name, false, animate),
 		'completed'
 	)
-	
+
 	if is_instance_valid(item):
 		set_active_item(item, is_in_queue)
-	
+
 	return item
 
 
@@ -88,15 +88,15 @@ func remove_item(
 	animate := true
 ) -> void:
 	if is_in_queue: yield()
-	
+
 	var i: PopochiuInventoryItem = _get_item_instance(item_name)
 	if is_instance_valid(i):
 		i.in_inventory = false
 		items.erase(item_name)
-		
+
 		set_active_item(null)
 		emit_signal('item_removed', i, animate)
-		
+
 		yield(self, 'item_remove_done')
 	else:
 		yield(get_tree(), 'idle_frame')
@@ -114,50 +114,50 @@ func is_full() -> bool:
 
 func discard_item(item_name: String, is_in_queue := true) -> void:
 	if is_in_queue: yield()
-	
+
 	var i: PopochiuInventoryItem = _get_item_instance(item_name)
-	
+
 	if is_instance_valid(i):
 		i.on_discard()
 		items.erase(item_name)
-		
+
 		emit_signal('item_discarded', i)
-		
+
 		yield(remove_item(item_name, is_in_queue), 'completed')
 
 
 func clean_inventory(in_bg := false) -> void:
 	items.clear()
-	
+
 	for ii in _item_instances:
 		if not ii.in_inventory: continue
-		
+
 		if not in_bg:
 			ii.on_discard()
-		
+
 		emit_signal('item_discarded', ii)
-		
+
 		remove_item(ii.script_name, false, !in_bg)
 
 
 # Notifies that the inventory should appear.
 func show_inventory(time := 1.0, is_in_queue := true) -> void:
 	if is_in_queue: yield()
-	
+
 	if E.cutscene_skipped:
 		yield(get_tree(), 'idle_frame')
 		return
-	
+
 	emit_signal('inventory_show_requested', time)
-	
+
 	yield(self, 'inventory_shown')
 
 
 func hide_inventory(use_anim := true, is_in_queue := true) -> void:
 	if is_in_queue: yield()
-	
+
 	emit_signal('inventory_hide_requested', use_anim)
-	
+
 	yield(get_tree(), 'idle_frame')
 
 
@@ -181,7 +181,7 @@ func _get_item_instance(item_name: String) -> PopochiuInventoryItem:
 		var ii_name: String = ii.script_name
 		if ii_name.to_lower() == item_name.to_lower():
 			return ii as PopochiuInventoryItem
-	
+
 	# If the item is not in the list of items, then instantiate it based on the
 	# list of items (Resource) in Popochiu
 	var new_intentory_item: PopochiuInventoryItem = E.get_inventory_item_instance(
@@ -190,7 +190,7 @@ func _get_item_instance(item_name: String) -> PopochiuInventoryItem:
 	if new_intentory_item:
 		_item_instances.append(new_intentory_item)
 		return new_intentory_item
-	
+
 	printerr('[Popochiu] Inventory item %s does not exists')
-	
+
 	return null

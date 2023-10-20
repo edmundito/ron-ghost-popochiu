@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://popochiu/Rooms/Eri0os/RoomEri0os.gd" type="Script" id=1]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.tscn" type="PackedScene" id=2]
@@ -17,6 +17,8 @@
 [ext_resource path="res://images/Inventory/inv_honey.png" type="Texture" id=15]
 [ext_resource path="res://popochiu/Rooms/Eri0os/Props/Table/PropTable.gd" type="Script" id=16]
 [ext_resource path="res://images/Rooms/bg_eri0os_table.png" type="Texture" id=17]
+[ext_resource path="res://popochiu/Rooms/Eri0os/Props/Bucket/PropBucket.gd" type="Script" id=18]
+[ext_resource path="res://images/Inventory/inv_bucket.png" type="Texture" id=19]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( -81, 17, 100, 17, 156, 65, 157, 94, -157, 96, -156, 70 )
@@ -82,14 +84,25 @@ position = Vector2( 199, 145 )
 script = ExtResource( 16 )
 script_name = "Table"
 description = "Table"
-clickable = false
 baseline = 31
+walk_to_point = Vector2( 0, 38 )
 cursor = 1
 texture = ExtResource( 17 )
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Table"]
-visible = false
 polygon = PoolVector2Array( -15, -28, 13, -28, 40, -18, 37, -5, 24, 0, 4, 2, -16, 1, -38, -5, -37, -17 )
+
+[node name="Bucket" parent="Props" instance=ExtResource( 2 )]
+position = Vector2( 196, 119 )
+script = ExtResource( 18 )
+script_name = "Bucket"
+description = "Bucket"
+baseline = 58
+cursor = 1
+texture = ExtResource( 19 )
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Bucket"]
+polygon = PoolVector2Array( 13, -10, 11, 15, -10, 15, -13, -10, 0, -13 )
 
 [node name="Hotspots" type="Node2D" parent="."]
 

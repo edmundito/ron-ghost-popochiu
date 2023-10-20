@@ -14,7 +14,14 @@ var state: Data = preload('RoomEri0os.tres')
 # What happens when Popochiu loads the room. At this point the room is in the
 # tree but it is not visible
 func on_room_entered() -> void:
-	pass
+	var bucket = get_prop("Bucket")
+	print("BUCKET", bucket.script_name, state.bucket_visible)
+	if state.bucket_visible:
+		bucket.enable(false)
+	else:
+		bucket.disable(false)
+
+	get_prop("Table").clickable = not state.bucket_visible
 
 
 # What happens when the room changing transition finishes. At this point the room

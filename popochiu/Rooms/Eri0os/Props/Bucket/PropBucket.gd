@@ -8,11 +8,16 @@ extends PopochiuProp
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ VIRTUAL ░░░░
 # When the node is clicked
 func on_interact() -> void:
-	E.run([
-		C.walk_to_clicked(),
-		C.face_clicked(),
-		G.display("This table feels very sturdy. I can use it to place... something.")
-	])
+	# Replace the call to .on_interact() to implement your code. This only makes
+	# the default behavior to happen.
+	# For example you can make the character walk to the Prop and then say
+	# something:
+#	E.run([
+#		C.walk_to_clicked(),
+#		C.face_clicked(),
+#		'Player: Not picking that up'
+#	])
+	.on_interact()
 
 
 # When the node is right clicked
@@ -27,17 +32,53 @@ func on_look() -> void:
 #	])
 	.on_look()
 
+const POTION_INGREDIENTS = [
+	"Flower",
+	"Fluorite",
+	"Honey",
+	"Turnip"
+]
+
+
+func _on_use_bluecup() -> void:
+	var num_ingredients := POTION_INGREDIENTS.size()
+	if R.Eri0os.state.ingredients_in_bucket < num_ingredients:
+		var ingredients_left = num_ingredients - R.Eri0os.state.ingredients_in_bucket
+		E.run([
+			C.face_clicked(),
+			G.display("I can use the cup when the potion is ready, but I still need %d ingredients." % ingredients_left)
+		])
+		return
+
+	E.run([
+		C.walk_to_clicked(),
+		C.face_clicked(),
+		I.Bluecup.remove(),
+		"Player: (Display) I say the conjuring spell here and I get the potion",
+		I.Potion.add(),
+	])
 
 # When the node is clicked and there is an inventory item selected
 func on_item_used(item: PopochiuInventoryItem) -> void:
+	if POTION_INGREDIENTS.has(item.script_name):
+		R.Eri0os.state.ingredients_in_bucket += 1
+		yield(E.run([
+			C.walk_to_clicked(),
+			C.face_clicked(),
+			item.remove()
+		]), "completed")
+
 	match item.script_name:
-		"Bucket":
-			R.Eri0os.state.bucket_visible = true
-			yield(E.run([
-				item.remove(),
-				room.get_prop("Bucket").enable(),
-				disable()
-			]), "completed")
+		"Bluecup":
+			self._on_use_bluecup()
+		"Flower":
+			pass
+		"Fluorite":
+			pass
+		"Honey":
+			pass
+		"Turnip":
+			pass
 		_:
 			.on_item_used(item)
 

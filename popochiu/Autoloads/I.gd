@@ -12,6 +12,8 @@ const PIITurnip := preload('res://popochiu/InventoryItems/Turnip/InventoryTurnip
 const PIIHoney := preload('res://popochiu/InventoryItems/Honey/InventoryHoney.gd')
 const PIIBluecup := preload('res://popochiu/InventoryItems/Bluecup/InventoryBluecup.gd')
 const PIIFluorite := preload('res://popochiu/InventoryItems/Fluorite/InventoryFluorite.gd')
+const PIIInstructions := preload('res://popochiu/InventoryItems/Instructions/InventoryInstructions.gd')
+const PIIPotion := preload('res://popochiu/InventoryItems/Potion/InventoryPotion.gd')
 # ---- classes
 
 # nodes ----
@@ -25,6 +27,8 @@ var Turnip: PIITurnip setget , get_Turnip
 var Honey: PIIHoney setget , get_Honey
 var Bluecup: PIIBluecup setget , get_Bluecup
 var Fluorite: PIIFluorite setget , get_Fluorite
+var Instructions: PIIInstructions setget , get_Instructions
+var Potion: PIIPotion setget , get_Potion
 # ---- nodes
 
 # functions ----
@@ -38,5 +42,7 @@ func get_Turnip(): return ._get_item_instance('Turnip')
 func get_Honey(): return ._get_item_instance('Honey')
 func get_Bluecup(): return ._get_item_instance('Bluecup')
 func get_Fluorite(): return ._get_item_instance('Fluorite')
+func get_Instructions(): return ._get_item_instance('Instructions')
+func get_Potion(): return ._get_item_instance('Potion')
 # ---- functions
 

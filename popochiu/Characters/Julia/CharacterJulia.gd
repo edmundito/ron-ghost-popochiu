@@ -14,19 +14,16 @@ func on_room_set() -> void:
 
 # When the node is clicked
 func on_interact() -> void:
-	# Replace the call to .on_interact() to implement your code. This only makes
-	# the default behavior to happen.
-	if state.gave_fluroite:
-		E.run([
-			"Julia: (Temp) I already gave you the flourite"
-		])
-		return
-
-	state.gave_fluroite = true
-	E.run([
-		"Julia: (Temp) We'll have a conversation where I give you the fluorite",
-		I.Fluorite.add()
-	])
+	yield(E.run([
+		"Julia: Oh, hi!",
+		"Julia: I'm looking for the town square. Do you know where it is?",
+		"Player: This is it.",
+		"Julia: Oh.",
+		G.display("Some more dialog here..."),
+		"Julia: I'm an expert on minerals!"
+	]), "completed")
+	self.description = "Julia"
+	state.talked_about_minerals = true
 
 
 # When the node is right clicked
@@ -35,12 +32,38 @@ func on_look() -> void:
 	# the default behavior to happen.
 	.on_look()
 
+func _on_give_instructions() -> void:
+	if state.gave_fluroite:
+			E.run([
+				"Julia: (Temp) I already gave you the flourite!"
+			])
+			return
+
+	if state.talked_about_minerals:
+		state.gave_fluroite = true
+		yield(E.run([
+			"Julia: (Temp) Oh, I see that you are looking for fluorite! I happen to have a little piece here. I'm happy to give it away!",
+			I.Fluorite.add(),
+		]), "completed")
+		I.set_active_item(null)
+		return
+
+	E.run([
+		"Julia: I'm not sure what this is."
+	])
 
 # When the node is clicked and there is an inventory item selected
 func on_item_used(item: PopochiuInventoryItem) -> void:
-	# Replace the call to .on_item_used(item) to implement your code. This only
-	# makes the default behavior to happen.
-	.on_item_used(item)
+	match item.script_name:
+		"Instructions":
+			self._on_give_instructions()
+		"Bucket":
+			E.run([
+				"Player: Check out my bucket.",
+				"Julia: Oooh, I love buckets!"
+			])
+		_:
+			.on_item_used(item)
 
 
 # Use it to play the idle animation for the character
