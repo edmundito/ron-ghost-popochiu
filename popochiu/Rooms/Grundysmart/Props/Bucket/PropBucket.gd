@@ -11,8 +11,10 @@ func on_interact() -> void:
 	E.run([
 		C.walk_to_clicked(),
 		C.face_clicked(),
+		disable(),
 		I.Bucket.add(),
 	])
+	R.Grundysmart.state.took_bucket = true
 
 
 # When the node is right clicked

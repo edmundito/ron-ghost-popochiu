@@ -41,11 +41,11 @@ func _on_give_instructions() -> void:
 
 	if state.talked_about_minerals:
 		state.gave_fluroite = true
-		yield(E.run([
+		I.set_active_item(null)
+		yield(E.run_cutscene([
 			"Julia: (Temp) Oh, I see that you are looking for fluorite! I happen to have a little piece here. I'm happy to give it away!",
 			I.Fluorite.add(),
 		]), "completed")
-		I.set_active_item(null)
 		return
 
 	E.run([

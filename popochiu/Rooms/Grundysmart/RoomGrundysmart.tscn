@@ -97,7 +97,6 @@ description = "Bucket"
 baseline = 51
 cursor = 1
 texture = ExtResource( 16 )
-link_to_item = "Bucket"
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Bucket"]
 polygon = PoolVector2Array( -12, -12, 13, -12, 13, 14, -13, 14 )

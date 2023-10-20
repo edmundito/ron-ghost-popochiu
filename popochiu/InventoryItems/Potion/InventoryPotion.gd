@@ -12,9 +12,9 @@ var state: Data = preload('InventoryPotion.tres')
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ VIRTUAL ░░░░
 # When the item is clicked in the inventory
 func on_interact() -> void:
-	# Replace the call to .on_interact() to implement your code. This only makes
-	# the default behavior to happen.
-	.on_interact()
+	E.run([
+		G.display("I'll drink the potion when I find the locker.")
+	])
 
 
 # When the item is right clicked in the inventory

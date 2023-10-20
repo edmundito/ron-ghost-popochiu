@@ -98,6 +98,7 @@ script = ExtResource( 18 )
 script_name = "Bucket"
 description = "Bucket"
 baseline = 58
+walk_to_point = Vector2( 1, 64 )
 cursor = 1
 texture = ExtResource( 19 )
 

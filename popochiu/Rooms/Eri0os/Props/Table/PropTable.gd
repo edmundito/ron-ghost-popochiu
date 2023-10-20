@@ -33,10 +33,10 @@ func on_item_used(item: PopochiuInventoryItem) -> void:
 	match item.script_name:
 		"Bucket":
 			R.Eri0os.state.bucket_visible = true
+			clickable = false
 			yield(E.run([
 				item.remove(),
-				room.get_prop("Bucket").enable(),
-				disable()
+				room.get_prop("Bucket").enable()
 			]), "completed")
 		_:
 			.on_item_used(item)
