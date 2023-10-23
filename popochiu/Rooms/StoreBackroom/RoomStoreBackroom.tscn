@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://popochiu/Rooms/StoreBackroom/RoomStoreBackroom.gd" type="Script" id=1]
+[ext_resource path="res://popochiu/Characters/Elandra/CharacterElandra.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.tscn" type="PackedScene" id=3]
 [ext_resource path="res://popochiu/Rooms/StoreBackroom/WalkableAreas/Floor/WalkableAreaFloor.gd" type="Script" id=4]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/WalkableArea/PopochiuWalkableArea.tscn" type="PackedScene" id=5]
@@ -80,8 +81,11 @@ polygon = PoolVector2Array( -17, -46, 19, -46, 17, 37, -19, 37 )
 
 [node name="Points" type="Node2D" parent="."]
 
-[node name="HookyWalkTo" type="Position2D" parent="Points"]
-position = Vector2( 116, 169 )
+[node name="ElandraWalkTo" type="Position2D" parent="Points"]
+position = Vector2( 179, 153 )
+
+[node name="Center" type="Position2D" parent="Points"]
+position = Vector2( 238, 219 )
 
 [node name="Characters" type="YSort" parent="."]
 sort_enabled = false
@@ -91,3 +95,6 @@ position = Vector2( 240, 151 )
 
 [node name="CharacterHooky *" parent="Characters" instance=ExtResource( 11 )]
 position = Vector2( 241, 151 )
+
+[node name="CharacterElandra *" parent="Characters" instance=ExtResource( 2 )]
+position = Vector2( 240, 152 )

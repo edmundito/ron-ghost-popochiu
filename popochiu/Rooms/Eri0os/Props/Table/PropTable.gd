@@ -33,7 +33,7 @@ func on_item_used(item: PopochiuInventoryItem) -> void:
 	match item.script_name:
 		"Bucket":
 			R.Eri0os.state.bucket_visible = true
-			disable_interaction()
+#			disable_interaction()
 			yield(E.run([
 				item.remove(),
 				room.get_prop("Bucket").enable()

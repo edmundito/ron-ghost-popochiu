@@ -16,7 +16,10 @@ func on_room_set() -> void:
 func on_interact() -> void:
 	# Replace the call to .on_interact() to implement your code. This only makes
 	# the default behavior to happen.
-	E.run(['Hooky: Find Davy Jones\'s Locker!'])
+	E.run([
+		"Hooky: Get to Davy Jones' Locker in the back room of the general store!",
+		"Player: And also I need to get the potion ready to open the gate.",
+	])
 
 
 # When the node is right clicked

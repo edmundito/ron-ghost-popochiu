@@ -15,9 +15,8 @@ func on_interact() -> void:
 	yield(E.run([
 		C.walk_to_clicked(),
 		C.face_clicked(),
+		"Player: The post office is closed today."
 	]), 'completed')
-
-	E.goto_room('PostOffice')
 
 
 # When the node is right clicked

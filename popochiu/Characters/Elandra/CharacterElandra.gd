@@ -16,7 +16,12 @@ func on_room_set() -> void:
 func on_interact() -> void:
 	# Replace the call to .on_interact() to implement your code. This only makes
 	# the default behavior to happen.
-	E.run(['Elandra: I hope my baby is safe.'])
+	E.run([
+		"Elandra: I hope my baby is safe.",
+		"Player: I will find Sorendo.",
+		"Elandra: I'll help you find some clues. GTG.",
+		C.Elandra.disable()
+	])
 
 
 # When the node is right clicked

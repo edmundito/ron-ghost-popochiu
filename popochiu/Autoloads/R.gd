@@ -12,6 +12,9 @@ const PRPizzeria := preload('res://popochiu/Rooms/Pizzeria/RoomPizzeria.gd')
 const PRStoreBackroom := preload('res://popochiu/Rooms/StoreBackroom/RoomStoreBackroom.gd')
 const PRCemetery := preload('res://popochiu/Rooms/Cemetery/RoomCemetery.gd')
 const PRCemeteryEntrance := preload('res://popochiu/Rooms/CemeteryEntrance/RoomCemeteryEntrance.gd')
+const PRLockerBackroom := preload('res://popochiu/Rooms/LockerBackroom/RoomLockerBackroom.gd')
+const PRLockerTownSquare := preload('res://popochiu/Rooms/LockerTownSquare/RoomLockerTownSquare.gd')
+const PRCredits := preload('res://popochiu/Rooms/Credits/RoomCredits.gd')
 # ---- classes
 
 # nodes ----
@@ -25,6 +28,9 @@ var Pizzeria: PRPizzeria setget , get_Pizzeria
 var StoreBackroom: PRStoreBackroom setget , get_StoreBackroom
 var Cemetery: PRCemetery setget , get_Cemetery
 var CemeteryEntrance: PRCemeteryEntrance setget , get_CemeteryEntrance
+var LockerBackroom: PRLockerBackroom setget , get_LockerBackroom
+var LockerTownSquare: PRLockerTownSquare setget , get_LockerTownSquare
+var Credits: PRCredits setget , get_Credits
 # ---- nodes
 
 # functions ----
@@ -38,5 +44,8 @@ func get_Pizzeria(): return .get_runtime_room('Pizzeria')
 func get_StoreBackroom(): return .get_runtime_room('StoreBackroom')
 func get_Cemetery(): return .get_runtime_room('Cemetery')
 func get_CemeteryEntrance(): return .get_runtime_room('CemeteryEntrance')
+func get_LockerBackroom(): return .get_runtime_room('LockerBackroom')
+func get_LockerTownSquare(): return .get_runtime_room('LockerTownSquare')
+func get_Credits(): return .get_runtime_room('Credits')
 # ---- functions
 

@@ -87,6 +87,12 @@ func remove_now(animate := true) -> void:
 	yield(I.remove_item(script_name, false, animate), 'completed')
 
 
+func discard(animate := true) -> void:
+	yield()
+
+	yield(I.discard_item(script_name, false), 'completed')
+
+
 func set_active(ignore_block := false) -> void:
 	I.set_active_item(self, ignore_block)
 

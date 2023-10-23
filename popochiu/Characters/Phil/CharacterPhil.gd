@@ -20,7 +20,8 @@ func on_interact() -> void:
 		if !Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.TALK_TO_PHIL):
 			yield(E.run([
 				G.display("TODO: DIALOG HERE to learn more about phil..."),
-				"Phil: I'm so hungry, I could eat a whole pizza!"
+				"Player: Help me hack the kiosk that looks like you, please.",
+				"Phil: Maybe, but I'm so hungry, I could eat a whole pizza!"
 			]), 'completed')
 			Globals.set_phil_kiosk_state(Globals.PhilKioskPuzzle.GET_PIZZA_BOX)
 		elif !Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.GET_PIZZA_BOX):

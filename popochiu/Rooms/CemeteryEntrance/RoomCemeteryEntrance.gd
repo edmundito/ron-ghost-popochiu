@@ -14,7 +14,8 @@ var state: Data = preload('RoomCemeteryEntrance.tres')
 # What happens when Popochiu loads the room. At this point the room is in the
 # tree but it is not visible
 func on_room_entered() -> void:
-	pass
+	if I.Turnip.state.removed:
+		get_prop("Turnip").disable(true)
 
 
 # What happens when the room changing transition finishes. At this point the room

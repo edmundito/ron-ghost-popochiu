@@ -21,8 +21,8 @@ func on_room_entered() -> void:
 	else:
 		bucket.disable(false)
 
-	if state.bucket_visible:
-		get_prop("Table").disable_interaction()
+#	if state.bucket_visible:
+#		get_prop("Table").disable_interaction()
 
 
 # What happens when the room changing transition finishes. At this point the room

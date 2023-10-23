@@ -16,7 +16,7 @@ func on_interact() -> void:
 		C.walk_to_clicked(),
 		C.face_clicked(),
 		"Player: The door is locked.",
-		"Player: It's not open for business yet."
+		"Player: This is an office building and the it's closed today."
 	])
 
 

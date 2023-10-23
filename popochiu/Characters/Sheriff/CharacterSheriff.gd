@@ -16,7 +16,7 @@ func on_room_set() -> void:
 func on_interact() -> void:
 	# Replace the call to .on_interact() to implement your code. This only makes
 	# the default behavior to happen.
-	E.run(['Sheriff: You have to stop the ghost before trick-or-treating begins!'])
+	E.run(['Sheriff: You have to stop the ghost before the [insert-holiday-here] begins!'])
 
 
 # When the node is right clicked
