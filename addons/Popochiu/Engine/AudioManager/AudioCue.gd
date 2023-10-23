@@ -34,7 +34,7 @@ func fade(
 	position_2d := Vector2.ZERO
 ) -> void:
 	yield()
-	
+
 	if wait_to_end:
 		yield(
 			A.play_fade_no_block(
@@ -75,7 +75,7 @@ func fade_now(
 # (!) This is intended to run in queued instructions: E.run([]).
 func stop(fade_duration := 0.0) -> void:
 	yield()
-	
+
 	yield(A.stop_no_block(resource_name, fade_duration), 'completed')
 
 

@@ -14,7 +14,8 @@ var state: Data = preload('RoomSign.tres')
 # What happens when Popochiu loads the room. At this point the room is in the
 # tree but it is not visible
 func on_room_entered() -> void:
-	A.mx_reality.play_now()
+	A.mx_rotn.loop = false
+	A.mx_rotn.play_now()
 
 
 # What happens when the room changing transition finishes. At this point the room
@@ -22,17 +23,17 @@ func on_room_entered() -> void:
 func on_room_transition_finished() -> void:
 	# You can use yield(E.run([]), 'completed') to excecute a queue of instructions
 	yield(E.run_cutscene([
-		E.wait(3.0),
+		E.wait(13.0),
 	]), 'completed')
 
-	E.goto_room('Eri0os')
+	E.goto_room('Cemetery')
 
 
 # What happens before Popochiu unloads the room.
 # At this point, the screen is black, processing is disabled and all characters
 # have been removed from the $Characters node.
 func on_room_exited() -> void:
-	pass
+	A.mx_rotn.stop_now(1.0)
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ PUBLIC ░░░░

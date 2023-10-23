@@ -14,14 +14,36 @@ var state: Data = preload('RoomCemetery.tres')
 # What happens when Popochiu loads the room. At this point the room is in the
 # tree but it is not visible
 func on_room_entered() -> void:
-	pass
+	C.Davy.disable(false)
+
+	if state.visited_first_time:
+		get_prop("Flower").disable(false)
+	else:
+		C.Sorendo.disable(false)
 
 
 # What happens when the room changing transition finishes. At this point the room
 # is visible.
 func on_room_transition_finished() -> void:
-	# You can use yield(E.run([]), 'completed') to excecute a queue of instructions
-	pass
+	if state.visited_first_time:
+		yield(E.run([
+			C.Jira.walk_to_hotspot("DavyGrave"),
+			"Jira: Sorry I'm late.",
+			"Sorendo: No worries.",
+			"Sorendo: I found out this guy dated my mom, once...",
+			G.display("They talk about a spell, cast it, and..."),
+			C.Davy.enable(),
+			"Davy: You dare blah blah blah",
+			"Davy: Time to lock you up!",
+			"Sorendo: AHHHHHH!!!",
+			C.Davy.disable(),
+			C.Sorendo.disable(),
+			"Jira: Oh no.",
+			"Jira: Sorendo?",
+			"Jira: I better get some help...",
+		]), "completed")
+
+		E.goto_room("Eri0os")
 
 
 # What happens before Popochiu unloads the room.

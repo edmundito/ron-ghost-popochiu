@@ -7,6 +7,6 @@ const AudioCueMusic := preload("res://addons/Popochiu/Engine/AudioManager/AudioC
 # ---- classes
 
 # cues ----
-var mx_reality: AudioCueMusic = preload("res://popochiu/Audio/Music/MxReality.tres")
+var mx_rotn: AudioCueMusic = preload("res://popochiu/Audio/Music/MxRotn.tres")
 # ---- cues
 

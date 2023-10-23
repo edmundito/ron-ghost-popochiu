@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://popochiu/Characters/Sorendo/CharacterSorendoState.gd" type="Script" id=1]
+
+[resource]
+resource_name = "Sorendo"
+script = ExtResource( 1 )
+script_name = "Sorendo"
+scene = "res://popochiu/Characters/Sorendo/CharacterSorendo.tscn"

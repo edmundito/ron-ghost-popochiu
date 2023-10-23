@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://popochiu/Rooms/Cemetery/RoomCemetery.gd" type="Script" id=1]
 [ext_resource path="res://popochiu/Rooms/Cemetery/Props/Flower/PropFlower.gd" type="Script" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://addons/Popochiu/Engine/Objects/Hotspot/PopochiuHotspot.tscn" type="PackedScene" id=8]
 [ext_resource path="res://popochiu/Rooms/Cemetery/Hotspots/Exit/HotspotExit.gd" type="Script" id=9]
 [ext_resource path="res://images/Inventory/inv_flower.png" type="Texture" id=10]
+[ext_resource path="res://popochiu/Rooms/Cemetery/Hotspots/DavyGrave/HotspotDavyGrave.gd" type="Script" id=11]
+[ext_resource path="res://popochiu/Characters/Sorendo/CharacterSorendo.tscn" type="PackedScene" id=12]
+[ext_resource path="res://popochiu/Characters/Davy/CharacterDavy.tscn" type="PackedScene" id=13]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( -247, 78, -219, 6, -206, 79, 90, -12, 130, 71, -147, 95, -110, 61, -39, 29, 317, 97, 320, 121, 252, 95, 276, 60, -140, 65, -146, 73, -143, 37, -156, -5, -89, -7, -95, 22, -114, 32, -298, 95, -301, 76, -15, 4 )
@@ -74,6 +77,18 @@ cursor = 1
 modulate = Color( 0, 0, 1, 1 )
 polygon = PoolVector2Array( -46, 4, -9, -39, 20, -31, 23, 3 )
 
+[node name="DavyGrave" parent="Hotspots" instance=ExtResource( 8 )]
+position = Vector2( -26, 52 )
+script = ExtResource( 11 )
+script_name = "DavyGrave"
+description = "DavyGrave"
+walk_to_point = Vector2( 5, 79 )
+cursor = 1
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/DavyGrave"]
+modulate = Color( 0, 0, 1, 1 )
+polygon = PoolVector2Array( -6, -44, 8, -44, 13, 59, -14, 55 )
+
 [node name="Regions" type="Node2D" parent="."]
 
 [node name="Points" type="Node2D" parent="."]
@@ -81,5 +96,11 @@ polygon = PoolVector2Array( -46, 4, -9, -39, 20, -31, 23, 3 )
 [node name="Characters" type="YSort" parent="."]
 sort_enabled = false
 
+[node name="CharacterSorendo *" parent="Characters" instance=ExtResource( 12 )]
+position = Vector2( -62, 87 )
+
 [node name="CharacterJira *" parent="Characters" instance=ExtResource( 5 )]
 position = Vector2( 441, 186 )
+
+[node name="CharacterDavy *" parent="Characters" instance=ExtResource( 13 )]
+position = Vector2( -26, 50 )
