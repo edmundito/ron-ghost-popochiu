@@ -17,11 +17,8 @@ func on_interact() -> void:
 	E.run([
 		C.walk_to_clicked(),
 		C.face_clicked(),
-		G.display('TODO: Amore complex puzzle to get each of the items for the pizza'),
 		self.disable(),
-		I.Sauce.add(false),
-		I.Cheese.add(false),
-		I.Pepperoni.add(),
+		I.Sauce.add()
 	])
 
 

@@ -15,7 +15,6 @@ var state: Data = preload('RoomStoreBackroom.tres')
 # tree but it is not visible
 func on_room_entered() -> void:
 #	I.add_item("Potion", false, false) # Temp
-	print("Has Potion", I.is_item_in_inventory("Potion"))
 
 	if self.state.visited_first_time:
 		C.Hooky.disable(false)
@@ -31,10 +30,11 @@ func on_room_entered() -> void:
 func on_room_transition_finished() -> void:
 	if self.state.visited_first_time:
 		yield(E.run_cutscene([
-			"Player: That must be the locker.",
+			G.display("That must be the locker."),
 			C.player.walk_to_hotspot("Locker"),
 			C.player.face_up(),
-			"Player: And it's empty.",
+			G.display("TODO Anim: Open the locker."),
+			"Jira: And... it's empty.",
 			C.Hooky.enable(),
 			"Hooky: Indeed it is.",
 			C.Hooky.walk_to(self.get_hotspot("Locker").walk_to_point + Vector2(50.0, 0)),
