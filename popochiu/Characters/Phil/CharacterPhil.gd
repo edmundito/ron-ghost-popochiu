@@ -36,7 +36,8 @@ func on_interact() -> void:
 func on_look() -> void:
 	# Replace the call to .on_look() to implement your code. This only makes
 	# the default behavior to happen.
-	.on_look()
+	if Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.TALK_TO_PHIL):
+		G.display("This guy looks familiar...", false)
 
 
 # When the node is clicked and there is an inventory item selected

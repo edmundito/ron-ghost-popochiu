@@ -1,6 +1,7 @@
 extends Node
 
 enum PhilKioskPuzzle {
+	TALK_TO_KIOSK,
 	TALK_TO_PHIL,
 	GET_PIZZA_BOX,
 	EMPTY_PIZZA,
@@ -11,7 +12,7 @@ enum PhilKioskPuzzle {
 }
 
 var puzzles := {
-	PHIL_KIOSK = PhilKioskPuzzle.TALK_TO_PHIL,
+	PHIL_KIOSK = PhilKioskPuzzle.TALK_TO_KIOSK,
 }
 
 func set_phil_kiosk_state(value) -> void:

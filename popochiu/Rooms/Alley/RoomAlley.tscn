@@ -67,11 +67,14 @@ polygon = PoolVector2Array( -15, -132, 17, -133, 13, 115, -17, 114 )
 
 [node name="Points" type="Node2D" parent="."]
 
+[node name="AlleyEntry" type="Position2D" parent="Points"]
+position = Vector2( 234, 184 )
+
 [node name="Characters" type="YSort" parent="."]
 sort_enabled = false
 
 [node name="CharacterJira *" parent="Characters" instance=ExtResource( 9 )]
-position = Vector2( 286, 183 )
+position = Vector2( 305, 184 )
 
 [node name="CharacterPhil *" parent="Characters" instance=ExtResource( 10 )]
 position = Vector2( 134, 173 )

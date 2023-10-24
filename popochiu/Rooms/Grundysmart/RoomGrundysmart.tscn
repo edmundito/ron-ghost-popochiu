@@ -115,7 +115,7 @@ cursor = 1
 modulate = Color( 0, 0, 1, 1 )
 polygon = PoolVector2Array( -25, -7, 33, -7, 24, 13, -36, 11 )
 
-[node name="Refrigerator" type="Area2D" parent="Hotspots" instance=ExtResource( 10 )]
+[node name="Refrigerator" parent="Hotspots" instance=ExtResource( 10 )]
 position = Vector2( 34, 95 )
 script = ExtResource( 17 )
 script_name = "Refrigerator"

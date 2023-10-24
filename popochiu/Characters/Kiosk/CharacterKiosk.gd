@@ -16,15 +16,22 @@ func on_room_set() -> void:
 func on_interact() -> void:
 	# Replace the call to .on_interact() to implement your code. This only makes
 	# the default behavior to happen.
-	H.walk_to_clicked()
+	yield(E.run([C.walk_to_clicked(), C.face_clicked()]), "completed")
+	if not Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.TALK_TO_KIOSK):
+		Globals.set_phil_kiosk_state(Globals.PhilKioskPuzzle.TALK_TO_PHIL)
 	D.show_dialog('Kiosk')
 
 
 # When the node is right clicked
 func on_look() -> void:
-	# Replace the call to .on_look() to implement your code. This only makes
-	# the default behavior to happen.
-	.on_look()
+	if R.Alley.state.visited_times > 0:
+		yield(E.run([G.display("This kiosk looks familiar...")]), "completed")
+	else:
+		yield(E.run([G.display("It's a screen, but the human looks real.")]), "completed")
+
+	if not Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.TALK_TO_KIOSK):
+		Globals.set_phil_kiosk_state(Globals.PhilKioskPuzzle.TALK_TO_PHIL)
+
 
 
 # When the node is clicked and there is an inventory item selected
