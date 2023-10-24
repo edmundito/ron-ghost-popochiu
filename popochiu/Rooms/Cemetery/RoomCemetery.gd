@@ -18,6 +18,7 @@ func on_room_entered() -> void:
 
 	if state.visited_first_time:
 		get_prop("Flower").disable(false)
+		C.Jira.disable(false)
 	else:
 		C.Sorendo.disable(false)
 
@@ -27,17 +28,24 @@ func on_room_entered() -> void:
 func on_room_transition_finished() -> void:
 	if state.visited_first_time:
 		yield(E.run([
+			E.wait(3.0),
+			C.Jira.enable(),
 			C.Jira.walk_to_hotspot("DavyGrave"),
 			"Jira: Sorry I'm late.",
 			"Sorendo: No worries.",
 			"Sorendo: I found out this guy dated my mom, once...",
 			G.display("They talk about a spell, cast it, and..."),
 			C.Davy.enable(),
-			"Davy: You dare blah blah blah",
+			"Davy: Hello",
+			"Sorendo: Is that you, Davy Jones?",
+			"Davy: Blah blah blah...",
+			"Davy: How dare you disturb my grave?",
+			"Sorendo: Well...",
 			"Davy: Time to lock you up!",
 			"Sorendo: AHHHHHH!!!",
 			C.Davy.disable(),
 			C.Sorendo.disable(),
+			E.wait(1.0),
 			"Jira: Oh no.",
 			"Jira: Sorendo?",
 			"Jira: I better get some help...",

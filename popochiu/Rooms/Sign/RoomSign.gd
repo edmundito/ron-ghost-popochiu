@@ -23,7 +23,7 @@ func on_room_entered() -> void:
 func on_room_transition_finished() -> void:
 	# You can use yield(E.run([]), 'completed') to excecute a queue of instructions
 	yield(E.run_cutscene([
-		E.wait(13.0),
+		E.wait(8.0),
 	]), 'completed')
 
 	E.goto_room('Cemetery')
@@ -33,7 +33,7 @@ func on_room_transition_finished() -> void:
 # At this point, the screen is black, processing is disabled and all characters
 # have been removed from the $Characters node.
 func on_room_exited() -> void:
-	A.mx_rotn.stop_now(1.0)
+	pass
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ PUBLIC ░░░░
