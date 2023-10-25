@@ -1,16 +1,52 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" load_steps=9 format=2]
 
 [ext_resource path="res://popochiu/Dialogs/Kiosk/DialogKiosk.gd" type="Script" id=1]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/Dialog/PopochiuDialogOption.gd" type="Script" id=2]
 
-[sub_resource type="Resource" id=1]
-resource_name = "College"
+[sub_resource type="Resource" id=3]
+resource_name = "BackDoor"
 script = ExtResource( 2 )
-id = "College"
+id = "BackDoor"
+text = "Go through back door?"
+visible = true
+disabled = false
+always_on = true
+
+[sub_resource type="Resource" id=6]
+resource_name = "Pay"
+script = ExtResource( 2 )
+id = "Pay"
+text = "How do I pay?"
+visible = true
+disabled = false
+always_on = true
+
+[sub_resource type="Resource" id=4]
+resource_name = "Grundy"
+script = ExtResource( 2 )
+id = "Grundy"
+text = "Who is Grundy?"
+visible = true
+disabled = false
+always_on = false
+
+[sub_resource type="Resource" id=1]
+resource_name = "Tuition"
+script = ExtResource( 2 )
+id = "Tuition"
 text = "College tuition? Apply for job"
 visible = true
 disabled = false
 always_on = true
+
+[sub_resource type="Resource" id=5]
+resource_name = "Phil"
+script = ExtResource( 2 )
+id = "Phil"
+text = "You look like Phil"
+visible = false
+disabled = false
+always_on = false
 
 [sub_resource type="Resource" id=2]
 resource_name = "Bye"
@@ -24,5 +60,5 @@ always_on = true
 [resource]
 resource_name = "Kiosk"
 script = ExtResource( 1 )
-options = [ SubResource( 1 ), SubResource( 2 ) ]
+options = [ SubResource( 3 ), SubResource( 6 ), SubResource( 4 ), SubResource( 1 ), SubResource( 5 ), SubResource( 2 ) ]
 script_name = "Kiosk"

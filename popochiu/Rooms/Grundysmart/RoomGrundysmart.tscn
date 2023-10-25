@@ -138,7 +138,7 @@ sort_enabled = false
 position = Vector2( 55, 183 )
 
 [node name="CharacterKiosk *" parent="Characters" instance=ExtResource( 11 )]
-position = Vector2( 228, 93 )
+position = Vector2( 211, 93 )
 walk_to_point = Vector2( 0, 52 )
 
 [node name="CharacterPhil *" parent="Characters" instance=ExtResource( 14 )]

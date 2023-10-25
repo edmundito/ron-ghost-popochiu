@@ -21,15 +21,9 @@ func on_interact() -> void:
 
 # When the node is right clicked
 func on_look() -> void:
-	# Replace the call to .on_look() to implement your code. This only makes
-	# the default behavior to happen.
-	# For example you can make the character walk to the Prop and then say
-	# something:
-#	E.run([
-#		C.face_clicked(),
-#		'Player: A deck of cards'
-#	])
-	.on_look()
+	E.run([
+		"From what Mr. Hooky said, Davy Jones' Locker was behind that door."
+	])
 
 
 # When the node is clicked and there is an inventory item selected

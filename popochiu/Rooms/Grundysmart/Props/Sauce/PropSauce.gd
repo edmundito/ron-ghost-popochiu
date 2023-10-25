@@ -8,31 +8,20 @@ extends PopochiuProp
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ VIRTUAL ░░░░
 # When the node is clicked
 func on_interact() -> void:
-	if !Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.EMPTY_PIZZA):
-		E.run([
-			"Player: I don't know what to do with this yet."
-		])
-		return
-
 	E.run([
 		C.walk_to_clicked(),
 		C.face_clicked(),
 		self.disable(),
-		I.Sauce.add()
+		I.Sauce.add(false),
+		R.Grundysmart.count_pick_up_item(self.description)
 	])
 
 
 # When the node is right clicked
 func on_look() -> void:
-	# Replace the call to .on_look() to implement your code. This only makes
-	# the default behavior to happen.
-	# For example you can make the character walk to the Prop and then say
-	# something:
-#	E.run([
-#		C.face_clicked(),
-#		'Player: A deck of cards'
-#	])
-	.on_look()
+	E.run([
+		"It was a jar of Lucca's chunky marinara sauce, a town staple."
+	])
 
 
 # When the node is clicked and there is an inventory item selected

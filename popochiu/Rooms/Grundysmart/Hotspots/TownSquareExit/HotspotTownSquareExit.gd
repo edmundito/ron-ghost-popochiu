@@ -8,29 +8,29 @@ extends PopochiuHotspot
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ VIRTUAL ░░░░
 # When the node is clicked
 func on_interact() -> void:
-	# Replace the call to .on_interact() to implement your code. This only makes
-	# the default behavior to happen.
-	# For example you can make the character walk to the Hotspot and then say
-	# something:
-	yield(E.run([
+	var instructions: Array = [
 		C.walk_to_clicked(),
 		C.face_clicked(),
-	]), 'completed')
+		"Kiosk: Thanks for coming by!",
+	]
 
+	if R.Grundysmart.has_picked_up_items():
+		var count = R.Grundysmart.get_picked_up_items_count()
+		instructions.append_array([
+			"Kiosk: We will checkout %d item%s on your behalf." % [
+				count,
+				's' if count > 1 else ''
+			],
+		])
+		pass
+
+	yield(E.run(instructions), 'completed')
 	E.goto_room('TownSquare')
 
 
 # When the node is right clicked
 func on_look() -> void:
-	# Replace the call to .on_look() to implement your code. This only makes
-	# the default behavior to happen.
-	# For example you can make the character walk to the Hotspot and then say
-	# something:
-#	E.run([
-#		C.face_clicked(),
-#		'Player: A closed door'
-#	])
-	.on_look()
+	pass
 
 
 # When the node is clicked and there is an inventory item selected

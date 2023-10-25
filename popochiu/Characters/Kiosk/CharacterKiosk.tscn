@@ -12,6 +12,7 @@ script_name = "Kiosk"
 description = "Kiosk"
 walk_to_point = Vector2( -36, 68 )
 cursor = 8
+popochiu_placeholder = null
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -6, -15, 6, -15, 10, 16, -10, 16 )

@@ -34,6 +34,7 @@ func on_room_transition_finished() -> void:
 			C.player.walk_to_hotspot("TownSquareExit"),
 		]
 		if state.visited_first_time:
+			D.Kiosk.turn_on_options(["Phil"])
 			instructions.append_array([
 				"I got scared.",
 				"I wasn't raised to know how to chat with the homeless and did not understand that he was struggling right away.",

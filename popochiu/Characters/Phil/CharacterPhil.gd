@@ -18,6 +18,7 @@ func on_interact() -> void:
 	# the default behavior to happen.
 	if C.Phil.room.script_name == R.Alley.script_name:
 		if !Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.TALK_TO_PHIL):
+			D.Kiosk.turn_off_forever_options(["Phil"])
 			yield(E.run([
 				G.display("TODO: DIALOG HERE to learn more about phil..."),
 				"Player: Help me hack the kiosk that looks like you, please.",
@@ -37,7 +38,7 @@ func on_look() -> void:
 	# Replace the call to .on_look() to implement your code. This only makes
 	# the default behavior to happen.
 	if Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.TALK_TO_PHIL):
-		G.display("This guy looks familiar...", false)
+		G.display("He looks just like the A.I. at the Grundismart.", false)
 
 
 # When the node is clicked and there is an inventory item selected

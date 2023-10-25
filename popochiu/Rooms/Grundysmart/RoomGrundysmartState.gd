@@ -8,6 +8,7 @@ extends PopochiuRoomData
 
 var took_bucket := false
 var got_cheese := false
+var item_count := 0
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ PUBLIC ░░░░
 # Use this to save custom data for this PopochiuRoom when saving the game.

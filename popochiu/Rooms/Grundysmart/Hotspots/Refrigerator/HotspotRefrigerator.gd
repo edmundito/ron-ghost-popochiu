@@ -15,38 +15,40 @@ func on_interact() -> void:
 
 	if !Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.EMPTY_PIZZA):
 		E.run([
-			G.display("There are a lot of interesting things in this refrigerator, but I'm not sure what I need... yet.")
+			"There were a lot of interesting things in there, but I wasn't sure what I needed... yet."
 		])
 		return
 
 	if R.Grundysmart.state.got_cheese:
-		E.run([
-			G.display("There is nothing else in the refrigrator that interest me.")
-		])
+		E.run(["There was nothing else in the refrigrator that interested me."])
 		return
 
 	R.Grundysmart.state.got_cheese = true
 	E.run([
 		C.walk_to_clicked(),
 		C.face_clicked(),
-		G.display("I will take the cheese and pepperoni."),
+		"I took the cheese and pepperoni.",
 		I.Cheese.add(false),
-		I.Pepperoni.add(),
+		R.Grundysmart.count_pick_up_item(I.Cheese.description),
+		I.Pepperoni.add(false),
+		R.Grundysmart.count_pick_up_item(I.Pepperoni.description)
 	])
 
 
 
 # When the node is right clicked
 func on_look() -> void:
-	# Replace the call to .on_look() to implement your code. This only makes
-	# the default behavior to happen.
-	# For example you can make the character walk to the Hotspot and then say
-	# something:
-#	E.run([
-#		C.face_clicked(),
-#		'Player: A closed door'
-#	])
-	.on_look()
+	var instructions: Array = [
+		"The refrigerator was filled with all kinds of goodies."
+	]
+
+	if Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.EMPTY_PIZZA):
+		if R.Grundysmart.state.got_cheese:
+			instructions.append("There was nothing else in the refrigrator that interested me.")
+		else:
+			instructions.append("I saw cheese and pepperoni that could help with my pizza.")
+
+	E.run(instructions)
 
 
 # When the node is clicked and there is an inventory item selected

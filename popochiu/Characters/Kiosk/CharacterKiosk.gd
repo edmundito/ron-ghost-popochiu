@@ -17,17 +17,15 @@ func on_interact() -> void:
 	# Replace the call to .on_interact() to implement your code. This only makes
 	# the default behavior to happen.
 	yield(E.run([C.walk_to_clicked(), C.face_clicked()]), "completed")
-	if not Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.TALK_TO_KIOSK):
-		Globals.set_phil_kiosk_state(Globals.PhilKioskPuzzle.TALK_TO_PHIL)
 	D.show_dialog('Kiosk')
 
 
 # When the node is right clicked
 func on_look() -> void:
 	if R.Alley.state.visited_times > 0:
-		yield(E.run([G.display("This kiosk looks familiar...")]), "completed")
+		yield(E.run(["The A.I. looked a lot like the man in the alley, but younger."]), "completed")
 	else:
-		yield(E.run([G.display("It's a screen, but the human looks real.")]), "completed")
+		yield(E.run(["It was just an A.I. that was made to look like a real human."]), "completed")
 
 	if not Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.TALK_TO_KIOSK):
 		Globals.set_phil_kiosk_state(Globals.PhilKioskPuzzle.TALK_TO_PHIL)

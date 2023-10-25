@@ -12,22 +12,17 @@ func on_interact() -> void:
 		C.walk_to_clicked(),
 		C.face_clicked(),
 		disable(),
-		I.Bucket.add(),
+		I.Bucket.add(false),
+		R.Grundysmart.count_pick_up_item(self.description),
 	])
 	R.Grundysmart.state.took_bucket = true
 
 
 # When the node is right clicked
 func on_look() -> void:
-	# Replace the call to .on_look() to implement your code. This only makes
-	# the default behavior to happen.
-	# For example you can make the character walk to the Prop and then say
-	# something:
-#	E.run([
-#		C.face_clicked(),
-#		'Player: A deck of cards'
-#	])
-	.on_look()
+	E.run([
+		"It was a plastic bucket themed with Halloween decorations."
+	])
 
 
 # When the node is clicked and there is an inventory item selected
