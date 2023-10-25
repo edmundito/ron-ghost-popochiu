@@ -15,6 +15,7 @@ const PRCemeteryEntrance := preload('res://popochiu/Rooms/CemeteryEntrance/RoomC
 const PRLockerBackroom := preload('res://popochiu/Rooms/LockerBackroom/RoomLockerBackroom.gd')
 const PRLockerTownSquare := preload('res://popochiu/Rooms/LockerTownSquare/RoomLockerTownSquare.gd')
 const PRCredits := preload('res://popochiu/Rooms/Credits/RoomCredits.gd')
+const PRTheConstruct := preload('res://popochiu/Rooms/TheConstruct/RoomTheConstruct.gd')
 # ---- classes
 
 # nodes ----
@@ -31,6 +32,7 @@ var CemeteryEntrance: PRCemeteryEntrance setget , get_CemeteryEntrance
 var LockerBackroom: PRLockerBackroom setget , get_LockerBackroom
 var LockerTownSquare: PRLockerTownSquare setget , get_LockerTownSquare
 var Credits: PRCredits setget , get_Credits
+var TheConstruct: PRTheConstruct setget , get_TheConstruct
 # ---- nodes
 
 # functions ----
@@ -47,5 +49,6 @@ func get_CemeteryEntrance(): return .get_runtime_room('CemeteryEntrance')
 func get_LockerBackroom(): return .get_runtime_room('LockerBackroom')
 func get_LockerTownSquare(): return .get_runtime_room('LockerTownSquare')
 func get_Credits(): return .get_runtime_room('Credits')
+func get_TheConstruct(): return .get_runtime_room('TheConstruct')
 # ---- functions
 

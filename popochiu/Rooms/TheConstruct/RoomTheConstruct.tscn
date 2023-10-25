@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://popochiu/Rooms/TheConstruct/RoomTheConstruct.gd" type="Script" id=1]
+[ext_resource path="res://popochiu/Rooms/TheConstruct/WalkableAreas/Ground/WalkableAreaGround.gd" type="Script" id=2]
+[ext_resource path="res://addons/Popochiu/Engine/Objects/WalkableArea/PopochiuWalkableArea.tscn" type="PackedScene" id=3]
+[ext_resource path="res://popochiu/Characters/Jira/CharacterJira.tscn" type="PackedScene" id=4]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( -112, -22, 107, -20, 142, 88, -146, 87 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( -112, -22, 107, -20, 142, 88, -146, 87 ) ]
+
+[node name="RoomTheConstruct" type="YSort"]
+sort_enabled = false
+script = ExtResource( 1 )
+script_name = "TheConstruct"
+
+[node name="WalkableAreas" type="Node2D" parent="."]
+
+[node name="Ground" type="Node2D" parent="WalkableAreas" instance=ExtResource( 3 )]
+position = Vector2( 160, 100 )
+script = ExtResource( 2 )
+script_name = "Ground"
+description = "Ground"
+
+[node name="Perimeter" type="NavigationPolygonInstance" parent="WalkableAreas/Ground"]
+modulate = Color( 0, 1, 0, 1 )
+navpoly = SubResource( 1 )
+
+[node name="Props" type="YSort" parent="."]
+sort_enabled = false
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="Regions" type="Node2D" parent="."]
+
+[node name="Points" type="Node2D" parent="."]
+
+[node name="Characters" type="YSort" parent="."]
+sort_enabled = false
+
+[node name="CharacterJira *" parent="Characters" instance=ExtResource( 4 )]
+position = Vector2( 158, 131 )

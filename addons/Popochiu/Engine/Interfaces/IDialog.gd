@@ -21,20 +21,20 @@ var prev_dialog: PopochiuDialog = null
 # Starts a branching dialog identified by its script_name
 func show_dialog(script_name: String) -> void:
 	current_dialog = E.get_dialog(script_name)
-	
+
 	if current_dialog:
 		active = true
 		current_dialog._start()
-		
+
 		yield(self, 'dialog_finished')
-		
+
 		# Save the state of the dialog
 		trees[current_dialog.script_name] = current_dialog
-		
+
 		active = false
 		current_dialog = null
 		selected_option = null
-		
+
 		G.done()
 	else:
 		yield(get_tree(), 'idle_frame')
@@ -44,20 +44,20 @@ func show_dialog(script_name: String) -> void:
 # PopochiuDialogOption of the selected option
 func show_inline_dialog(opts: Array) -> PopochiuDialogOption:
 	active = true
-	
+
 	if current_dialog:
 		D.disconnect('option_selected', current_dialog, '_on_option_selected')
-	
+
 	emit_signal('inline_dialog_requested', opts)
-	
+
 	var pdo: PopochiuDialogOption = yield(self, 'option_selected')
-	
+
 	if current_dialog:
 		D.connect('option_selected', current_dialog, '_on_option_selected')
 	else:
 		active = false
 		G.done()
-	
+
 	return pdo
 
 

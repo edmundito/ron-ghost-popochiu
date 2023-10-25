@@ -662,7 +662,7 @@ func _eval_string(text: String) -> void:
 			yield(wait(2.0, false), 'completed')
 		_:
 			var colon_idx: int = text.find(':')
-			if colon_idx:
+			if colon_idx >= 0:
 				var colon_prefix: String = text.substr(0, colon_idx)
 
 				var emotion_idx := colon_prefix.find('(')
@@ -711,7 +711,7 @@ func _eval_string(text: String) -> void:
 				else:
 					yield(get_tree(), 'idle_frame')
 			else:
-				yield(get_tree(), 'idle_frame')
+				yield(G.display(text, false), 'completed')
 
 	auto_continue_after = -1.0
 
