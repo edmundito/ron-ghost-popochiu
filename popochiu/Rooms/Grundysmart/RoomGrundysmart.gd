@@ -23,7 +23,7 @@ func on_room_entered() -> void:
 # is visible.
 func on_room_transition_finished() -> void:
 	if state.visited_first_time:
-		E.run(["Kiosk: Welcome to Grundismart Bodega!"])
+		E.run(["Kiosk: Welcome to Grundysmart Bodega, the Universe's most customer-centric general store!"])
 	else:
 		E.run(["Kiosk: Welcome back!"])
 

@@ -50,7 +50,7 @@ func on_room_transition_finished() -> void:
 
 	if not Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.TALK_TO_PHIL):
 		E.run([
-			"Phil: Got a spare dollar?"
+			"Phil: You got a dollar?"
 		])
 
 # What happens before Popochiu unloads the room.

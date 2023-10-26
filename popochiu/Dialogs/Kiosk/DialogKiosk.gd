@@ -13,18 +13,20 @@ func on_start() -> void:
 	# E.g. Make the PC to look at the character which it will talk to, walk to
 	# it, and say something (or make the character say something)
 	# (!) It MUST always use a yield
-	var instructions: Array
+	var instructions: Array = [
+		"Jira: Excuse me."
+	]
 
 	if _state.first_time:
 		_state.first_time = false
-		instructions = [
-			'Kiosk: Welcome to Grundysmart Bodega, the Universe\'s most customer-centric general store!',
+		instructions.append_array([
+			"Kiosk: Hi!",
 			'Kiosk: Did you know that Grundysmart hourly employees are eligible for fully paid tuition after three months on the job?',
-		]
+		])
 	else:
-		instructions = [
+		instructions.append_array([
 			"Kiosk: How can I help you, Jira?",
-		]
+		])
 		if _state.shocked:
 			_state.shocked = false
 			instructions.append_array([
