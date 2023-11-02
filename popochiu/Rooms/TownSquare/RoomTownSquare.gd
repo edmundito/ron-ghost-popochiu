@@ -14,7 +14,10 @@ var state: Data = preload('RoomTownSquare.tres')
 # What happens when Popochiu loads the room. At this point the room is in the
 # tree but it is not visible
 func on_room_entered() -> void:
-	pass
+	if C.player.last_room:
+		var door: PopochiuHotspot = get_hotspot("%sDoor" % C.player.last_room)
+		if door:
+			C.player.position = Vector2(door.walk_to_point.x, door.walk_to_point.y)
 
 
 # What happens when the room changing transition finishes. At this point the room

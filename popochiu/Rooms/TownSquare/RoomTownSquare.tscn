@@ -62,7 +62,7 @@ position = Vector2( -197, 128 )
 script = ExtResource( 8 )
 script_name = "Eri0osDoor"
 description = "Eri0osDoor"
-walk_to_point = Vector2( 2, 31 )
+walk_to_point = Vector2( 1, 32 )
 cursor = 1
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Eri0osDoor"]
@@ -97,6 +97,7 @@ position = Vector2( 315, 91 )
 script = ExtResource( 12 )
 script_name = "GrundysmartDoor"
 description = "GrundysmartDoor"
+walk_to_point = Vector2( -3, 34 )
 cursor = 1
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/GrundysmartDoor"]
@@ -108,10 +109,12 @@ position = Vector2( -73, 101 )
 script = ExtResource( 13 )
 script_name = "PizzeriaDoor"
 description = "PizzeriaDoor"
+walk_to_point = Vector2( 0, 32 )
 cursor = 1
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/PizzeriaDoor"]
 modulate = Color( 0, 0, 1, 1 )
+position = Vector2( 1, 0 )
 polygon = PoolVector2Array( -18, -20, 11, -24, 11, 20, -18, 25 )
 
 [node name="OfficeBuildingDoor" parent="Hotspots" instance=ExtResource( 7 )]
@@ -152,7 +155,7 @@ position = Vector2( 573, 100 )
 script = ExtResource( 17 )
 script_name = "CemeteryExit"
 description = "CemeteryExit"
-walk_to_point = Vector2( 54, 76 )
+walk_to_point = Vector2( 56, 86 )
 cursor = 1
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/CemeteryExit"]

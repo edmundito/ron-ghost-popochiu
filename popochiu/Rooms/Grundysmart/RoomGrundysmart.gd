@@ -16,30 +16,38 @@ var state: Data = preload('RoomGrundysmart.tres')
 func on_room_entered() -> void:
 	state.item_count = 0
 	get_prop("Bucket").set_enabled(not state.took_bucket, false)
-	C.Phil.set_enabled(Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.NEW_PIZZA), false)
+	var phil_enabled: bool = (
+		Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.NEW_PIZZA) and
+		!Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.DESTROY_PIZZA)
+		)
+	C.Phil.set_enabled(phil_enabled, false)
 
 
 # What happens when the room changing transition finishes. At this point the room
 # is visible.
 func on_room_transition_finished() -> void:
+	var q: Array
+
 	if state.visited_first_time:
-		E.run(["Kiosk: Welcome to Grundysmart Bodega, the Universe's most customer-centric general store!"])
+		q = ["Kiosk: Welcome to Grundysmart Bodega, the Universe's most customer-centric general store!"]
 	else:
-		E.run(["Kiosk: Welcome back!"])
+		q = ["Kiosk: Welcome back!"]
 
 	if (
 		Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.NEW_PIZZA) &&
 		!Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.DESTROY_KIOSK)
 	):
-		yield(E.run_cutscene([
+		Globals.set_phil_kiosk_state(Globals.PhilKioskPuzzle.COMPLETE)
+		q.append_array([
 #			E.play_transition(TransitionLayer.PASS_DOWN_OUT, 0.5),
-			G.display("In this cutscene, Phil destroys the kiosk..."),
+			"In this cutscene, Phil destroys the kiosk...",
 			E.camera_shake(),
 			C.Kiosk.disable()
-		]), 'completed')
-		Globals.set_phil_kiosk_state(Globals.PhilKioskPuzzle.COMPLETE)
-		C.Phil.disable()
+		])
 		return
+
+	if q.size() > 0:
+		yield(E.run(q), "completed")
 
 
 # What happens before Popochiu unloads the room.
