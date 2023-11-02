@@ -174,8 +174,8 @@ func get_hotspot(hotspot_name: String) -> PopochiuHotspot:
 	for h in get_tree().get_nodes_in_group('hotspots'):
 		if h.script_name == hotspot_name or h.name == hotspot_name:
 			return h
-	printerr('[Popochiu] Hotspot %s not found' %\
-	[script_name, hotspot_name])
+	printerr('[Popochiu] Hotspot "%s" not found in room "%s"' %\
+	[hotspot_name, script_name])
 	return null
 
 
