@@ -9,7 +9,7 @@ __meta__ = {
 "_edit_group_": true
 }
 script_name = "Phil"
-description = "Phil"
+description = "Homeless man"
 cursor = 8
 text_color = Color( 0.321569, 1, 1, 1 )
 popochiu_placeholder = null

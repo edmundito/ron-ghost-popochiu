@@ -84,12 +84,17 @@ func option_selected(opt: PopochiuDialogOption) -> void:
 		"Pizza":
 			if !Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.TALK_TO_PHIL):
 				Globals.set_phil_kiosk_state(Globals.PhilKioskPuzzle.GET_PIZZA_BOX)
+				C.Phil.description = "Phil"
 				q = [
 					"Jira: I might be able to get you a pizza.",
 					"Phil: Really?",
 					"Phil: Thank you!",
 					"Jira: What do you like?",
-					"Phil: Peperoni sounds delicious right now."
+					"Phil: Peperoni sounds delicious right now.",
+					"Jira: No problem, Mr. Homeless man.",
+					"Phil: My name is Phil.",
+					"Jira: ...",
+					"Jira: Sorry."
 				]
 			else:
 				q = [
