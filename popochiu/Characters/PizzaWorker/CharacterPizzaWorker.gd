@@ -104,42 +104,58 @@ func on_look() -> void:
 	])
 
 
-# When the node is clicked and there is an inventory item selected
+const PIZZA_INGREDIENT = [
+	"Sauce",
+	"Cheese",
+	"Pepperoni"
+]
+
 func on_item_used(item: PopochiuInventoryItem) -> void:
-	match item.script_name:
-		'PizzaBox':
-			yield(E.run([
-				"PizzaWorker: Sorry, we don't take returns"
-			]), 'completed')
+	var q: Array = [
+		C.walk_to_clicked(),
+		C.face_clicked()
+	]
 
-			if !Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.GET_PIZZA_BOX):
-				return
+	if (
+		Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.EMPTY_PIZZA) and
+		PIZZA_INGREDIENT.has(item.script_name)
+		):
+		item.remove_now()
+		state["has_%s" % item.script_name.to_lower()] = true
 
-			if !Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.EMPTY_PIZZA):
-				yield(E.run(_bad_pizza()), "completed")
-
-		'Sauce':
-			I.Sauce.remove_now()
-			self.state.has_sauce = true
-
-		'Cheese':
-			I.Cheese.remove_now()
-			self.state.has_cheese = true
-
-		'Pepperoni':
-			I.Pepperoni.remove_now()
-			self.state.has_pepperoni = true
-
-		_:
-			.on_item_used(item)
-			return
-
-	if _can_bake_pizza():
-		Globals.set_phil_kiosk_state(Globals.PhilKioskPuzzle.NEW_PIZZA)
-		E.run([
-			"PizzaWorker: Here is your rebaked pizza!",
-			I.PizzaBox.add()
+		q.append_array([
+			"Jira: Here is the %s for the pizza." % item.description.to_lower(),
+			"PizzaWorker: Thanks!"
 		])
+
+		if _can_bake_pizza():
+			Globals.set_phil_kiosk_state(Globals.PhilKioskPuzzle.NEW_PIZZA)
+			q.append_array([
+				"PizzaWorker: And now it's time to re-bake that pizza.",
+				"TODO: Sequence showing the pizza is rebaking and...",
+				"PizzaWorker: Here is your rebaked pizza.",
+				I.PizzaBox.add(),
+				"Jira: Thanks, Beena!"
+			])
+	else:
+		match item.script_name:
+			'PizzaBox':
+				q.append_array([
+					"PizzaWorker: Sorry, but we don't take returns."
+				])
+				if (
+					Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.GET_PIZZA_BOX) and
+					!Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.EMPTY_PIZZA)
+					):
+					q.append_array(_bad_pizza())
+			_:
+				q.append_array([
+					"Jira: Would you be interested in this?",
+					"PizzaWorker: A %s?" % item.description.to_lower(),
+					"PizzaWorker: Not at all."
+				])
+
+	E.run(q)
 
 
 # Use it to play the idle animation for the character
