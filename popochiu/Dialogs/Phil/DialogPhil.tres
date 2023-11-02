@@ -1,0 +1,55 @@
+[gd_resource type="Resource" load_steps=8 format=2]
+
+[ext_resource path="res://popochiu/Dialogs/Phil/DialogPhil.gd" type="Script" id=1]
+[ext_resource path="res://addons/Popochiu/Engine/Objects/Dialog/PopochiuDialogOption.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=3]
+resource_name = "Dollar"
+script = ExtResource( 2 )
+id = "Dollar"
+text = "I can't help him with cash. Maybe something else?"
+visible = true
+disabled = false
+always_on = false
+
+[sub_resource type="Resource" id=4]
+resource_name = "Pizza"
+script = ExtResource( 2 )
+id = "Pizza"
+text = "I think I can get him a pizza."
+visible = false
+disabled = false
+always_on = false
+
+[sub_resource type="Resource" id=2]
+resource_name = "Kiosk"
+script = ExtResource( 2 )
+id = "Kiosk"
+text = "He looks like the A.I. at the bodega..."
+visible = false
+disabled = false
+always_on = false
+
+[sub_resource type="Resource" id=5]
+resource_name = "Backdoor"
+script = ExtResource( 2 )
+id = "Backdoor"
+text = "Maybe he can help me get to the back of the bodega..."
+visible = false
+disabled = false
+always_on = false
+
+[sub_resource type="Resource" id=1]
+resource_name = "Bye"
+script = ExtResource( 2 )
+id = "Bye"
+text = "Bye"
+visible = true
+disabled = false
+always_on = true
+
+[resource]
+resource_name = "Phil"
+script = ExtResource( 1 )
+options = [ SubResource( 3 ), SubResource( 4 ), SubResource( 2 ), SubResource( 5 ), SubResource( 1 ) ]
+script_name = "Phil"

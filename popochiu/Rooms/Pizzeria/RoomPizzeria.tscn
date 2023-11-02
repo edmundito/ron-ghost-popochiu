@@ -71,3 +71,4 @@ position = Vector2( 112, 176 )
 
 [node name="CharacterPizzaWorker *" parent="Characters" instance=ExtResource( 10 )]
 position = Vector2( 242, 107 )
+popochiu_placeholder = null

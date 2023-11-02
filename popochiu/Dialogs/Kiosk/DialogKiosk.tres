@@ -7,7 +7,7 @@
 resource_name = "BackDoor"
 script = ExtResource( 2 )
 id = "BackDoor"
-text = "Go through back door?"
+text = "Go through back door"
 visible = true
 disabled = false
 always_on = true
@@ -43,7 +43,7 @@ always_on = true
 resource_name = "Phil"
 script = ExtResource( 2 )
 id = "Phil"
-text = "You look like Phil"
+text = "This thing looks like the man in the alley..."
 visible = false
 disabled = false
 always_on = false

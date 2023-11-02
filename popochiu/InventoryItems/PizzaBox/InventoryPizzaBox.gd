@@ -19,9 +19,27 @@ func on_interact() -> void:
 
 # When the item is right clicked in the inventory
 func on_look() -> void:
-	# Replace the call to .on_look() to implement your code. This only makes
-	# the default behavior to happen.
-	.on_look()
+	if Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.BUILD_PIZZA):
+		E.run([
+			"It's a good enough pizza with Lucca's chunky marinara, Mozarella from RON, and \"What is Pepperoni?\" pepperoni-like substitute.",
+		])
+		return
+
+	if !Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.GET_PIZZA_BOX):
+		Globals.set_phil_kiosk_state(Globals.PhilKioskPuzzle.EMPTY_PIZZA)
+		E.run([
+			"I looked at at the pizza and...",
+			"What the...?!",
+			"It was just a baked crust!",
+			"There was no sauce, no cheese, and no toppings."
+		])
+		return
+
+	E.run([
+		"This was the worst pizza I've ever seen.",
+		"It was just a baked crust without sauce, cheese, or toppings."
+	])
+
 
 
 # When the item is clicked and there is another inventory item selected

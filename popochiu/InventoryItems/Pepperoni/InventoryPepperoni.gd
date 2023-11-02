@@ -19,9 +19,9 @@ func on_interact() -> void:
 
 # When the item is right clicked in the inventory
 func on_look() -> void:
-	# Replace the call to .on_look() to implement your code. This only makes
-	# the default behavior to happen.
-	.on_look()
+	E.run([
+		"It was \"What is Pepperoni?\", a pepperoni-like substitute that looks and tastes a lot like pepperoni."
+	])
 
 
 # When the item is clicked and there is another inventory item selected

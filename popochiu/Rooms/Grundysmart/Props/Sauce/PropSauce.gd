@@ -20,7 +20,7 @@ func on_interact() -> void:
 # When the node is right clicked
 func on_look() -> void:
 	E.run([
-		"It was a jar of Lucca's chunky marinara sauce, a town staple."
+		"It was a jar of Lucca's Chunky Marinara sauce, a town staple."
 	])
 
 

@@ -9,7 +9,7 @@ __meta__ = {
 "_edit_group_": true
 }
 script_name = "PizzaWorker"
-description = "PizzaWorker"
+description = "Beena"
 walk_to_point = Vector2( 0, 43 )
 cursor = 8
 popochiu_placeholder = null

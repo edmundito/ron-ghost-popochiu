@@ -13,6 +13,12 @@ func on_start() -> void:
 	# E.g. Make the PC to look at the character which it will talk to, walk to
 	# it, and say something (or make the character say something)
 	# (!) It MUST always use a yield
+
+	if Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.TALK_TO_PHIL):
+		turn_off_forever_options(["Phil"])
+	elif R.Alley.state.visited:
+		turn_on_options(["Phil"])
+
 	var instructions: Array = [
 		"Jira: Excuse me."
 	]

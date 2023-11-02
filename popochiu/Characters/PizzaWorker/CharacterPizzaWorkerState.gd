@@ -10,6 +10,7 @@ var has_pizza_box := false
 var has_sauce := false
 var has_cheese := false
 var has_pepperoni := false
+var first_chat := true
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ PUBLIC ░░░░
 # Use this to save custom data for this PopochiuCharacter when saving the game.

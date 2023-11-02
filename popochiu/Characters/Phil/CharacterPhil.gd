@@ -16,21 +16,11 @@ func on_room_set() -> void:
 func on_interact() -> void:
 	# Replace the call to .on_interact() to implement your code. This only makes
 	# the default behavior to happen.
-	if C.Phil.room.script_name == R.Alley.script_name:
-		if !Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.TALK_TO_PHIL):
-			D.Kiosk.turn_off_forever_options(["Phil"])
-			yield(E.run([
-				G.display("TODO: DIALOG HERE to learn more about phil..."),
-				"Player: Help me hack the kiosk that looks like you, please.",
-				"Phil: Maybe, but I'm so hungry, I could eat a whole pizza!"
-			]), 'completed')
-			Globals.set_phil_kiosk_state(Globals.PhilKioskPuzzle.GET_PIZZA_BOX)
-		elif !Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.GET_PIZZA_BOX):
-			yield(E.run([
-				"Phil: Where's my pizza?"
-			]), 'completed')
-	else:
-		E.run([G.display("TODO: Phil Dialog")])
+	yield(E.run([
+		C.walk_to_clicked(),
+		C.face_clicked()
+	]), "completed")
+	D.show_dialog("Phil")
 
 
 # When the node is right clicked
@@ -38,48 +28,54 @@ func on_look() -> void:
 	# Replace the call to .on_look() to implement your code. This only makes
 	# the default behavior to happen.
 	if Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.TALK_TO_PHIL):
-		G.display("He looks just like the A.I. at the Grundismart.", false)
+		G.display("He looks just like the A.I. at the Grundysmart.", false)
 
 
 # When the node is clicked and there is an inventory item selected
 func on_item_used(item: PopochiuInventoryItem) -> void:
-	if item.script_name == I.PizzaBox.script_name:
-		if Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.BUILD_PIZZA):
-			yield(E.run([
-				G.display("WIP cut-scene: Phil takes the pizza and eats it and then heads over to the Grundismart"),
-#				E.play_transition(TransitionLayer.PASS_DOWN_IN, 0.5)
-			]), 'completed')
-			Globals.set_phil_kiosk_state(Globals.PhilKioskPuzzle.DESTROY_KIOSK)
-			E.goto_room('Grundysmart')
-			return
-
-		if Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.EMPTY_PIZZA):
-			E.run([
-				"Phil: Get me a completed pizza"
-			])
-			return
-
-		yield(E.run_cutscene([
-			C.walk_to_clicked(),
-			C.face_clicked(),
-			I.PizzaBox.remove(),
-			"Player: Here is your pizza!",
-			"Phil: Great!",
-			"Phil: What's this?",
-			"Player: What do you mean?",
-			"Phil: This is just a pizza crust!",
-			"Phil: Where is the sauce? The cheese...? And the pepperoni...?",
-			"Player: Yikes! Let me see what I can do...",
-			I.PizzaBox.add()
-		]), 'completed')
-
-		Globals.set_phil_kiosk_state(Globals.PhilKioskPuzzle.EMPTY_PIZZA)
+	if item.script_name != I.PizzaBox.script_name:
+		# TODO: Maybe map some default reponses per item somehow?
+		E.run([
+			"Player: Would you like this %s?" % item.description.to_lower(),
+			"Phil: No thanks.",
+		])
 		return
 
-	E.run([
-		"Player: Would you like this jawn?",
-		"Phil: I'm not interested in that jawn.",
-	])
+	if Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.BUILD_PIZZA):
+		state.ate_pizza = true
+
+		yield(E.run([
+			"Jira: I got you a real pepperoni pizza this time!",
+			item.remove(),
+			"Phil: Thanks!"
+		]), 'completed')
+		return
+
+	if Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.GET_PIZZA_BOX):
+		E.run([
+			"Phil: Get me a real pizza!"
+		])
+		return
+
+	yield(E.run_cutscene([
+		C.walk_to_clicked(),
+		C.face_clicked(),
+		I.PizzaBox.remove(),
+		"Jira: I got you a pizza.",
+		"Phil: Great!",
+		"...",
+		"Phil: Wait... What's this?",
+		"Jira: What do you mean?",
+		"Phil: This is just a pizza crust!",
+		"Phil: Where is the sauce?",
+		"Phil: The cheese?",
+		"Phil: And the pepperoni?",
+		"Jira: Yikes!",
+		"Jira: Let me see what I can do...",
+		I.PizzaBox.add()
+	]), 'completed')
+
+	Globals.set_phil_kiosk_state(Globals.PhilKioskPuzzle.EMPTY_PIZZA)
 
 
 # Use it to play the idle animation for the character
