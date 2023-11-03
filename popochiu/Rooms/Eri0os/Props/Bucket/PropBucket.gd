@@ -8,29 +8,19 @@ extends PopochiuProp
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ VIRTUAL ░░░░
 # When the node is clicked
 func on_interact() -> void:
-	# Replace the call to .on_interact() to implement your code. This only makes
-	# the default behavior to happen.
-	# For example you can make the character walk to the Prop and then say
-	# something:
-#	E.run([
-#		C.walk_to_clicked(),
-#		C.face_clicked(),
-#		'Player: Not picking that up'
-#	])
-	.on_interact()
+	E.run([
+		C.face_clicked(),
+		"I wasn't going to pick it up again.",
+		"This was a good \"cauldron\" to make the potion.",
+	])
 
 
 # When the node is right clicked
 func on_look() -> void:
-	# Replace the call to .on_look() to implement your code. This only makes
-	# the default behavior to happen.
-	# For example you can make the character walk to the Prop and then say
-	# something:
-#	E.run([
-#		C.face_clicked(),
-#		'Player: A deck of cards'
-#	])
-	.on_look()
+	E.run([
+		C.face_clicked(),
+		"It's my \"cauldron\" for the potion.",
+	])
 
 const POTION_INGREDIENTS = [
 	"Flower",
@@ -39,48 +29,66 @@ const POTION_INGREDIENTS = [
 	"Turnip"
 ]
 
+func _count_remaining_ingredients() -> int:
+	return POTION_INGREDIENTS.size() - R.Eri0os.state.ingredients_in_bucket
 
-func _on_use_bluecup() -> void:
-	var num_ingredients := POTION_INGREDIENTS.size()
-	if R.Eri0os.state.ingredients_in_bucket < num_ingredients:
-		var ingredients_left = num_ingredients - R.Eri0os.state.ingredients_in_bucket
-		E.run([
+func _on_use_bluecup() -> Array:
+	var remaining_ingredients := _count_remaining_ingredients()
+	if remaining_ingredients > 0:
+		return [
 			C.face_clicked(),
-			G.display("I can use the cup when the potion is ready, but I still need %d ingredients." % ingredients_left)
-		])
-		return
+			"I can use the cup when the potion is ready, but I still need %d ingredients." % remaining_ingredients
+		]
 
-	E.run([
+	return [
 		C.walk_to_clicked(),
 		C.face_clicked(),
 		I.Bluecup.remove(),
-		"Player: (Display) I say the conjuring spell here and I get the potion",
+		"TODO - Anim picking up the drink",
 		I.Potion.add(),
-	])
+		"I needed to drink this near the locker."
+	]
 
 # When the node is clicked and there is an inventory item selected
 func on_item_used(item: PopochiuInventoryItem) -> void:
-	if POTION_INGREDIENTS.has(item.script_name):
+	var q: Array = []
+	var is_ingredient := POTION_INGREDIENTS.has(item.script_name)
+
+	if is_ingredient:
 		R.Eri0os.state.ingredients_in_bucket += 1
-		yield(E.run([
+		q = [
 			C.walk_to_clicked(),
 			C.face_clicked(),
 			item.remove()
-		]), "completed")
+		]
 
 	match item.script_name:
 		"Bluecup":
-			self._on_use_bluecup()
+			q.append_array(self._on_use_bluecup())
 		"Flower":
-			pass
+			q.append("Jira: A flower close to the dead.")
 		"Fluorite":
-			pass
+			q.append("Jira: Fluorite to stimulate the third eye.")
 		"Honey":
-			pass
+			q.append("Jira: Nectar of the bees for love and good health.")
 		"Turnip":
-			pass
+			q.append("Jira: Turnip greens for luck.")
 		_:
-			.on_item_used(item)
+			q.append_array([
+				C.face_clicked(),
+				"%s is not part of the potion ingredients" % item.description
+			])
+
+	if is_ingredient and _count_remaining_ingredients() == 0:
+		q.append_array([
+			E.camera_shake(),
+			"Jira: Whoa.",
+			"The potion was ready.",
+			"Now I needed some kind of container or cup to carry the potion.",
+		])
+
+	if q.size() > 0:
+		yield(E.run(q), "completed")
 
 
 # When an inventory item linked to this Prop (link_to_item) is removed from
