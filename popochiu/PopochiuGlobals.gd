@@ -1,5 +1,12 @@
 extends Node
 
+const POTION_INGREDIENTS = [
+	"Flower",
+	"Fluorite",
+	"Honey",
+	"Turnip"
+]
+
 enum PhilKioskPuzzle {
 	TALK_TO_KIOSK,
 	TALK_TO_PHIL,

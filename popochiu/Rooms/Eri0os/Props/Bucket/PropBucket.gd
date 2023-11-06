@@ -22,15 +22,8 @@ func on_look() -> void:
 		"It's my \"cauldron\" for the potion.",
 	])
 
-const POTION_INGREDIENTS = [
-	"Flower",
-	"Fluorite",
-	"Honey",
-	"Turnip"
-]
-
 func _count_remaining_ingredients() -> int:
-	return POTION_INGREDIENTS.size() - R.Eri0os.state.ingredients_in_bucket
+	return Globals.POTION_INGREDIENTS.size() - R.Eri0os.state.ingredients_in_bucket
 
 func _on_use_bluecup() -> Array:
 	var remaining_ingredients := _count_remaining_ingredients()
@@ -52,7 +45,7 @@ func _on_use_bluecup() -> Array:
 # When the node is clicked and there is an inventory item selected
 func on_item_used(item: PopochiuInventoryItem) -> void:
 	var q: Array = []
-	var is_ingredient := POTION_INGREDIENTS.has(item.script_name)
+	var is_ingredient := Globals.POTION_INGREDIENTS.has(item.script_name)
 
 	if is_ingredient:
 		R.Eri0os.state.ingredients_in_bucket += 1

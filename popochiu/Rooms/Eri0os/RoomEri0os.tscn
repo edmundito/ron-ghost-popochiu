@@ -148,4 +148,4 @@ position = Vector2( 227, 159 )
 position = Vector2( 165, 163 )
 
 [node name="CharacterSheriff *" parent="Characters" instance=ExtResource( 13 )]
-position = Vector2( 196, 157 )
+position = Vector2( 259, 129 )

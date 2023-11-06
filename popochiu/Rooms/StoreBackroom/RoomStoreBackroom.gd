@@ -33,12 +33,12 @@ func on_room_transition_finished() -> void:
 			G.display("That must be the locker."),
 			C.player.walk_to_hotspot("Locker"),
 			C.player.face_up(),
-			G.display("TODO Anim: Open the locker."),
+			G.display("TODO Anim - Open the locker."),
 			"Jira: And... it's empty.",
 			C.Hooky.enable(),
 			"Hooky: Indeed it is.",
 			C.Hooky.walk_to(self.get_hotspot("Locker").walk_to_point + Vector2(50.0, 0)),
-			G.display("TODO: more cutscene... make and drink the potion.")
+			G.display("TODO - more cutscene... make and drink the potion.")
 		]), "completed")
 
 

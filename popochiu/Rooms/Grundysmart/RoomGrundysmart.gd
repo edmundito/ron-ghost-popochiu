@@ -18,7 +18,7 @@ func on_room_entered() -> void:
 	get_prop("Bucket").set_enabled(not state.took_bucket, false)
 	var phil_enabled: bool = (
 		Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.NEW_PIZZA) and
-		!Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.DESTROY_PIZZA)
+		!Globals.completed_phil_kiosk_state(Globals.PhilKioskPuzzle.DESTROY_KIOSK)
 		)
 	C.Phil.set_enabled(phil_enabled, false)
 

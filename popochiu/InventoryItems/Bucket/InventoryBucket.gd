@@ -19,16 +19,20 @@ func on_interact() -> void:
 
 # When the item is right clicked in the inventory
 func on_look() -> void:
-	# Replace the call to .on_look() to implement your code. This only makes
-	# the default behavior to happen.
-	.on_look()
+	E.run([
+		"This was my cauldron for the potion.",
+	])
 
 
 # When the item is clicked and there is another inventory item selected
 func on_item_used(item: PopochiuInventoryItem) -> void:
-	# Replace the call to .on_item_used(item) to implement your code. This only
-	# makes the default behavior to happen.
-	.on_item_used(item)
+	var q: Array = []
+	if Globals.POTION_INGREDIENTS.has(item.script_name):
+		q.append("I thought about adding the ingredients, but I need to fill this bucket with warm water first.")
+	else:
+		q.append("%s is not part of the ingredients for the potion." % item.description)
+
+	yield(E.run(q), "completed")
 
 
 # Actions to excecute after the item is added to the Inventory
