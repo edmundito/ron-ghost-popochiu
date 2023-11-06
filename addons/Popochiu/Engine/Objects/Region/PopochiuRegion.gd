@@ -42,5 +42,5 @@ func _check_area(area: PopochiuCharacter, entered: bool) -> void:
 func _set_enabled(value: bool) -> void:
 	enabled = value
 	monitoring = value
-	
+
 	property_list_changed_notify()

@@ -8,11 +8,20 @@ extends PopochiuHotspot
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ VIRTUAL ░░░░
 # When the node is clicked
 func on_interact() -> void:
+	if C.Sorendo.visible:
+		E.run([
+			C.face_clicked(),
+			"I wanted to leave, but Sorendo was waiting for me at the other side of the cemetery."
+		])
+		return
+
 	yield(E.run([
 		C.walk_to_clicked(),
 		C.face_clicked(),
 	]), "completed")
-	E.goto_room("CemeteryEntrance")
+
+	var room_name = "Eri0os" if R.Cemetery.should_play_intro_cutscene() else "CemeteryEntrance"
+	E.goto_room(room_name)
 
 
 # When the node is right clicked

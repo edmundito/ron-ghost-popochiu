@@ -16,45 +16,30 @@ var state: Data = preload('RoomCemetery.tres')
 func on_room_entered() -> void:
 	C.Davy.disable(false)
 
-	if _should_play_intro_cutscene():
+	if should_play_intro_cutscene():
 		get_prop("Flower").disable(false)
-		C.Jira.disable(false)
 	else:
+		get_region("IntroTrigger").enabled = false
 		C.Sorendo.disable(false)
 
+	C.Jira.position = get_hotspot("Exit").walk_to_point
 
 # What happens when the room changing transition finishes. At this point the room
 # is visible.
 func on_room_transition_finished() -> void:
-	if not _should_play_intro_cutscene():
-		return
+	var q: Array = [
+		C.player.walk_to_room_point("StartPos")
+	]
 
-	yield(E.run([
-		E.wait(3.0),
-		C.Jira.enable(),
-		C.Jira.walk_to_hotspot("DavyGrave"),
-		"Jira: Sorry I'm late.",
-		"Sorendo: No worries.",
-		"Sorendo: I found out this guy dated my mom, once...",
-		G.display("They talk about a spell, cast it, and..."),
-		C.Davy.enable(),
-		"Davy: Hello",
-		"Sorendo: Is that you, Davy Jones?",
-		"Davy: Blah blah blah...",
-		"Davy: How dare you disturb my grave?",
-		"Sorendo: Well...",
-		"Davy: Time to lock you up!",
-		"Sorendo: AHHHHHH!!!",
-		C.Davy.disable(),
-		C.Sorendo.disable(),
-		E.wait(1.0),
-		"Jira: Oh no.",
-		"Jira: Sorendo?",
-		"Jira: I better get some help...",
-	]), "completed")
-
-	E.goto_room("Eri0os")
-
+	if should_play_intro_cutscene():
+		q.append_array([
+			"I wasn't fond of graveyards, but my friend, Sorendo, wanted to meet in a secluded place.",
+			"In the past few weeks, a couple of students have disappeared.",
+			"Sorendo is convinced that he found who's behind it...."
+		])
+		yield(E.run(q), "completed")
+	else:
+		E.run(q)
 
 # What happens before Popochiu unloads the room.
 # At this point, the screen is black, processing is disabled and all characters
@@ -66,9 +51,60 @@ func on_room_exited() -> void:
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ PUBLIC ░░░░
 # You could put public functions here
 
+func run_intro_cutscene() -> void:
+	if not should_play_intro_cutscene():
+		return
+
+	var q: Array = [
+		C.Jira.walk_to_hotspot("DavyGrave"),
+		"Sorendo: Jira!",
+		"Sorendo: At last.",
+		"Jira: Sorry I'm late.",
+		"Jira: It took me a while to sneak out of the house without my parents noticing.",
+		"Sorendo: Understandable.",
+		"Jira: What is this pentagram all about?",
+		"Sorendo: It's part of a spell.",
+		"Jira: Huh?",
+		"Jira: I thought you wanted to tell me who is behind the kidnappings.",
+		"Sorendo: It's all part of it.",
+		"Sorendo: This kid, Davy Jones.",
+		"Sorendo: I saw his ghost, and take Sol away a few days ago.",
+		"Jira: Sol... one of the kids that disappeared?",
+		"Sorendo: Yeah.",
+		"Sorendo: My mum went to school with Davy, and I happened to find his journal of spells in our attic.",
+		"Jira: OK, so...?",
+		"Sorendo: My plan is to bring him to life and ask him why he is doing this.",
+		"Jira: So, this is...",
+		"Sorendo: ...a resurrection, from a spell I found in the book.",
+		"Sorendo: It reads to draw a pentagram.",
+		"Sorendo: Then to chant, 'Role heck-a-tar come babbles come stow-sheb role say-bite-tus'...",
+		E.camera_shake(),
+		"Sorendo: Wait...",
+		"Sorendo: I didn't mean to...",
+		C.Davy.enable(),
+		"Davy: You can't just recite the spell ane expect it to work.",
+		"Davy: You need the gift, and also how to pronounce the chant well.",
+		"Sorendo: Davy Jones?",
+		"Davy: You dare to disturb my grave.",
+		"Sorendo: Well, you've been kidnapping my friends.",
+		"...",
+		"Davy: Fair, but it's hard to explain.",
+		"Davy: Come with me, I'll show you what I'm doing.",
+		"Sorendo: Huh?",
+		"Davy: Step in to my locker...",
+		"Sorendo: Now, wait a...",
+		C.Davy.disable(),
+		C.Sorendo.disable(),
+		"...",
+		"Jira: Oh no.",
+		"I didn't know what exactly happened, but I needed to find help.",
+	]
+
+	yield(E.run(q), "completed")
+
+func should_play_intro_cutscene() -> bool:
+	return C.player.last_room == "Sign" and state.visited_first_time
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ PRIVATE ░░░░
 # You could put private functions here
 
-func _should_play_intro_cutscene() -> bool:
-	return C.player.last_room == "Sign" and state.visited_first_time
