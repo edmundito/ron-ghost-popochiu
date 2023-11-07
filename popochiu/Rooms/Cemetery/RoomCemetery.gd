@@ -37,7 +37,7 @@ func on_room_transition_finished() -> void:
 			"In the past few weeks, a couple of students have disappeared.",
 			"Sorendo is convinced that he found who's behind it...."
 		])
-		yield(E.run(q), "completed")
+		yield(E.run_cutscene(q), "completed")
 	else:
 		E.run(q)
 
@@ -66,10 +66,10 @@ func run_intro_cutscene() -> void:
 		"Sorendo: It's part of a spell.",
 		"Jira: Huh?",
 		"Jira: I thought you wanted to tell me who is behind the kidnappings.",
-		"Sorendo: It's all part of it.",
+		"Sorendo: Yep, the spell is part of it.",
 		"Sorendo: This kid, Davy Jones.",
 		"Sorendo: I saw his ghost, and take Sol away a few days ago.",
-		"Jira: Sol... one of the kids that disappeared?",
+		"Jira: Solomon... one of the kids that disappeared?",
 		"Sorendo: Yeah.",
 		"Sorendo: My mum went to school with Davy, and I happened to find his journal of spells in our attic.",
 		"Jira: OK, so...?",
@@ -82,7 +82,7 @@ func run_intro_cutscene() -> void:
 		"Sorendo: Wait...",
 		"Sorendo: I didn't mean to...",
 		C.Davy.enable(),
-		"Davy: You can't just recite the spell ane expect it to work.",
+		"Davy: You can't just recite the spell and expect it to work.",
 		"Davy: You need the gift, and also how to pronounce the chant well.",
 		"Sorendo: Davy Jones?",
 		"Davy: You dare to disturb my grave.",
@@ -100,7 +100,7 @@ func run_intro_cutscene() -> void:
 		"I didn't know what exactly happened, but I needed to find help.",
 	]
 
-	yield(E.run(q), "completed")
+	yield(E.run_cutscene(q), "completed")
 
 func should_play_intro_cutscene() -> bool:
 	return C.player.last_room == "Sign" and state.visited_first_time

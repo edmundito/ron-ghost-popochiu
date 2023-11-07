@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://popochiu/Rooms/Eri0os/RoomEri0os.gd" type="Script" id=1]
 [ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.tscn" type="PackedScene" id=2]
@@ -15,7 +15,6 @@
 [ext_resource path="res://popochiu/Characters/Sheriff/CharacterSheriff.tscn" type="PackedScene" id=13]
 [ext_resource path="res://images/Inventory/inv_bluecup.png" type="Texture" id=14]
 [ext_resource path="res://images/Inventory/inv_honey.png" type="Texture" id=15]
-[ext_resource path="res://addons/Popochiu/Engine/Objects/Prop/PopochiuProp.gd" type="Script" id=16]
 [ext_resource path="res://images/Rooms/bg_eri0os_table.png" type="Texture" id=17]
 [ext_resource path="res://popochiu/Rooms/Eri0os/Props/Bucket/PropBucket.gd" type="Script" id=18]
 [ext_resource path="res://images/Inventory/inv_bucket.png" type="Texture" id=19]
@@ -80,12 +79,8 @@ link_to_item = "Honey"
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Honey"]
 polygon = PoolVector2Array( -5, -13, 2, -15, 9, -4, 12, 7, 10, 12, -7, 13, -8, -2 )
 
-[node name="Table" type="Area2D" parent="Props" instance=ExtResource( 2 )]
+[node name="Table" parent="Props" instance=ExtResource( 2 )]
 position = Vector2( 197, 144 )
-script = ExtResource( 16 )
-__meta__ = {
-"_editor_description_": ""
-}
 script_name = "Table"
 description = "Table"
 clickable = false
@@ -119,7 +114,7 @@ cursor = 1
 modulate = Color( 0, 0, 1, 1 )
 polygon = PoolVector2Array( -27, -16, 32, -17, 29, 16, -27, 15 )
 
-[node name="Table" type="Area2D" parent="Hotspots" instance=ExtResource( 9 )]
+[node name="Table" parent="Hotspots" instance=ExtResource( 9 )]
 position = Vector2( 196, 127 )
 script = ExtResource( 20 )
 script_name = "Table"
@@ -142,7 +137,7 @@ sort_enabled = false
 position = Vector2( 82, 167 )
 
 [node name="CharacterHooky *" parent="Characters" instance=ExtResource( 3 )]
-position = Vector2( 227, 159 )
+position = Vector2( 56, 136 )
 
 [node name="CharacterElandra *" parent="Characters" instance=ExtResource( 11 )]
 position = Vector2( 165, 163 )

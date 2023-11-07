@@ -152,8 +152,9 @@ func _process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_released('popochiu-skip'):
+	if event.is_action_released('popochiu-skip') and not cutscene_skipped:
 		cutscene_skipped = true
+
 		$TransitionLayer.play_transition(
 			TransitionLayer.PASS_DOWN_IN,
 			E.settings.skip_cutscene_time
