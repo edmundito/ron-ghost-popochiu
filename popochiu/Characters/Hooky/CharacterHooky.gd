@@ -14,12 +14,13 @@ func on_room_set() -> void:
 
 # When the node is clicked
 func on_interact() -> void:
-	# Replace the call to .on_interact() to implement your code. This only makes
-	# the default behavior to happen.
-	E.run([
-		"Hooky: Get to Davy Jones' Locker in the back room of the general store!",
-		"Player: And also I need to get the potion ready to open the gate.",
-	])
+	yield(E.run([
+		C.walk_to_clicked(),
+		C.face_clicked(),
+	]), "completed")
+
+	D.Hooky.start()
+
 
 
 # When the node is right clicked

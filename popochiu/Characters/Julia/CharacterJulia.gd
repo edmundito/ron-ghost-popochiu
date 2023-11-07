@@ -15,21 +15,15 @@ func on_room_set() -> void:
 # When the node is clicked
 func on_interact() -> void:
 	yield(E.run([
-		"Julia: Oh, hi!",
-		"Julia: I'm looking for the town square. Do you know where it is?",
-		"Player: This is it.",
-		"Julia: Oh.",
-		G.display("Some more dialog here..."),
-		"Julia: I'm an expert on minerals!"
+		C.walk_to_clicked(),
+		C.face_clicked()
 	]), "completed")
-	self.description = "Julia"
-	state.talked_about_minerals = true
+	D.Julia.start()
 
 
 # When the node is right clicked
 func on_look() -> void:
-	# Replace the call to .on_look() to implement your code. This only makes
-	# the default behavior to happen.
+	# TODO: It's a tourist for the fast festival / It's julia, blah game + minerals
 	.on_look()
 
 func _on_give_instructions() -> void:

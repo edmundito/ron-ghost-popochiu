@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://popochiu/Dialogs/Julia/DialogJulia.gd" type="Script" id=1]
+
+[resource]
+resource_name = "Julia"
+script = ExtResource( 1 )
+options = [  ]
+script_name = "Julia"
