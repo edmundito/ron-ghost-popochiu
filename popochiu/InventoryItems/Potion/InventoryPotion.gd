@@ -61,7 +61,7 @@ func on_interact() -> void:
 	]
 
 	yield(E.run(q), "completed")
-	C.set_player(C.Elandra)
+	C.player = C.Elandra
 	E.goto_room("LockerBackroom")
 
 
