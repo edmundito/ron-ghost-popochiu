@@ -40,12 +40,12 @@ func option_selected(opt: PopochiuDialogOption) -> void:
 			q = [
 				"Jira: I'm Jira.",
 				"Julia: Hi, Jira, I'm Julia!",
-				"Jira: Double J!",
+				"Jira: Hi, J, I'm J!",
 				"Julia: Haha, yes!",
-				"Jira: Are you visiting from somewhere else?",
-				"Julia: Yes, I'm coming from Canada.",
-				"Julia: I read about the Reality-on-the-Norm Autumn Festival and dediced to visit.",
-				"Julia: Then I'm heading to a conference in a few days to talk about my video game, The Crimson Diamond."
+				"Jira: What brings you to town?",
+				"Julia: I'm visiting from Canada.",
+				"Julia: I read about the Reality-on-the-Norm Autumn Festival and dediced to visit for a few days.",
+				"Julia: Then I'm heading to a conference to demo my video game, The Crimson Diamond."
 			]
 
 		"Game":
@@ -53,10 +53,11 @@ func option_selected(opt: PopochiuDialogOption) -> void:
 				turn_on_options(["Mineralogy"])
 				q = [
 					"Jira: Tell me about The Crimson Diamond.",
-					"Julia: Why, it's an extraordinary mystery house adventure set in Ontario, Canada!",
-					"Julia: With stunning, low-resolution, retro pixel graphics...",
-					"Julia: ...Roland MT-32 music...",
-					"Julia: Not to mention, detailed animation and a text parser interface!",
+					"Julia: Why it's an extraordinary mystery house adventure set in Ontario, Canada...",
+					"Julia: ...with stunning, low-resolution, retro pixel graphics...",
+					"Julia: ...a sophisticated score created with a Roland MT-32 synthesiser.",
+					"Julia: Not to mention the detailed animation and character close-ups...",
+					"Julia: ...and a text parser interface!",
 					"Jira: So, what do you do in the game?",
 				]
 			else:
