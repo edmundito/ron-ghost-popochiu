@@ -210,4 +210,5 @@ func _show_icon() -> void:
 
 func _continue(forced_continue := false) -> void:
 	if E.settings.auto_continue_text or forced_continue:
+		stop()
 		G.emit_signal('continue_clicked')
