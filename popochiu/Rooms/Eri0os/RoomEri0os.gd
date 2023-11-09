@@ -20,7 +20,7 @@ func on_room_entered() -> void:
 	else:
 		bucket.disable(false)
 
-	if _should_run_intro_cutscene():
+	if _should_run_intro_cutscene() or I.Potion.in_inventory:
 		C.Hooky.disable(false)
 	elif state.visited_first_time:
 		C.Hooky.enable(false)

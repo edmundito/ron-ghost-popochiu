@@ -10,6 +10,7 @@ __meta__ = {
 }
 script_name = "Sheriff"
 description = "Sheriff"
+walk_to_point = Vector2( 0, 18 )
 cursor = 8
 text_color = Color( 1, 1, 0, 1 )
 popochiu_placeholder = null
@@ -25,6 +26,7 @@ width = 1.0
 
 [node name="WalkToHelper" type="Position2D" parent="."]
 visible = false
+position = Vector2( 0, 18 )
 __meta__ = {
 "_edit_group_": true
 }

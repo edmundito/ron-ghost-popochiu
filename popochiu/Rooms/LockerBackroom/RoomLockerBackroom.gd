@@ -15,6 +15,7 @@ var state: Data = preload('RoomLockerBackroom.tres')
 # tree but it is not visible
 func on_room_entered() -> void:
 	C.Hooky.enable(false)
+	C.Elandra.enable(false)
 
 
 # What happens when the room changing transition finishes. At this point the room
