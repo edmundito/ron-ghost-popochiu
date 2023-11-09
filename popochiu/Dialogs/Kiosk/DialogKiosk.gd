@@ -39,7 +39,7 @@ func on_start() -> void:
 				"Jira: Uhh... How did you know my name?",
 				"Kiosk: We learn everything about our customers so that we can provide a personalized experience.",
 				"Jira: But I don't have a Grundysmart account?",
-				"Kiosk: Our records indicate that your Ciro Navarro has authorized access for you to purchase here.",
+				"Kiosk: Our records indicate that your Ciro Navarro has authorized access for her daughter, Guajira Carolina Navarro, or Jira, to purchase here.",
 				"Jira: Oh.",
 				"Jirao: Ciro is my dad.",
 				"Kiosk: I know."
