@@ -158,7 +158,7 @@ func get_point(point_name: String) -> Vector2:
 	var point: Position2D = get_node_or_null('Points/' + point_name)
 	if point:
 		return point.global_position
-	printerr('[Popochiu] Point %s not found' % [script_name, point_name])
+	printerr('[Popochiu] Point %s not found in room "%s"' % [point_name, script_name])
 	return Vector2.ZERO
 
 

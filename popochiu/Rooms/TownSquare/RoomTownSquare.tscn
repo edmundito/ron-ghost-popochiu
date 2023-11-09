@@ -166,6 +166,12 @@ polygon = PoolVector2Array( -16, -133, 15, -132, 15, 115, -17, 116 )
 
 [node name="Points" type="Node2D" parent="."]
 
+[node name="AlleyEntrance" type="Position2D" parent="Points"]
+position = Vector2( -245, 175 )
+
+[node name="CemeteryEntranceEntrance" type="Position2D" parent="Points"]
+position = Vector2( 568, 187 )
+
 [node name="Characters" type="YSort" parent="."]
 sort_enabled = false
 

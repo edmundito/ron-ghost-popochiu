@@ -23,8 +23,10 @@ func on_room_entered() -> void:
 # What happens when the room changing transition finishes. At this point the room
 # is visible.
 func on_room_transition_finished() -> void:
-	# You can use yield(E.run([]), 'completed') to excecute a queue of instructions
-	pass
+	if C.player.last_room:
+		var entrance_name: String = "%sEntrance" % C.player.last_room
+		if get_point(entrance_name):
+			E.run([C.player.walk_to_room_point(entrance_name)])
 
 
 # What happens before Popochiu unloads the room.
