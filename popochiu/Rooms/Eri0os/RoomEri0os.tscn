@@ -21,9 +21,9 @@
 [ext_resource path="res://popochiu/Rooms/Eri0os/Hotspots/Table/HotspotTable.gd" type="Script" id=20]
 
 [sub_resource type="NavigationPolygon" id=1]
-vertices = PoolVector2Array( -81, 17, 100, 17, 156, 65, 157, 94, -157, 96, -156, 70 )
-polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5 ) ]
-outlines = [ PoolVector2Array( -81, 17, 100, 17, 156, 65, 157, 94, -157, 96, -156, 70 ) ]
+vertices = PoolVector2Array( 82, 37, 116, 35, 156, 65, 157, 94, 90, 79, 78, 55, -157, 96, -8, 80, -156, 70, -121.225, 45.4255, -89, 44, -4, 54, -81, 17, 74, 19 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5 ), PoolIntArray( 4, 3, 6, 7 ), PoolIntArray( 7, 6, 8, 9, 10, 11 ), PoolIntArray( 5, 11, 10, 12, 13, 0 ) ]
+outlines = [ PoolVector2Array( -81, 17, 74, 19, 82, 37, 116, 35, 156, 65, 157, 94, -157, 96, -156, 70, -121.225, 45.4255, -89, 44 ), PoolVector2Array( -4, 54, 78, 55, 90, 79, -8, 80 ) ]
 
 [node name="RoomEri0os" type="YSort"]
 sort_enabled = false
@@ -140,7 +140,7 @@ position = Vector2( 82, 167 )
 position = Vector2( 56, 136 )
 
 [node name="CharacterElandra *" parent="Characters" instance=ExtResource( 11 )]
-position = Vector2( 165, 163 )
+position = Vector2( 154, 151 )
 
 [node name="CharacterSheriff *" parent="Characters" instance=ExtResource( 13 )]
 position = Vector2( 259, 129 )
