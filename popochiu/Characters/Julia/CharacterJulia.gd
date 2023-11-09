@@ -86,14 +86,15 @@ func on_item_used(item: PopochiuInventoryItem) -> void:
 	match item.script_name:
 		"Instructions":
 			q = self._get_give_instructions_q()
-		"Flourite":
+		"Fluorite":
 			q = [
-				"Julia: I hope it's useful to you!"
+				"Julia: I hope that it's useful to you!"
 			]
 		"Bucket":
 			q = [
 				"Player: Check out my bucket.",
-				"Julia: Oooh, I love buckets!"
+				"Julia: Oooh!",
+				"Julia: I love buckets!"
 			]
 		_:
 			# TODO: Customize
