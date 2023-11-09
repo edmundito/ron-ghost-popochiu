@@ -1,9 +1,37 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=6 format=2]
 
 [ext_resource path="res://popochiu/Dialogs/Hooky/DialogHooky.gd" type="Script" id=1]
+[ext_resource path="res://addons/Popochiu/Engine/Objects/Dialog/PopochiuDialogOption.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=2]
+resource_name = "About"
+script = ExtResource( 2 )
+id = "About"
+text = "Who is Hooky McPegleg?"
+visible = true
+disabled = false
+always_on = false
+
+[sub_resource type="Resource" id=1]
+resource_name = "Locker"
+script = ExtResource( 2 )
+id = "Locker"
+text = "Davy Jones's Locker"
+visible = true
+disabled = false
+always_on = false
+
+[sub_resource type="Resource" id=3]
+resource_name = "Bye"
+script = ExtResource( 2 )
+id = "Bye"
+text = "Bye"
+visible = true
+disabled = false
+always_on = true
 
 [resource]
 resource_name = "Hooky"
 script = ExtResource( 1 )
-options = [  ]
+options = [ SubResource( 2 ), SubResource( 1 ), SubResource( 3 ) ]
 script_name = "Hooky"

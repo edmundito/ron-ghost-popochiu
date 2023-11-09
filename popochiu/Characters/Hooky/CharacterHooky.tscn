@@ -9,7 +9,7 @@ __meta__ = {
 "_edit_group_": true
 }
 script_name = "Hooky"
-description = "Hooky"
+description = "Mr. McPegleg"
 cursor = 8
 text_color = Color( 0.835294, 0.823529, 0.803922, 1 )
 popochiu_placeholder = null

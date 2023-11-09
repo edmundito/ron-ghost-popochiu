@@ -42,4 +42,5 @@ color = Color( 0, 1, 1, 1 )
 texture = ExtResource( 2 )
 
 [node name="DialogPos" type="Position2D" parent="."]
+visible = false
 position = Vector2( 0, -53 )

@@ -20,14 +20,17 @@ func on_room_entered() -> void:
 	else:
 		bucket.disable(false)
 
-	if state.visited_first_time:
+	if _should_run_intro_cutscene():
 		C.Hooky.disable(false)
+	elif state.visited_first_time:
+		C.Hooky.enable(false)
+		C.Elandra.disable(false)
 
 
 # What happens when the room changing transition finishes. At this point the room
 # is visible.
 func on_room_transition_finished() -> void:
-	if state.visited_first_time:
+	if _should_run_intro_cutscene():
 		_run_intro_cutscene()
 
 # What happens before Popochiu unloads the room.
@@ -43,6 +46,9 @@ func on_room_exited() -> void:
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ PRIVATE ░░░░
 # You could put private functions here
+
+func _should_run_intro_cutscene() -> bool:
+	return state.visited_first_time and C.player.last_room == "Cemetery"
 
 func _run_intro_cutscene():
 	E.run_cutscene([

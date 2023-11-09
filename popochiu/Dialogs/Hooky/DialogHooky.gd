@@ -4,29 +4,42 @@ extends PopochiuDialog
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ VIRTUAL ░░░░
 func on_start() -> void:
-	# One can put here something to excecute before showing the dialog options.
-	# E.g. Make the PC to look at the character which it will talk to, walk to
-	# it, and say something (or make the character say something)
-	# (!) It MUST always use a yield
-	yield(E.run([
-		"Hooky: TEMP - Get to Davy Jones' Locker in the back room of the general store!",
-		"Player: TEMP - And also I need to get the potion ready to open the gate.",
-	]), 'completed')
+	var q: Array = [
+		"Jira: Hello.",
+		"Hooky: Ahoy there.",
+	]
+
+	yield(E.run(q), "completed")
 
 
 func option_selected(opt: PopochiuDialogOption) -> void:
-	# You can make the player character say the selected option with:
-#	yield(D.say_selected(), 'completed')
+	var q: Array
+	var stop_dialog := false
 
-	# Use match to check which option was selected and excecute something for
-	# each one
 	match opt.id:
-		_:
-			# By default close the dialog. Options won't show after calling
-			# stop()
-			stop()
+		"About":
+			q = [
+				"TODO - Who is Hooky McPegleg?"
+			]
 
-	_show_options()
+		"Locker":
+			q = [
+				"Hooky: Get to Davy Jones' Locker in the back room of the general store!",
+				"Hooky: There is a potion... take this.",
+			]
+
+			if not I.Instructions.in_inventory:
+				q.append(I.Instructions.add())
+		_:
+			stop_dialog = true
+
+	if q.size() > 0:
+		yield(E.run(q), "completed")
+
+	if stop_dialog:
+		stop()
+	else:
+		_show_options()
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ PUBLIC ░░░░

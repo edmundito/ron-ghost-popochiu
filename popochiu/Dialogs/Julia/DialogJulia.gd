@@ -3,7 +3,8 @@ extends PopochiuDialog
 
 var _state := {
 	first_dialog = true,
-	game_option_first_time = true
+	game_option_first_time = true,
+	trade_option_first_time = true
 }
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ VIRTUAL ░░░░
@@ -37,6 +38,7 @@ func option_selected(opt: PopochiuDialogOption) -> void:
 			turn_off_forever_options(["Visiting"])
 			turn_on_options(["Game"])
 			C.Julia.description = "Julia"
+			C.Julia.state.met_julia = true
 			q = [
 				"Jira: I'm Jira.",
 				"Julia: Hi, Jira, I'm Julia!",
@@ -115,13 +117,39 @@ func option_selected(opt: PopochiuDialogOption) -> void:
 				C.Julia.state.talked_about_minerals = true
 
 		"Sauce":
-			pass
+			turn_off_forever_options(["Sauce"])
+			turn_on_options(["Trade"])
+			q = [
+				"Jira: Did you happen to buy the last jar of Lucca's Chunky Marinara from the Grundysmart?",
+				"Julia: Why yes!",
+				"Julia: I wanted to get a souvenir to take with me, and I heard this sauce is a staple of this town.",
+				"Julia: I heard it has a unique taste.",
+				"Jira: Yep, it's the ginger."
+			]
+
 		"Trade":
-			pass
+			q = [
+				"Jira: Would you be able to trade the sauce for something else?",
+			]
+
+			if _state.trade_option_first_time:
+				_state.trade_option_first_time = false
+				q.append_array([
+					"Julia: Maybe.",
+					"Julia: What's your interest in the sauce?",
+					"Jira: I'd really like use the sauce.",
+					"Jira: It's for something... urgent.",
+					"Julia: Well...",
+				])
+
+			q.append_array([
+				"Julia: I may be willing to trade if you bring me another staple food from this town."
+			])
+
 		"Bye":
 			q = [
 				"Jira: I need to get going.",
-				"Julia: I hope to talk to you again!",
+				"Julia: Bye!",
 			]
 			stop_dialog = true
 		_:

@@ -8,6 +8,8 @@ extends PopochiuCharacterData
 
 var talked_about_minerals := false
 var gave_fluroite := false
+var showed_instructions_after_fluorite := false
+var met_julia := false
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ PUBLIC ░░░░
 # Use this to save custom data for this PopochiuCharacter when saving the game.

@@ -23,41 +23,87 @@ func on_interact() -> void:
 
 # When the node is right clicked
 func on_look() -> void:
-	# TODO: It's a tourist for the fast festival / It's julia, blah game + minerals
-	.on_look()
+	var message: String = (
+		"It's Julia, a game developer from Canada."
+		if state.met_julia else
+		"It's probably another tourist coming to the autumn festival."
+	)
 
-func _on_give_instructions() -> void:
+	E.run([C.face_clicked(), message])
+
+func _get_give_instructions_q() -> Array:
 	if state.gave_fluroite:
-			E.run([
-				"Julia: (Temp) I already gave you the flourite!"
-			])
-			return
+		if state.showed_instructions_after_fluorite:
+			return [
+				"Julia: It's your magic potion!",
+				"Jira: Yes, it is!",
+				"Julia was being polite, and probably was no longer interested in this."
+			]
 
-	if state.talked_about_minerals:
+		state.showed_instructions_after_fluorite = true
+		return [
+			"Julia: I wanted to show you something.",
+			"Julia: This looks like a recipe.",
+			"Julia: What is it for?",
+			"Jira: It's for... a... magic potion.",
+			"Julia: Oh.",
+			"...",
+			"Julia: Some people believe that Fluorite has magical properties.",
+			"Julia: I hope it serves you well!"
+		]
+
+	elif state.talked_about_minerals:
 		state.gave_fluroite = true
 		I.set_active_item(null)
-		yield(E.run_cutscene([
-			"Julia: (Temp) Oh, I see that you are looking for fluorite! I happen to have a little piece here. I'm happy to give it away!",
+		return [
+			"Jira: Julia, would you be able to help me with something?",
+			"Julia: Sure, what is it?",
+			"Jira: I'm trying to find something called fluorite.",
+			"Julia: Fluorite is a mineral!",
+			"Julia: I just so happen to have a few crystals with me.",
+			"Julia: Would you like one?",
+			"Jira: That would be very helpful.",
+			"Julia: Here you go!",
 			I.Fluorite.add(),
-		]), "completed")
-		return
+		]
 
-	E.run([
-		"Julia: I'm not sure what this is."
-	])
+	else:
+		return [
+			"Julia: What's this?",
+			"Jira: It's for a...",
+			"Jira: Nothing.",
+			"I thought Julia could help, but I was too embarassed to tell her what it was for a potion.",
+			"Maybe if I knew more about how she could help me, first...."
+		] if state.met_julia else [
+			"Julia: Thanks, but I don't take flyers from strangers.",
+		]
+
 
 # When the node is clicked and there is an inventory item selected
 func on_item_used(item: PopochiuInventoryItem) -> void:
+	var q: Array
+
 	match item.script_name:
 		"Instructions":
-			self._on_give_instructions()
+			q = self._get_give_instructions_q()
+		"Flourite":
+			q = [
+				"Julia: I hope it's useful to you!"
+			]
 		"Bucket":
-			E.run([
+			q = [
 				"Player: Check out my bucket.",
 				"Julia: Oooh, I love buckets!"
-			])
+			]
 		_:
+			# TODO: Customize
 			.on_item_used(item)
+			return
+
+	if q.size() > 0:
+		q.push_front(C.face_clicked())
+		q.push_front(C.walk_to_clicked())
+		E.run(q)
 
 
 # Use it to play the idle animation for the character
