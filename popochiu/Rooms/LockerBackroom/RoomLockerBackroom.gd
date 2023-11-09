@@ -23,6 +23,8 @@ func on_room_transition_finished() -> void:
 	yield(E.run([
 		"Elandra: What is going on?",
 		"Hooky: Are you seeing what I'm seeing?",
+		"Elandra: You look young.",
+		"Hooky: You too!",
 	]), "completed")
 
 	E.goto_room("LockerTownSquare")

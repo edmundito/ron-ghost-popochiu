@@ -98,7 +98,7 @@ func option_selected(opt: PopochiuDialogOption) -> void:
 					"Jira: Minerals?",
 					"Julia: Minerals are crystals, gemstones, that sort of thing.",
 					"Jira: How did you incorporate it into your game?",
-					"Julia: Collecting minerals is one of my interests.",
+					"Julia: I'm very interest in collecting minerals.",
 				]
 
 			q.append_array([
