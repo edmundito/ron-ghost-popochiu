@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://popochiu/Characters/Phil/CharacterPhil.gd" type="Script" id=1]
-[ext_resource path="res://images/Characters/phil.png" type="Texture" id=2]
+[ext_resource path="res://images/Characters/cha_phil.png" type="Texture" id=2]
 
 [node name="CharacterPhil" type="Area2D"]
 script = ExtResource( 1 )
@@ -15,7 +15,7 @@ text_color = Color( 0.321569, 1, 1, 1 )
 popochiu_placeholder = null
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -7, -84, 6, -84, 5, -69, 8.50891, -60.4455, 8, -35, 6, -6, 10, 0, -10, 0, -6, -6, -8, -36, -9, -60, -5, -68 )
+polygon = PoolVector2Array( -7, -84, 1, -85, 5, -83, 5, -67, 4, -64, 8, -60, 10, -41, 7, -35, 6, -6, 10, 0, -10, 0, -6, -6, -7, -34, -10, -41, -8, -60, -5, -64, -6, -67 )
 
 [node name="BaselineHelper" type="Line2D" parent="."]
 visible = false
