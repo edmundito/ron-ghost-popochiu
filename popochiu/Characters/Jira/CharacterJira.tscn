@@ -17,7 +17,7 @@ walk_speed = 150.0
 popochiu_placeholder = null
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
+polygon = PoolVector2Array( -7, -82, 5, -82, 6, -63, 12, -59, 9, -34, 7, -19, 8, -13, 5, -12, 5, -4, 10, 0, -9, 0, -6, -4, -5, -12, -8, -13, -7, -34, -10.2395, -33.466, -12, -59, -8.28439, -62.7572 )
 
 [node name="BaselineHelper" type="Line2D" parent="."]
 visible = false

@@ -1,12 +1,13 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://popochiu/Characters/Julia/CharacterJulia.gd" type="Script" id=1]
-[ext_resource path="res://images/Characters/cha_temp.png" type="Texture" id=2]
+[ext_resource path="res://images/Characters/cha_julia.png" type="Texture" id=2]
 
 [node name="CharacterJulia" type="Area2D"]
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 script_name = "Julia"
 description = "???"
@@ -15,7 +16,7 @@ cursor = 8
 popochiu_placeholder = null
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -10, -41, 11, -41, 8, 43, -9, 41 )
+polygon = PoolVector2Array( -7, -37, -3, -41, 1, -41, 5, -39, 7, -35, 8, -21, 12, -18, 14, -9, 13, -4, 9, -1, 7, 8, 8, 26, 5, 36, 9, 42, -10, 42, -6, 36, -8, 26, -7, 8, -10, 5, -9, -1, -12, -2, -14, -7, -12, -19, -8, -21 )
 
 [node name="BaselineHelper" type="Line2D" parent="."]
 visible = false
@@ -40,7 +41,9 @@ color = Color( 0, 1, 1, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="DialogPos" type="Position2D" parent="."]
-visible = false
-position = Vector2( 0, -53 )
+position = Vector2( 0, -46 )

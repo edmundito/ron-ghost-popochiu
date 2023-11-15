@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://popochiu/Characters/Elandra/CharacterElandra.gd" type="Script" id=1]
-[ext_resource path="res://images/Characters/elandra.png" type="Texture" id=2]
+[ext_resource path="res://images/Characters/cha_elandra.png" type="Texture" id=2]
 
 [node name="CharacterElandra" type="Area2D"]
+position = Vector2( -1, 2 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -11,12 +12,12 @@ __meta__ = {
 script_name = "Elandra"
 description = "Elandra"
 cursor = 8
-text_color = Color( 0.521569, 0.917647, 1, 1 )
+text_color = Color( 0.333333, 0.333333, 1, 1 )
 popochiu_placeholder = null
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="."]
 position = Vector2( -1, -48 )
-polygon = PoolVector2Array( -7, -20, -6, -36, 0, -40, 7, -35, 6, -24, 17, -9, 10, 9, 9, 49, -2, 44, -14, 48, -10, 9, -16, -2 )
+polygon = PoolVector2Array( -7, -20, -9, -28, -6, -36, 1, -40, 8, -36, 10, -24, 8, -18, 15, -9, 10, 14, 9, 43, 13, 49, 9, 49, -1, 45, -14, 48, -9, 42, -10, 9, -14, -2 )
 
 [node name="BaselineHelper" type="Line2D" parent="."]
 visible = false

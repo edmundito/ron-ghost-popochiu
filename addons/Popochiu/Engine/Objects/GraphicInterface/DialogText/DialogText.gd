@@ -27,21 +27,21 @@ onready var _continue_icon_tween: Tween = _continue_icon.get_node('Tween')
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ GODOT ░░░░
 func _ready() -> void:
 	set_meta(DFLT_SIZE, rect_size)
-	
+
 	# Set the default values
 	clear()
-	
+
 	modulate.a = 0.0
 	_secs_per_character = E.current_text_speed
 	_x_limit = E.width / (E.scale.x if E.settings.scale_gui else 1.0)
 	_y_limit = E.height / (E.scale.y if E.settings.scale_gui else 1.0)
-	
+
 	_continue_icon.hide()
-	
+
 	# Conectarse a señales de los hijos
 	_tween.connect('tween_all_completed', self, '_wait_input')
 	_continue_icon_tween.connect('tween_all_completed', self, '_continue')
-	
+
 	# Conectarse a eventos del universo Chimpoko
 	E.connect('text_speed_changed', self, 'change_speed')
 	C.connect('character_spoke', self, '_show_dialogue')
@@ -52,7 +52,7 @@ func play_text(props: Dictionary) -> void:
 	var msg: String = E.get_text(props.text)
 	_is_waiting_input = false
 	_dialog_pos = props.position
-	
+
 	# ==== Calculate the width of the node =====================================
 	var rt := RichTextLabel.new()
 	var lbl := Label.new()
@@ -68,9 +68,9 @@ func play_text(props: Dictionary) -> void:
 		size.y = rt.get_content_height()
 	elif size.x < get_meta(DFLT_SIZE).x:
 		size.x = get_meta(DFLT_SIZE).x
-	
+
 	var character_count := lbl.get_total_character_count()
-	
+
 	lbl.free()
 	rt.free()
 	# ===================================== Calculate the width of the node ====
@@ -78,7 +78,7 @@ func play_text(props: Dictionary) -> void:
 	rect_size = size
 	rect_position = props.position - rect_size / 2.0
 	rect_position.y -= rect_size.y / 2.0
-	
+
 	# Calculate overflow and reposition
 	if rect_position.x < 0.0:
 		rect_position.x = limit_margin
@@ -88,10 +88,10 @@ func play_text(props: Dictionary) -> void:
 		rect_position.y = limit_margin
 	elif rect_position.y + rect_size.y > _y_limit:
 		rect_position.y = _y_limit - limit_margin - rect_size.y
-	
+
 	# Assign text and align mode (based on overflow)
 	push_color(props.color)
-	
+
 	var center := floor(rect_position.x + (size.x / 2))
 	if center == props.position.x:
 		append_bbcode('[center]%s[/center]' % msg)
@@ -125,24 +125,24 @@ func stop() ->void:
 		# Saltarse las animaciones
 		_tween.remove_all()
 		percent_visible = 1.0
-		
+
 		_wait_input()
 
 
 func hide() -> void:
 	if modulate.a == 0.0: return
-	
+
 	_auto_continue = false
 	modulate.a = 0.0
 	_is_waiting_input = false
-	
+
 	_tween.remove_all()
 	clear()
-	
+
 	_continue_icon.hide()
 	_continue_icon.modulate.a = 1.0
 	_continue_icon_tween.remove_all()
-	
+
 	rect_size = get_meta(DFLT_SIZE)
 
 
@@ -163,11 +163,11 @@ func _show_dialogue(chr: PopochiuCharacter, msg := '') -> void:
 
 func _wait_input() -> void:
 	_is_waiting_input = true
-	
+
 	if E.auto_continue_after >= 0.0:
 		_auto_continue = true
 		yield(get_tree().create_timer(E.auto_continue_after + 0.2), 'timeout')
-		
+
 		if _auto_continue:
 			_continue(true)
 	else:

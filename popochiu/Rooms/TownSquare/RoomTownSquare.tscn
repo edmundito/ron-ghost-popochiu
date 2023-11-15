@@ -180,4 +180,7 @@ position = Vector2( -191, 164 )
 
 [node name="CharacterJulia *" parent="Characters" instance=ExtResource( 19 )]
 position = Vector2( -4, 70 )
+__meta__ = {
+"_edit_group_": true
+}
 description = "Julia"
